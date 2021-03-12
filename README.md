@@ -11,16 +11,16 @@ An anonymous community journaling website aimed at teenagers and high school stu
 Clone or download the repo.
 
 ## Usage
-Open the terminal:
-`cd server`
-`npm install`
-Navigate to `index.js`
-Start the server `npm run start`  // currently starts nodemon, remember to switch to node index.js 
+Open the terminal:  
+`cd server` 
+`npm install`  
+Navigate to `index.js`  
+Start the server `npm run start`  // currently starts nodemon, remember to switch to node index.js     
 
-In a seperate terminal:
-`cd ../client`
-`npm install`
-`open index.html`
+In a seperate terminal:  
+`cd ../client`  
+`npm install`  
+`open index.html`  
 
 ****
 
@@ -31,7 +31,7 @@ In a seperate terminal:
 ****
 
 # Process 
-- Start by planning out a plan!!! Use of GitHub Projects to set up a Kanban baord and a 'Source of Truth' shared document on Google Docs.
+1. Start by planning out a plan!!! Use of GitHub Projects to set up a Kanban baord and a 'Source of Truth' shared document on Google Docs.
 
 ****
 
