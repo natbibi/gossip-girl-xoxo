@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "date": "Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)", 
+      "text": "post text here",
+      "giphy": null,
+      "reactions": {
+        "happy": 0,
+        "funny": 0,
+        "unhappy": 0
+      },
+      "comments": []
+    }
+  ]
+}
