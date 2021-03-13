@@ -13,6 +13,12 @@ class Post extends Comment {
         const posts = postsData.map((post) => new Post(post));
         return posts;
     }
+    static create(post) {
+        const newPostId = postsData.length + 1
+        const newPost = new Post({ id: newPostId, ...post });
+        postsData.push(newPost);
+        return newPost;
+      }
     static findById(id) {
         try {
             const postData = postsData.filter((post) => post.id === id)[0];
@@ -28,10 +34,6 @@ class Post extends Comment {
     }
     addReaction(reaction) {
         postsData.filter(post => post.id = this.id)[0].reactions[reaction]++
-    }
-
-    static create(comment) {
-        //create and append comment to parent post
     }
 }
 

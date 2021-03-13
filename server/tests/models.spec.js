@@ -23,10 +23,8 @@ describe('Post model', () => {
         expect(posts).toEqual(postsData)
     })
     const testPost = {
-        parentPost: null,
         date: "Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)",
         text: 'This is a test post',
-        comments: [1,2,3]
     };
     it('should make an instance of a post', () => {
         const post = new Post({ id: 10, ...testPost });
@@ -34,6 +32,10 @@ describe('Post model', () => {
         expect(typeof post.date).toBe('string');
         expect(post.text).toBe('This is a test post');
     });
+    it('should create a new post', () => {
+        const newPost = Post.create(testPost);
+        expect(newPost).toEqual({id:2, comments: [], giphy: null, reactions: {happy:0, funny:0, unhappy:0}, ...testPost})
+    })
     it('should create and append a new comment to a post', () => {
         const testComment = {
                 parentId: 1,
