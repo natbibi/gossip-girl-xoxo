@@ -6,9 +6,15 @@ const Post = require("../models/post");
 
 
 router.get("/", (req, res) => {
-  const pollData = Post.all;
-  res.send(pollData);
+  const postData = Post.all;
+  res.send(postData);
 });
+
+router.get("/:id", (req, res) => {
+    const id = parseInt(req.params.id)
+    const postToSend = Post.findById(id);
+    res.send(postToSend);
+  });
 
 
 module.exports = router;
