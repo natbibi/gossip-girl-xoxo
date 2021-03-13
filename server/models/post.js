@@ -5,11 +5,13 @@ postsData = data.posts
 class Post extends Comment {
     constructor(data) {
         super(data)
-        this.comments = [] 
-        this.reactions = {happy: 0, funny: 0, unhappy: 0}
+        this.comments = data.comments || [] 
+        this.reactions = data.reactions || {happy: 0, funny: 0, unhappy: 0}
+        this.giphy = data.giphy || null
     }
     static get all() {
-        //get all comments of a parent post
+        const posts = postsData.map((post) => new Post(post));
+        return posts;
     }
     static findById(id) {
         try {

@@ -18,6 +18,10 @@ describe('Comment model', () => {
 });
 
 describe('Post model', () => {
+    it('should return all posts', () => {
+        const posts = Post.all
+        expect(posts).toEqual(postsData)
+    })
     const testPost = {
         parentPost: null,
         date: "Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)",
