@@ -50,6 +50,8 @@ describe('Post model', () => {
     it('should update a posts reactions', () => {
         const postToUpdate = Post.findById(1)
         postToUpdate.addReaction("happy")
-        expect(postsData[0].reactions).toStrictEqual({happy: 1, funny: 0, unhappy: 0})
+        postToUpdate.addReaction("funny")
+        postToUpdate.addReaction("happy")
+        expect(postsData[0].reactions).toStrictEqual({happy: 2, funny: 1, unhappy: 0})
     })
 });
