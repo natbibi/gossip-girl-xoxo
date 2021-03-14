@@ -8,7 +8,7 @@ const Post = require('../models/post');
 describe('Comment model', () => {
     const testComment = {
         text: 'This is a test comment',
-        date: new Date.toString()
+        date: "Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)"
     };
     it('should make an instance of a comment', () => {
         const comment = new Comment({ id: 10, ...testComment });
