@@ -30,10 +30,10 @@ class Post extends Comment {
     }
     addComment(commentData) {
         const comment = new Comment(commentData)
-        postsData.filter(post => post.id = this.id)[0].comments.push(comment)
+        const postToUpdate = postsData.filter(post => post.id === this.id)[0].comments.push(comment)
     }
     addReaction(reaction) {
-        postsData.filter(post => post.id = this.id)[0].reactions[reaction]++
+        postsData.filter(post => post.id === this.id)[0].reactions[reaction]++
     }
 }
 
