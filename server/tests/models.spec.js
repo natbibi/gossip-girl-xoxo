@@ -22,6 +22,13 @@ describe('Post model', () => {
         const posts = Post.all
         expect(posts).toEqual(postsData)
     })
+    it('should return a post with specific id and throw error if no post with id', () => {
+        expect(Post.findById(1)).toEqual(postsData[0])
+        function testError() {
+            Post.findById(0);
+        }
+        expect(testError).toThrowError('That post does not exist!');
+    })
     const testPost = {
         date: "Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)",
         text: 'This is a test post',
