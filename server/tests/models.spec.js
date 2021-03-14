@@ -7,8 +7,8 @@ const Post = require('../models/post');
 
 describe('Comment model', () => {
     const testComment = {
-        parentPost: null,
         text: 'This is a test comment',
+        date: new Date.toString()
     };
     it('should make an instance of a comment', () => {
         const comment = new Comment({ id: 10, ...testComment });
