@@ -48,7 +48,7 @@ module.exports = {
 },{}],2:[function(require,module,exports){
 function renderList(data){
     for (item of data) {
-        document.getElementById('root').appendChild(renderItem(item))
+        document.getElementById('root').prepend(renderItem(item))
     }
     //function to render data to the DOM
 }
@@ -60,7 +60,11 @@ function renderItem(data){
     postContainer.className = "blog-entry" 
     const postText = document.createElement('p')
     postText.textContent = data.text
+    const postDate = document.createElement('p')
+    postDate.textContent = data.date
     postContainer.appendChild(postText)
+    postContainer.appendChild(postDate)
+
 
 
     //make buttons
@@ -93,8 +97,17 @@ window.addEventListener("load", async () => {
 })
 
 document.querySelector('#popup-post').addEventListener("click", () => {
+  const popupPostArea = document.querySelector('#popup-postarea')
   const popupTextArea = document.querySelector('#popup-textarea')
-  popupTextArea.classList.toggle('display')
+  popupPostArea.classList.toggle('display')
   popupTextArea.focus()
+})
+
+document.querySelector('#submit-post').addEventListener("click", () => {
+  const popupTextArea = document.querySelector('#popup-textarea')
+  const textToPost = popupTextArea.value
+  const date = new Date().toString()
+  apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', {text: textToPost, date: date})
+  location.reload()
 })
 },{"./api":1,"./handlers":2}]},{},[3]);
