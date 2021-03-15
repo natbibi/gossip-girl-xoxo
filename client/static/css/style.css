@@ -1,0 +1,103 @@
+/* Nav bar */
+.mobile-container {
+  max-width: 480px;
+  margin: auto;
+  background-color: snow;
+  height: 500px;
+  border-radius: 5px;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: white;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+img {
+  position: relative;
+  right: -300px;
+  top: -20px;
+}
+.topnav #myLinks {
+  display: none;
+}
+
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+.topnav a.icon {
+  background: snow;
+  color: black;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.active {
+  background-color: snow;
+  color: black;
+  text-align: right;
+}
+
+/* blog sections */
+p {
+  color: black;
+}
+
+.blog-entry {
+  border: 2px solid gray;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background-color: gray;
+  margin: .5rem
+}
+form {
+  padding-top: 10px;
+}
+
+.comment-bttn {
+  background-color: deeppink;
+  border: 4px solid deeppink;
+  border-radius: 4px;
+}
+
+.like-bttn {
+  background-color: deeppink;
+  border: 4px solid deeppink;
+  border-radius: 20px;
+}
+
+footer {
+    height: auto;
+    background: deeppink;
+    position: fixed;
+    bottom: 0;
+    max-width: 480px;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 1rem;
+}
+
+footer > textarea {
+    display: none;
+    width: 80%;
+    margin: 0 auto;
+    resize: none;
+}
+
+.display {
+    display: block;
+}

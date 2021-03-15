@@ -2,13 +2,55 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="static/css/style.css">
-    <script src="bundle.js"></script>
+    <script defer src="bundle.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="static/css/style.css" />
     <title>Gossip Girls</title>
 </head>
 <body>
-    <h1>Welcome to Gossip Girls.</h1>
+    <div class="mobile-container">
+    <header>
+
+    <!-- Top Navigation Menu -->
+    <div class="topnav">
+        <img src="static/images/XOXO.png" alt="xoxo logo" width="100" height="100">
+    <a href="#home" class="active">xoxo</a>
+    <div id="myLinks">
+
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+    </div>
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a>
+    </div>
+        </header>
+
+        <section>
+            <div style="padding-left:16px">
+            <div class="col">
+            <div id="root" class="row post-section">
+
+
+            </div>
+        </section>
+        <footer>
+            <textarea rows="5" id="popup-textarea"></textarea>
+            <button id="popup-post">+</button>
+        </footer>
+    </div>
 </body>
+<script>
+    function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+            x.style.display = "none";
+        } else {
+            x.style.display = "block";
+        }
+    }
+</script>
 </html>
