@@ -1,6 +1,6 @@
 function renderList(data){
     for (item of data) {
-        document.getElementById('root').appendChild(renderItem(item))
+        document.getElementById('root').prepend(renderItem(item))
     }
     //function to render data to the DOM
 }
@@ -12,7 +12,11 @@ function renderItem(data){
     postContainer.className = "blog-entry" 
     const postText = document.createElement('p')
     postText.textContent = data.text
+    const postDate = document.createElement('p')
+    postDate.textContent = data.date
     postContainer.appendChild(postText)
+    postContainer.appendChild(postDate)
+
 
 
     //make buttons
