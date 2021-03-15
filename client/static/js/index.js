@@ -19,5 +19,4 @@ document.querySelector('#submit-post').addEventListener("click", () => {
   const textToPost = popupTextArea.value
   const date = new Date().toString()
   apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', {text: textToPost, date: date})
-  location.reload()
 })
