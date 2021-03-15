@@ -1,126 +1,129 @@
 /* Nav bar */
 
 .mobile-container {
-  max-width: 480px;
-  margin: auto;
-  background-color: snow;
-  height: 500px;
-  border-radius: 5px;
-}
+    max-width: 480px;
+    margin: auto;
+    background-color: snow;
+    height: 500px;
+    border-radius: 5px;
+  }
+  
+  .topnav {
+    background-color: white;
+    position: relative;
+    top: 0;
+    margin-bottom: 40px;
+  }
+  
+  img {
+    position: relative;
+    right: -75%;
+    top: -5%;
+  }
+  
+  .topnav #myLinks {
+    display: none;
+  }
+  
+  .topnav a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+  
+  .topnav a.icon {
+    background: snow;
+    color: black;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .active {
+    background-color: snow;
+    color: black;
+    text-align: right;
+  }
+  
+  /* blog sections */
+  
+  .root {
+    display: flex;
+    justify-content: center;
+  }
+  
+  p {
+    color: black;
+  }
+  
+  .blog-entry {
+    border: 2px solid gray;
+    border-radius: 10px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: gray;
+    margin: .5rem;
+  }
+  
+  form {
+    padding-top: 10px;
+  }
+  
+  .comment-bttn {
+    background-color: deeppink;
+    border: 4px solid deeppink;
+    border-radius: 4px;
+    margin-bottom: 4px;
+  }
+  
+  .like-bttn {
+    background-color: deeppink;
+    border: 4px solid deeppink;
+    border-radius: 20px;
+    margin-right: 4px;
+    margin-bottom: 4px;
+  }
+  
+  footer {
+    background: deeppink;
+    position: fixed;
+    bottom: 0;
+    width: 480px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+  
+  footer textarea {
+    resize: none;
+    font-size: 16px;
+  }
+  
+  .popup-postarea {
+    visibility: hidden;
+    width: 80%;
+    margin: 0 auto;
+    height: 0;
+    padding: 0;
 
-.topnav {
-  background-color: white;
-  position: relative;
-  top: 0;
-  margin-bottom: 40px;
-}
-
-img {
-  position: relative;
-  right: -75%;
-  top: -5%;
-}
-
-.topnav #myLinks {
-  display: none;
-}
-
-.topnav a {
-  color: white;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  display: block;
-}
-
-.topnav a.icon {
-  background: snow;
-  color: black;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.active {
-  background-color: snow;
-  color: black;
-  text-align: right;
-}
-
-/* blog sections */
-
-.root {
-  display: flex;
-  justify-content: center;
-}
-
-p {
-  color: black;
-}
-
-.blog-entry {
-  border: 2px solid gray;
-  border-radius: 10px;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  background-color: gray;
-  margin: .5rem;
-}
-
-form {
-  padding-top: 10px;
-}
-
-.comment-bttn {
-  background-color: deeppink;
-  border: 4px solid deeppink;
-  border-radius: 4px;
-  margin-bottom: 4px;
-}
-
-.like-bttn {
-  background-color: deeppink;
-  border: 4px solid deeppink;
-  border-radius: 20px;
-  margin-right: 4px;
-  margin-bottom: 4px;
-}
-
-footer {
-  height: auto;
-  background: deeppink;
-  position: fixed;
-  bottom: 0;
-  width: 480px;
-  left: 50%;
-  transform: translateX(-50%);
-  text-align: center;
-}
-
-footer textarea {
-  resize: none;
-  font-size: 16px;
-}
-
-.popup-postarea {
-  display: none;
-  width: 80%;
-  margin: 0 auto;
-  padding: 15px;
-}
-
-.display {
-  display: block;
-}
-
-#popup-post {
- border-radius: 60%;
- border: none;
- font-size: 1.8em;
-}
+  }
+  
+  .display {
+    visibility: visible;
+    height: auto;
+    padding: 15px
+  }
+  
+  #popup-post {
+   border-radius: 60%;
+   border: none;
+   font-size: 1.8em;
+  }
