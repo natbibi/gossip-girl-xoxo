@@ -46,7 +46,37 @@ module.exports = {
 
 
 },{}],2:[function(require,module,exports){
-function renderList(){
+function renderList(data){
+    for (item of data) {
+        document.getElementById('root').appendChild(renderItem(item))
+    }
+    //function to render data to the DOM
+}
+
+function renderItem(data){
+    console.log(data)
+    // return a full post element with text and gif + class names
+    const postContainer = document.createElement('div')
+    postContainer.className = "blog-entry" 
+    const postText = document.createElement('p')
+    postText.textContent = data.text
+    postContainer.appendChild(postText)
+
+
+    //make buttons
+    const likeButton = document.createElement('button')
+    likeButton.className = 'like-bttn'
+    likeButton.textContent = '*'
+    postContainer.appendChild(likeButton)
+
+    const commentButton = document.createElement('button')
+    commentButton.className = 'comment-bttn'
+    commentButton.textContent = 'comment'
+    postContainer.appendChild(commentButton)
+
+
+    return postContainer
+
 }
 
 module.exports = {
@@ -59,7 +89,12 @@ const handlerFuncs = require('./handlers')
 // on page load fetch all posts data and render them as post DOM items.
 window.addEventListener("load", async () => {
   const data = await apiFuncs.getData('https://gossip-girl-api.herokuapp.com/posts')
-  //handlerFuncs(data)
-  console.log(data)
+  handlerFuncs.renderList(data)
+})
+
+document.querySelector('#popup-post').addEventListener("click", () => {
+  const popupTextArea = document.querySelector('#popup-textarea')
+  popupTextArea.classList.toggle('display')
+  popupTextArea.focus()
 })
 },{"./api":1,"./handlers":2}]},{},[3]);

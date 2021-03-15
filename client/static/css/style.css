@@ -61,6 +61,7 @@ p {
   padding-left: 1rem;
   padding-right: 1rem;
   background-color: gray;
+  margin: .5rem
 }
 form {
   padding-top: 10px;
@@ -76,4 +77,27 @@ form {
   background-color: deeppink;
   border: 4px solid deeppink;
   border-radius: 20px;
+}
+
+footer {
+    height: auto;
+    background: deeppink;
+    position: fixed;
+    bottom: 0;
+    max-width: 480px;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 1rem;
+}
+
+footer > textarea {
+    display: none;
+    width: 80%;
+    margin: 0 auto;
+    resize: none;
+}
+
+.display {
+    display: block;
 }
