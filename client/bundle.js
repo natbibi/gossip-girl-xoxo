@@ -2659,22 +2659,22 @@ exports.onGifHover = firePingback('HOVER');
 
 },{"@giphy/js-analytics":11,"@giphy/js-util":54}],33:[function(require,module,exports){
 module.exports={
-  "_from": "@giphy/js-components",
+  "_from": "@giphy/js-components@^4.3.1",
   "_id": "@giphy/js-components@4.3.1",
   "_inBundle": false,
   "_integrity": "sha512-DByKMgivmuJFrt5zUNnn5r4dtfqhjAj9H76/r15rEXJdtSXz+mdbp89yt0DTQnPQJMP93X1owaFu2PBA9UX/Cg==",
   "_location": "/@giphy/js-components",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "range",
     "registry": true,
-    "raw": "@giphy/js-components",
+    "raw": "@giphy/js-components@^4.3.1",
     "name": "@giphy/js-components",
     "escapedName": "@giphy%2fjs-components",
     "scope": "@giphy",
-    "rawSpec": "",
+    "rawSpec": "^4.3.1",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "^4.3.1"
   },
   "_requiredBy": [
     "#USER",
@@ -2682,7 +2682,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
   "_shasum": "93aaf3aa2d85c2cfc21f6a6d1d06df6a026f2040",
-  "_spec": "@giphy/js-components",
+  "_spec": "@giphy/js-components@^4.3.1",
   "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
   "author": {
     "name": "giannif"
@@ -4049,22 +4049,22 @@ module.exports = {
 
 },{"./formats":42}],47:[function(require,module,exports){
 module.exports={
-  "_from": "@giphy/js-fetch-api",
+  "_from": "@giphy/js-fetch-api@^2.4.0",
   "_id": "@giphy/js-fetch-api@2.4.0",
   "_inBundle": false,
   "_integrity": "sha512-xiMHnv81XZjgut4yrkHB5QHDWGNhVHoyMDb3kQBy5H0NruwtQ+aM5BE9xbP+XQlxt3eRnPRJcLy5ORk9+K0fIQ==",
   "_location": "/@giphy/js-fetch-api",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "range",
     "registry": true,
-    "raw": "@giphy/js-fetch-api",
+    "raw": "@giphy/js-fetch-api@^2.4.0",
     "name": "@giphy/js-fetch-api",
     "escapedName": "@giphy%2fjs-fetch-api",
     "scope": "@giphy",
-    "rawSpec": "",
+    "rawSpec": "^2.4.0",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "^2.4.0"
   },
   "_requiredBy": [
     "#USER",
@@ -4073,7 +4073,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
   "_shasum": "e96c7a2599b720d3e40ea409d8e4c4a692aa4611",
-  "_spec": "@giphy/js-fetch-api",
+  "_spec": "@giphy/js-fetch-api@^2.4.0",
   "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
   "bundleDependencies": false,
   "dependencies": {
@@ -8594,7 +8594,6 @@ const GiphyFetch = GiphyJsFetchApi.GiphyFetch
 
 
 const gf = new GiphyFetch(key);
-console.log(gf)
 const fetchGifs = (offset) => gf.search('dogs', {offset, sort: 'relevant', lang: 'en', limit: 3})
 
 function toggleBorder(element){
@@ -8612,8 +8611,9 @@ function removeAllBorders(){
 function vanillaJSCarousel(mountNode){
   renderCarousel(
     {
-      gifHeight: 200,
+      gifHeight: 100,
       noLink: true,
+      hideAttribution: true,
       user: {},
       fetchGifs,
       gutter: 0,
@@ -8630,10 +8630,14 @@ function vanillaJSCarousel(mountNode){
   );
 };
 
-const root = document.getElementById('root')
+module.exports = vanillaJSCarousel
+},{"./key":87,"@giphy/js-components":30,"@giphy/js-fetch-api":36}],86:[function(require,module,exports){
+const vanillaJSCarousel = require('./giphy')
+
+const root = document.getElementById('giphy-root')
 vanillaJSCarousel(root)
-},{"./key":86,"@giphy/js-components":30,"@giphy/js-fetch-api":36}],86:[function(require,module,exports){
+},{"./giphy":85}],87:[function(require,module,exports){
 const key = 'UzgKyDqtQeJd63SnS23S9ok7Kg604SUU'
 
 module.exports = key
-},{}]},{},[85]);
+},{}]},{},[86]);
