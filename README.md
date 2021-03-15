@@ -33,19 +33,26 @@ In a seperate terminal:
 
 # License
 
+# Bugs
+- [x] Deployment issues
+
 # Changelog
 
 ## Server-side
 1. Create tests and download necessary packages 
 2. Set up server to connect with local host and create root/routes  
-3. 
+3. Originally planned to use Bootstrap but due to issue with color customisation, decided not to proceed with using Bootstrap as it doesn't seem worth the hassle.
+4. Deploy to Heroku
 
 ## Client-side
 1. Download necessary packages
+2. Deploy to Netlify
 
 # Wins & Challenges
 
 ## Wins
+- Discovered how to deploy to Heroku and Netlify from same repository. Must change path directory if 'index.html' and 'PROCFILE' are not in the root. 
+
 ## Challenges
 - Finding the best strategy to deploy on Heroku and Netlify from the same repository on Github.
 
@@ -58,5 +65,4 @@ Could have:
 Badges
 Contribution guide
 Code snippets
-Bugs
 Future features
