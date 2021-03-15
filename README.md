@@ -51,7 +51,7 @@ In a seperate terminal:
 # Wins & Challenges
 
 ## Wins
-- Discovered how to deploy to Heroku and Netlify from same repository. Must change path directory if 'index.html' and 'PROCFILE' are not in the root. 
+- Discovered how to deploy to Heroku and Netlify from same repository. Must change path directory if 'index.html' and 'Procfile' are not in the root. 
 
 ## Challenges
 - Finding the best strategy to deploy on Heroku and Netlify from the same repository on Github.
