@@ -8,7 +8,16 @@ window.addEventListener("load", async () => {
 })
 
 document.querySelector('#popup-post').addEventListener("click", () => {
+  const popupPostArea = document.querySelector('#popup-postarea')
   const popupTextArea = document.querySelector('#popup-textarea')
-  popupTextArea.classList.toggle('display')
+  popupPostArea.classList.toggle('display')
   popupTextArea.focus()
+})
+
+document.querySelector('#submit-post').addEventListener("click", () => {
+  const popupTextArea = document.querySelector('#popup-textarea')
+  const textToPost = popupTextArea.value
+  const date = new Date().toString()
+  apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', {text: textToPost, date: date})
+  location.reload()
 })
