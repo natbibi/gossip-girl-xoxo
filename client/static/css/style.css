@@ -1,4 +1,5 @@
 /* Nav bar */
+
 .mobile-container {
   max-width: 480px;
   margin: auto;
@@ -8,17 +9,18 @@
 }
 
 .topnav {
-  overflow: hidden;
   background-color: white;
   position: relative;
+  top: 0;
   margin-bottom: 40px;
 }
 
 img {
   position: relative;
-  right: -300px;
-  top: -20px;
+  right: -75%;
+  top: -5%;
 }
+
 .topnav #myLinks {
   display: none;
 }
@@ -52,17 +54,25 @@ img {
 }
 
 /* blog sections */
+
+.root {
+  display: flex;
+  justify-content: center;
+}
+
 p {
   color: black;
 }
 
 .blog-entry {
   border: 2px solid gray;
+  border-radius: 10px;
   padding-left: 1rem;
   padding-right: 1rem;
   background-color: gray;
-  margin: .5rem
+  margin: .5rem;
 }
+
 form {
   padding-top: 10px;
 }
@@ -71,37 +81,46 @@ form {
   background-color: deeppink;
   border: 4px solid deeppink;
   border-radius: 4px;
+  margin-bottom: 4px;
 }
 
 .like-bttn {
   background-color: deeppink;
   border: 4px solid deeppink;
   border-radius: 20px;
+  margin-right: 4px;
+  margin-bottom: 4px;
 }
 
 footer {
-    height: auto;
-    background: deeppink;
-    position: fixed;
-    bottom: 0;
-    max-width: 480px;
-    width: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding-top: 1rem;
+  height: auto;
+  background: deeppink;
+  position: fixed;
+  bottom: 0;
+  width: 480px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
 }
 
 footer textarea {
-    resize: none;
-    font-size: 16px;
+  resize: none;
+  font-size: 16px;
 }
 
 .popup-postarea {
-    display: none;
-    width: 80%;
-    margin: 0 auto;
+  display: none;
+  width: 80%;
+  margin: 0 auto;
+  padding: 15px;
 }
 
 .display {
-    display: block;
+  display: block;
+}
+
+#popup-post {
+ border-radius: 60%;
+ border: none;
+ font-size: 1.8em;
 }
