@@ -1,9 +1,9 @@
 # LAP-1-Portfolio-Week-Project
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d63b47cc-fca6-4c50-ade9-a5ace8eb2ece/deploy-status)](https://app.netlify.com/sites/gossip-girl-xoxo/deploys)
  
 # Project description
 An anonymous community journaling website aimed at teenagers and high school students. 
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d63b47cc-fca6-4c50-ade9-a5ace8eb2ece/deploy-status)](https://app.netlify.com/sites/wonderful-euler-8178b3/deploys)
 
 # Installation & usage
 
