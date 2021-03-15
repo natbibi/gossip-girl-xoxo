@@ -35,26 +35,34 @@ In a seperate terminal:
 
 # Bugs
 - [x] Deployment issues
+- [ ] Posts not showing when sent from mobile devices.
+- [ ] Submit button not closing text area
+- [ ] Styling.
 
 # Changelog
 
 ## Server-side
 1. Create tests and download necessary packages 
 2. Set up server to connect with local host and create root/routes  
-3. Originally planned to use Bootstrap but due to issue with color customisation, decided not to proceed with using Bootstrap as it doesn't seem worth the hassle.
+3. Originally planned to use Bootstrap but due to issue with color customisation, decided not to proceed with using Bootstrap as it doesn't seem worth the hassle
 4. Deploy to Heroku
 
 ## Client-side
 1. Download necessary packages
 2. Deploy to Netlify
+3. Create skeleton of page, added basic functionality, and basic styling
 
 # Wins & Challenges
 
 ## Wins
-- Discovered how to deploy to Heroku and Netlify from same repository. Must change path directory if 'index.html' and 'Procfile' are not in the root. 
+- Discovered how to deploy to Heroku and Netlify from same repository and same branch. Must change path directory if 'index.html' and 'Procfile' are not in the root. 
+- Connected API to front end!
 
 ## Challenges
 - Finding the best strategy to deploy on Heroku and Netlify from the same repository on Github.
+- Git flow
+- Bootstrap issues - not able to edit colors
+- Giphy
 
 Should have:
 
