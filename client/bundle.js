@@ -8585,6 +8585,53 @@ function version(uuid) {
 var _default = version;
 exports.default = _default;
 },{"./validate.js":83}],85:[function(require,module,exports){
+// get data
+async function getData(url = '') {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: 'GET', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+  }
+
+// post data
+async function postData(url = '', data = {}) {
+    // Default options are marked with *
+    const response = await fetch(url, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify(data) // body data type must match "Content-Type" header
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+  }
+
+  //patch
+
+module.exports = {
+    postData,
+    getData
+}
+//post
+
+
+},{}],86:[function(require,module,exports){
 const key = require('./key')
 
 const GiphyJsFetchApi = require('@giphy/js-fetch-api')
@@ -8592,12 +8639,9 @@ const giphyComponents =  require('@giphy/js-components')
 const renderCarousel = giphyComponents.renderCarousel
 const GiphyFetch = GiphyJsFetchApi.GiphyFetch
 
-
-const gf = new GiphyFetch(key);
-const fetchGifs = (offset) => gf.search('dogs', {offset, sort: 'relevant', lang: 'en', limit: 3})
-
+//helper funcs for select styles
 function toggleBorder(element){
-    element.style.border = 'solid hotpink 4px'
+    element.style.border = 'solid limegreen 4px'
 }
 function removeAllBorders(){
     const giphyGifs = document.getElementsByClassName('giphy-gif')
@@ -8607,37 +8651,136 @@ function removeAllBorders(){
 
     }
 }
+// create a GiphyFetch with your api key
+// apply for a new Web SDK key. Use a separate key for every platform (Android, iOS, Web)
+const gf = new GiphyFetch(key)
 
-function vanillaJSCarousel(mountNode){
-  renderCarousel(
-    {
-      gifHeight: 100,
-      noLink: true,
-      hideAttribution: true,
-      user: {},
-      fetchGifs,
-      gutter: 0,
-      onGifClick: (gif, event) => {
-          event.preventDefault();
-            console.log(gif)
-        //   console.log(gif.id)
-            console.log(event.currentTarget)
-            removeAllBorders()
-            toggleBorder(event.currentTarget)
-        }
-    },
-    mountNode
-  );
-};
+// Creating a carousel with window resizing and remove-ability
+const makeCarousel = (targetEl, query) => {
+    const fetchGifs = (offset) => {
+        return gf.search(query, {offset, sort: 'relevant', lang: 'en', limit: 3})
+    }
+    const render = () => {
+        // here is the @giphy/js-components import
+        return renderCarousel(
+            {
+              gifHeight: 100,
+              noLink: true,
+              hideAttribution: true,
+              user: {},
+              fetchGifs,
+              gutter: 0,
+              onGifClick: (gif, event) => {
+                  event.preventDefault();
+                  console.log(gif)
+                  removeAllBorders()
+                  toggleBorder(event.currentTarget)
+                }
+            },
+            targetEl
+          );
+    }
+    const remove = render()
+    return {
+        remove: () => {
+            remove()
+        },
+    }
+}
 
-module.exports = vanillaJSCarousel
-},{"./key":87,"@giphy/js-components":30,"@giphy/js-fetch-api":36}],86:[function(require,module,exports){
-const vanillaJSCarousel = require('./giphy')
+// Instantiate
 
-const root = document.getElementById('giphy-root')
-vanillaJSCarousel(root)
-},{"./giphy":85}],87:[function(require,module,exports){
+// To remove
+// grid.remove()
+
+module.exports = makeCarousel 
+},{"./key":89,"@giphy/js-components":30,"@giphy/js-fetch-api":36}],87:[function(require,module,exports){
+function renderList(data){
+    for (item of data) {
+        document.getElementById('root').prepend(renderItem(item))
+    }
+    //function to render data to the DOM
+}
+
+function renderItem(data){
+    console.log(data)
+    // return a full post element with text and gif + class names
+    const postContainer = document.createElement('div')
+    postContainer.className = "blog-entry" 
+    const postText = document.createElement('p')
+    postText.textContent = data.text
+    const postDate = document.createElement('p')
+    postDate.textContent = data.date
+    postContainer.appendChild(postText)
+    postContainer.appendChild(postDate)
+
+
+
+    //make buttons
+    const likeButton = document.createElement('button')
+    likeButton.className = 'like-bttn'
+    likeButton.textContent = '*'
+    postContainer.appendChild(likeButton)
+
+    const commentButton = document.createElement('button')
+    commentButton.className = 'comment-bttn'
+    commentButton.textContent = 'comment'
+    postContainer.appendChild(commentButton)
+
+
+    return postContainer
+
+}
+
+module.exports = {
+    renderList
+}
+},{}],88:[function(require,module,exports){
+const giphy = require('./giphy')
+const makeCarousel = giphy.makeCarousel
+const apiFuncs = require('./api')
+const handlerFuncs = require('./handlers')
+
+// on page load fetch all posts data and render them as post DOM items.
+window.addEventListener("load", async () => {
+  const data = await apiFuncs.getData('https://gossip-girl-api.herokuapp.com/posts')
+  handlerFuncs.renderList(data)
+})
+
+document.querySelector('#popup-post').addEventListener("click", () => {
+  const popupPostArea = document.querySelector('#popup-postarea')
+  const popupTextArea = document.querySelector('#popup-textarea')
+  popupPostArea.classList.toggle('display')
+  popupTextArea.focus()
+})
+
+
+document.querySelector('#submit-post').addEventListener("click", () => {
+  const textToPost = popupTextArea.value
+  const date = new Date().toString()
+  apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', {text: textToPost, date: date})
+})
+
+
+function giphySearch() {
+  const root = document.querySelector('#giphy-root')
+  const query = document.querySelector('#giphy-search').value
+  const grid = makeCarousel(root, query)
+  document.querySelector('#search-giphy').addEventListener("click", () => {
+    grid.remove()
+    giphySearch()
+  })
+  document.querySelector('#clear-giphy').addEventListener("click", () => {
+    grid.remove()
+  })
+}
+giphySearch() 
+
+
+
+
+},{"./api":85,"./giphy":86,"./handlers":87}],89:[function(require,module,exports){
 const key = 'UzgKyDqtQeJd63SnS23S9ok7Kg604SUU'
 
 module.exports = key
-},{}]},{},[86]);
+},{}]},{},[88]);

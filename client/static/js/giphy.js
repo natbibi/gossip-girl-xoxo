@@ -5,12 +5,9 @@ const giphyComponents =  require('@giphy/js-components')
 const renderCarousel = giphyComponents.renderCarousel
 const GiphyFetch = GiphyJsFetchApi.GiphyFetch
 
-
-const gf = new GiphyFetch(key);
-const fetchGifs = (offset) => gf.search('dogs', {offset, sort: 'relevant', lang: 'en', limit: 3})
-
+//helper funcs for select styles
 function toggleBorder(element){
-    element.style.border = 'solid hotpink 4px'
+    element.style.border = 'solid limegreen 4px'
 }
 function removeAllBorders(){
     const giphyGifs = document.getElementsByClassName('giphy-gif')
@@ -20,27 +17,46 @@ function removeAllBorders(){
 
     }
 }
+// create a GiphyFetch with your api key
+// apply for a new Web SDK key. Use a separate key for every platform (Android, iOS, Web)
+const gf = new GiphyFetch(key)
 
-function vanillaJSCarousel(mountNode){
-  renderCarousel(
-    {
-      gifHeight: 100,
-      noLink: true,
-      hideAttribution: true,
-      user: {},
-      fetchGifs,
-      gutter: 0,
-      onGifClick: (gif, event) => {
-          event.preventDefault();
-            console.log(gif)
-        //   console.log(gif.id)
-            console.log(event.currentTarget)
-            removeAllBorders()
-            toggleBorder(event.currentTarget)
-        }
-    },
-    mountNode
-  );
-};
+// Creating a carousel with window resizing and remove-ability
+const makeCarousel = (targetEl, query) => {
+    const fetchGifs = (offset) => {
+        return gf.search(query, {offset, sort: 'relevant', lang: 'en', limit: 3})
+    }
+    const render = () => {
+        // here is the @giphy/js-components import
+        return renderCarousel(
+            {
+              gifHeight: 100,
+              noLink: true,
+              hideAttribution: true,
+              user: {},
+              fetchGifs,
+              gutter: 0,
+              onGifClick: (gif, event) => {
+                  event.preventDefault();
+                  console.log(gif)
+                  removeAllBorders()
+                  toggleBorder(event.currentTarget)
+                }
+            },
+            targetEl
+          );
+    }
+    const remove = render()
+    return {
+        remove: () => {
+            remove()
+        },
+    }
+}
 
-module.exports = vanillaJSCarousel
+// Instantiate
+
+// To remove
+// grid.remove()
+
+module.exports = makeCarousel 
