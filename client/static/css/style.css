@@ -3,8 +3,9 @@
   max-width: 480px;
   margin: auto;
   background-color: snow;
-  height: 500px;
+  height: 100%;
   border-radius: 5px;
+  padding-bottom: 100px;
 }
 
 .topnav {
@@ -88,20 +89,22 @@ footer {
     width: 100%;
     left: 50%;
     transform: translateX(-50%);
-    padding-top: 1rem;
 }
 
 footer textarea {
     resize: none;
     font-size: 16px;
+    --webkit-user-select:none
 }
 
 .popup-postarea {
-    display: none;
+    visibility: hidden;
     width: 80%;
     margin: 0 auto;
+    height: 0
 }
 
 .display {
-    display: block;
+    visibility: visible;
+    height: auto
 }
