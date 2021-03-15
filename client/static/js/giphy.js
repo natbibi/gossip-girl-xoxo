@@ -4,6 +4,7 @@ const GiphyJsFetchApi = require('@giphy/js-fetch-api')
 const giphyComponents =  require('@giphy/js-components')
 const renderCarousel = giphyComponents.renderCarousel
 const GiphyFetch = GiphyJsFetchApi.GiphyFetch
+const renderGif = giphyComponents.renderGif
 
 //helper funcs for select styles
 function toggleBorder(element){
@@ -54,9 +55,19 @@ const makeCarousel = (targetEl, query) => {
     }
 }
 
-// Instantiate
+// create a GiphyFetch with your api key
+// apply for a new Web SDK key. Use a separate key for every platform (Android, iOS, Web)
+
+const vanillaJSGif = async (mountNode, id) => {
+    // render a single gif
+    const { data: gif1 } = await gf.gif(id)
+    renderGif({ gif: gif1, width: 300 }, mountNode)
+}
 
 // To remove
 // grid.remove()
 
-module.exports = makeCarousel 
+module.exports = { 
+    makeCarousel,
+    vanillaJSGif
+} 

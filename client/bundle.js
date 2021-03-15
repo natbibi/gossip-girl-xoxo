@@ -8638,6 +8638,7 @@ const GiphyJsFetchApi = require('@giphy/js-fetch-api')
 const giphyComponents =  require('@giphy/js-components')
 const renderCarousel = giphyComponents.renderCarousel
 const GiphyFetch = GiphyJsFetchApi.GiphyFetch
+const renderGif = giphyComponents.renderGif
 
 //helper funcs for select styles
 function toggleBorder(element){
@@ -8688,13 +8689,26 @@ const makeCarousel = (targetEl, query) => {
     }
 }
 
-// Instantiate
+// create a GiphyFetch with your api key
+// apply for a new Web SDK key. Use a separate key for every platform (Android, iOS, Web)
+
+const vanillaJSGif = async (mountNode, id) => {
+    // render a single gif
+    const { data: gif1 } = await gf.gif(id)
+    renderGif({ gif: gif1, width: 300 }, mountNode)
+}
 
 // To remove
 // grid.remove()
 
-module.exports = makeCarousel 
+module.exports = { 
+    makeCarousel,
+    vanillaJSGif
+} 
 },{"./key":89,"@giphy/js-components":30,"@giphy/js-fetch-api":36}],87:[function(require,module,exports){
+const giphy = require('./giphy')
+const renderGif = giphy.vanillaJSGif
+
 function renderList(data){
     for (item of data) {
         document.getElementById('root').prepend(renderItem(item))
@@ -8713,7 +8727,9 @@ function renderItem(data){
     postDate.textContent = data.date
     postContainer.appendChild(postText)
     postContainer.appendChild(postDate)
-
+    const postGif = document.createElement('div')
+    postContainer.appendChild(postGif)
+    renderGif(data.giphy, postGif)
 
 
     //make buttons
@@ -8735,9 +8751,10 @@ function renderItem(data){
 module.exports = {
     renderList
 }
-},{}],88:[function(require,module,exports){
+},{"./giphy":86}],88:[function(require,module,exports){
 const giphy = require('./giphy')
 const makeCarousel = giphy.makeCarousel
+const renderGif = giphy.vanillaJSGif
 const apiFuncs = require('./api')
 const handlerFuncs = require('./handlers')
 
@@ -8775,7 +8792,6 @@ function giphySearch() {
   })
 }
 giphySearch() 
-
 
 
 

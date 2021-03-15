@@ -1,5 +1,6 @@
 const giphy = require('./giphy')
 const makeCarousel = giphy.makeCarousel
+const renderGif = giphy.vanillaJSGif
 const apiFuncs = require('./api')
 const handlerFuncs = require('./handlers')
 
@@ -37,6 +38,5 @@ function giphySearch() {
   })
 }
 giphySearch() 
-
 
 

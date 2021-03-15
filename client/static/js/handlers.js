@@ -1,3 +1,6 @@
+const giphy = require('./giphy')
+const renderGif = giphy.vanillaJSGif
+
 function renderList(data){
     for (item of data) {
         document.getElementById('root').prepend(renderItem(item))
@@ -16,7 +19,9 @@ function renderItem(data){
     postDate.textContent = data.date
     postContainer.appendChild(postText)
     postContainer.appendChild(postDate)
-
+    const postGif = document.createElement('div')
+    postContainer.appendChild(postGif)
+    renderGif(data.giphy, postGif)
 
 
     //make buttons
