@@ -68,27 +68,24 @@ function renderItem(data) {
 
 
     //show number of likes 
-    const numberOfLikes = data.reactions.happy
     const showTotalLikes = document.createElement('span') 
     showTotalLikes.className = 'reaction-badge'
-    showTotalLikes.append(numberOfLikes)
-    likeButton.append(showTotalLikes)
+    showTotalLikes.textContent = data.reactions.happy
+    likeButton.after(showTotalLikes)
 
 
     //show number of shocks
-    const numberOfShocks = data.reactions.unhappy
     const showTotalShocks = document.createElement('span')
     showTotalShocks.className = 'reaction-badge'
-    showTotalShocks.append(numberOfShocks)
-    shockedButton.append(showTotalShocks)
+    showTotalShocks.textContent = data.reactions.unhappy
+    shockedButton.after(showTotalShocks)
 
 
     //show number of laughs
-    const numberOflaughs = data.reactions.funny
     const showTotallaughs = document.createElement('span')
     showTotallaughs.className = 'reaction-badge'
-    showTotallaughs.append(numberOflaughs)
-    laughButton.append(showTotallaughs)
+    showTotallaughs.textContent = data.reactions.funny
+    laughButton.after(showTotallaughs)
 
 
 
@@ -110,7 +107,7 @@ function addReaction(event, reactionType, id) {
     const data = { reaction: reactionType }
     apiFuncs.patchData(url, data)
     //update emoji number for client
-    event.currentTarget.children[0].textContent++
+    event.currentTarget.nextSibling.textContent++
 }
 
 
