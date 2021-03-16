@@ -11,7 +11,6 @@ function renderList(data) {
 }
 
 function renderItem(data) {
-    // console.log(data)
     // return a full post element with text and gif + class names
     const postContainer = document.createElement('div')
     postContainer.className = "blog-entry"
@@ -26,8 +25,11 @@ function renderItem(data) {
 
     postText.className = `${randomclass()}`
 
+    //append the parsed date
     const postDate = document.createElement('p')
-    postDate.textContent = data.date
+    postDate.textContent = data.dateFrom
+
+
     postContainer.appendChild(postText)
     postContainer.appendChild(postDate)
     const postGif = document.createElement('div')
@@ -80,14 +82,11 @@ function renderItem(data) {
 
     //show number of laughs
     const numberOflaughs = data.reactions.funny
-    const showTotallaughs = document.createElement('span')  
-    showTotallaughs.className = 'reaction-badge'
     const showTotallaughs = document.createElement('span')
-    showTotallaughs.className = "reaction-number"
+    showTotallaughs.className = 'reaction-badge'
     showTotallaughs.append(numberOflaughs)
     laughButton.append(showTotallaughs)
 
-    console.log(showTotalShocks)
 
 
 
