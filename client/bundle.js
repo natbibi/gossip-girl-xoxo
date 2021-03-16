@@ -2662,7 +2662,7 @@ module.exports={
   "_args": [
     [
       "@giphy/js-components@4.3.1",
-      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
+      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
     ]
   ],
   "_from": "@giphy/js-components@4.3.1",
@@ -2687,7 +2687,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
   "_spec": "4.3.1",
-  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
+  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
   "author": {
     "name": "giannif"
   },
@@ -4054,7 +4054,7 @@ module.exports={
   "_args": [
     [
       "@giphy/js-fetch-api@2.4.0",
-      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
+      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
     ]
   ],
   "_from": "@giphy/js-fetch-api@2.4.0",
@@ -4080,7 +4080,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
   "_spec": "2.4.0",
-  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
+  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
@@ -8761,9 +8761,19 @@ function renderItem(data){
 
     //make buttons
     const likeButton = document.createElement('button')
-    likeButton.className = 'like-bttn'
-    likeButton.textContent = '*'
+    likeButton.className = 'reaction-bttn'
+    likeButton.textContent = '😍'
     postContainer.appendChild(likeButton)
+
+    // const dislikeButton = document.createElement('button')
+    // dislikeButton.className = 'reaction-bttn'
+    // dislikeButton.textContent = '😱'
+    // postContainer.appendChild(dislikeButton)
+
+    // const laughButton = document.createElement('button')
+    // laughButton.className = 'reaction-bttn'
+    // laughButton.textContent = '😂'
+    // postContainer.appendChild(laughButton)
 
     const commentButton = document.createElement('button')
     commentButton.className = 'comment-bttn'
@@ -8771,14 +8781,26 @@ function renderItem(data){
     postContainer.appendChild(commentButton)
 
     commentButton.addEventListener('click', () => addComment(postContainer, commentButton))
-
-
+    likeButton.addEventListener('click', () => addReaction())
 
 
     return postContainer
     
+}
+
+function addReaction(){
+//send click to server
+
+    const url = `https://gossip-girl-api.herokuapp.com/posts/1/reactions`
+    const data = {reaction: "happy"}
+    apiFuncs.patchData(url, data)
+
+//send back number of times it has been clicked
 
 }
+
+
+
 function addComment(parent, commentButton){
 const newComment = document.createElement('div')
 //new text area
@@ -8798,24 +8820,12 @@ commentSubmitBttn.addEventListener('click', () => {
 })
 newComment.append(commentSubmitBttn)
 
-
-
-//append text to post section
 parent.append(newComment)
 // commentButton.addEventListener('click', () => newComment.remove())
-
-
 
 }
 
 
-//popup speech bubble - text area 
-
-//right id to submit text 
-
-//create element to put text in
-
-//append on submit, send data to server
 
 module.exports = {
     renderList
