@@ -18,17 +18,18 @@ document.querySelector('#popup-post').addEventListener("click", () => {
 })
 
 //async submit function in order to post then refresh on mobile browsers
-async function submit(data) {
-  await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
-  location.reload()
-}
-document.querySelector('#submit-post').addEventListener("click", () => {
-  const popupTextArea = document.querySelector('#popup-textarea')
-  const textToPost = popupTextArea.value
-  const date = new Date().toString()
-  const data = { text: textToPost, date: date }
-  submit(data)
-})
+// async function submit(data) {
+  // await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
+  // location.reload()
+// }
+// document.querySelector('#submit-post').addEventListener("click", () => {
+//   const popupTextArea = document.querySelector('#popup-textarea')
+//   const textToPost = popupTextArea.value
+//   const date = new Date().toString()
+//   const data = { text: textToPost, date: date, giphy: giphy.makeCarousel() }
+//   console.log(data)
+//   submit(data)
+// })
 
 
 function giphySearch() {
@@ -47,5 +48,5 @@ document.querySelector('.icon').addEventListener('click', () => {
 })
 
 document.querySelector('.close-icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "350px";
+  document.querySelector(".sidenav").style.width = "0";
 })
