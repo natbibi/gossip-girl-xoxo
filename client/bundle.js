@@ -8778,6 +8778,7 @@ function renderItem(data){
     postContainer.className = "blog-entry" 
     const postText = document.createElement('p')
     postText.textContent = data.text
+    postText.className = "blog-entry-text"
     const postDate = document.createElement('p')
     postDate.textContent = data.date
     postContainer.appendChild(postText)
@@ -8794,12 +8795,23 @@ function renderItem(data){
     likeButton.className = 'reaction-bttn'
     likeButton.textContent = '😍'
     postContainer.appendChild(likeButton)
+    const numberOfLikes = data.reactions.happy
+    const showTotalLikes = document.createElement('p')  
+    showTotalLikes.append(numberOfLikes)
+    postContainer.append(showTotalLikes)
 
-    // const dislikeButton = document.createElement('button')
-    // dislikeButton.className = 'reaction-bttn'
-    // dislikeButton.textContent = '😱'
-    // postContainer.appendChild(dislikeButton)
 
+
+    const shockedButton = document.createElement('button')
+    shockedButton.className = 'reaction-bttn'
+    shockedButton.textContent = '😱'
+    postContainer.appendChild(shockedButton)
+    const numberOfShocks = data.reactions.unhappy
+    const showTotalShocks = document.createElement('p')  
+    showTotalShocks.append(numberOfShocks)
+    postContainer.append(showTotalShocks)
+
+    console.log(showTotalShocks)
     // const laughButton = document.createElement('button')
     // laughButton.className = 'reaction-bttn'
     // laughButton.textContent = '😂'
@@ -8810,28 +8822,29 @@ function renderItem(data){
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
-    commentButton.addEventListener('click', () => addComment(postContainer, commentButton))
-    likeButton.addEventListener('click', () => addReaction())
+    commentButton.addEventListener('click', () => addComment(postContainer, commentButton, data.id))
+    likeButton.addEventListener('click', () => addReaction(data.id))
 
 
     return postContainer
     
 }
 
-function addReaction(){
+function addReaction(id){
 //send click to server
 
-    const url = `https://gossip-girl-api.herokuapp.com/posts/1/reactions`
+    const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/reactions`
     const data = {reaction: "happy"}
     apiFuncs.patchData(url, data)
 
 //send back number of times it has been clicked
 
+
 }
 
 
 
-function addComment(parent, commentButton){
+function addComment(parent, commentButton, id){
 const newComment = document.createElement('div')
 //new text area
 const textArea = document.createElement('textarea')
@@ -8842,7 +8855,7 @@ const commentSubmitBttn = document.createElement('button')
 commentSubmitBttn.textContent = 'submit comment'
 
 commentSubmitBttn.addEventListener('click', () => {
-    const url = `https://gossip-girl-api.herokuapp.com/posts/1/comments`
+    const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/comments`
     const commentValue = textArea.value
     const date = new Date().toString()
     const data = {text: commentValue, date: date}
