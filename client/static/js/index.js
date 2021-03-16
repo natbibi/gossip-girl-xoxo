@@ -18,7 +18,7 @@ document.querySelector('#popup-post').addEventListener("click", () => {
 })
 
 //async submit function in order to post then refresh on mobile browsers
-async function submit(data){
+async function submit(data) {
   await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
   location.reload()
 }
@@ -26,7 +26,7 @@ document.querySelector('#submit-post').addEventListener("click", () => {
   const popupTextArea = document.querySelector('#popup-textarea')
   const textToPost = popupTextArea.value
   const date = new Date().toString()
-  const data = {text: textToPost, date: date}
+  const data = { text: textToPost, date: date }
   submit(data)
 })
 
@@ -40,6 +40,12 @@ function giphySearch() {
     giphySearch()
   })
 }
-giphySearch() 
+giphySearch()
 
+document.querySelector('.icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "350px";
+})
 
+document.querySelector('.close-icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "0px";
+})
