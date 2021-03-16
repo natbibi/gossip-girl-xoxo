@@ -19,7 +19,7 @@ function renderItem(data) {
     postText.textContent = data.text
 
     function randomclass() {
-        const differentFontClass = ["blog-entry-font-1", "blog-entry-font-2", "blog-entry-font-3", "blog-entry-font-4"]
+        const differentFontClass = ["blog-entry-font-1", "blog-entry-font-2", "blog-entry-font-3", "blog-entry-font-4", "blog-entry-font-5"]
         const randNum = Math.floor(Math.random() * differentFontClass.length)
         return differentFontClass[randNum]
     }

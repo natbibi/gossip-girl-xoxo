@@ -56,6 +56,7 @@ html {
   border-radius: 13px;
   margin-left: 8px;
   margin-top: 8px;
+  max-width: 370px;
 }
 
 .close-icon {
@@ -92,32 +93,37 @@ p {
 }
 
 .blog-entry {
-  border: 2px solid gray;
+  border: 2px solid rgb(170, 170, 170);
   border-radius: 10px;
   padding-left: 1rem;
   padding-right: 1rem;
-  background-color: gray;
+  background-color: rgb(170, 170, 170);
   margin: 0.5rem;
 }
 
 .blog-entry-font-1 {
   font-family: 'Reenie Beanie', cursive;
-  font-size: 2em;
+  font-size: 1.2em;
 }
 
 .blog-entry-font-2 {
   font-family: 'Indie Flower', cursive;
-  font-size: 2em;
+  font-size: 1em;
 }
 
 .blog-entry-font-3 {
   font-family: 'Schoolbell', cursive;
-  font-size: 2em;
+  font-size: 1em;
 }
 
 .blog-entry-font-4 {
+  font-family: 'Nanum Pen Script', cursive;
+  font-family: 1.2em;
+}
+
+.blog-entry-font-5 {
   font-family: 'Just Another Hand', cursive;
-  font-size: 2em;
+  font-family: 2em;
 }
 
 form {
