@@ -9,6 +9,7 @@
   "scripts": {
     "test": "jest",
     "dev": "concurrently \"watchify ./static/js/index.js -o bundle.js\" \"python -m http.server\""
+
   },
   "repository": {
     "type": "git",
