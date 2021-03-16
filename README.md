@@ -24,7 +24,7 @@ In a seperate terminal:
 
 # Technologies
 - HTML, CSS, JavaScript
-- DevDependencies: Express, Jest, Cors, Watchify, Concurrently, Bundler for CSS(?), Bootstrap SASS dependencies
+- DevDependencies: Express, Jest, Cors, Watchify, Concurrently, Giphy SDK, Bundler for CSS(?)
 
 # Process 
 1. Start by planning out a plan!!! Use of GitHub Projects to set up a Kanban board and a 'Source of Truth' shared document on Google Docs.
@@ -51,8 +51,10 @@ In a seperate terminal:
 ## Client-side
 1. Download necessary packages
 2. Deploy to Netlify
-3. 4. Add layout testing
-4. Create skeleton of page, added basic functionality, and basic styling
+3. Add layout testing
+4. Create skeleton of page, add basic functionality, basic styling
+6. Add Giphy carousel to post area
+7. Add comment button within post, emoji reaction ability and reaction counter
 
 
 # Wins & Challenges
