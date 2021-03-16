@@ -102,22 +102,27 @@ p {
 
 .blog-entry-font-1 {
   font-family: 'Reenie Beanie', cursive;
-  font-size: 2em;
+  font-size: 1.2em;
 }
 
 .blog-entry-font-2 {
   font-family: 'Indie Flower', cursive;
-  font-size: 2em;
+  font-size: 1em;
 }
 
 .blog-entry-font-3 {
   font-family: 'Schoolbell', cursive;
-  font-size: 2em;
+  font-size: 1em;
 }
 
 .blog-entry-font-4 {
+  font-family: 'Nanum Pen Script', cursive;
+  font-family: 1.2em;
+}
+
+.blog-entry-font-5 {
   font-family: 'Just Another Hand', cursive;
-  font-size: 2em;
+  font-family: 2em;
 }
 
 form {
