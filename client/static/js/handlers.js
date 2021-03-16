@@ -29,37 +29,58 @@ function renderItem(data){
     }
 
 
-    //make buttons
+    //make like button
     const likeButton = document.createElement('button')
     likeButton.className = 'reaction-bttn'
     likeButton.textContent = '😍'
     postContainer.appendChild(likeButton)
-    const numberOfLikes = data.reactions.happy
-    const showTotalLikes = document.createElement('p')  
-    showTotalLikes.append(numberOfLikes)
-    postContainer.append(showTotalLikes)
 
-
-
+    //make shocked/unhappy button 
     const shockedButton = document.createElement('button')
     shockedButton.className = 'reaction-bttn'
     shockedButton.textContent = '😱'
     postContainer.appendChild(shockedButton)
-    const numberOfShocks = data.reactions.unhappy
-    const showTotalShocks = document.createElement('p')  
-    showTotalShocks.append(numberOfShocks)
-    postContainer.append(showTotalShocks)
 
-    console.log(showTotalShocks)
-    // const laughButton = document.createElement('button')
-    // laughButton.className = 'reaction-bttn'
-    // laughButton.textContent = '😂'
-    // postContainer.appendChild(laughButton)
+    //make laugh button 
+    const laughButton = document.createElement('button')
+    laughButton.className = 'reaction-bttn'
+    laughButton.textContent = '😂'
+    postContainer.appendChild(laughButton)
 
+    //make comment button 
     const commentButton = document.createElement('button')
     commentButton.className = 'comment-bttn'
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
+
+
+    //show number of likes 
+    const numberOfLikes = data.reactions.happy
+    const showTotalLikes = document.createElement('span') 
+    showTotalLikes.className = "reaction-number" 
+    showTotalLikes.append(numberOfLikes)
+    likeButton.append(showTotalLikes)
+
+
+    //show number of shocks
+    const numberOfShocks = data.reactions.unhappy
+    const showTotalShocks = document.createElement('span')
+    showTotalShocks.className = "reaction-number"
+    showTotalShocks.append(numberOfShocks)
+    shockedButton.append(showTotalShocks)
+
+
+    //show number of laughs
+    const numberOflaughs = data.reactions.funny
+    const showTotallaughs = document.createElement('span')  
+    showTotallaughs.className = "reaction-number"
+    showTotallaughs.append(numberOflaughs)
+    laughButton.append(showTotallaughs)
+
+    console.log(showTotalShocks)
+
+
+
 
     commentButton.addEventListener('click', () => addComment(postContainer, commentButton, data.id))
     likeButton.addEventListener('click', () => addReaction(data.id))
