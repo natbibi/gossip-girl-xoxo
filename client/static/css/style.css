@@ -43,41 +43,41 @@
 }
 
 .close-icon {
-    max-width: 480px;
-    width: 100%;
-    margin: 0 auto;
-    background-color: snow;
-    height: 500px;
-    border-radius: 5px;
-  }
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: snow;
+  height: 500px;
+  border-radius: 5px;
+}
 
-  .post-section {
-    padding-bottom: 50px
-  }
-  
-  .topnav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: white;
-    position: relative;
-    top: 0;
-  }
-  
-  .sidenav {
-    height: 30%;
-    width: 0px;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    background-color: rgb(255, 234, 237, 0.9);
-    overflow-x: hidden;
-    transition: 0.5s;
-    border-radius: 13px;
-    margin-left: 8px;
-  }
+.post-section {
+  padding-bottom: 50px;
+}
 
-  .close-icon {
+.topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  position: relative;
+  top: 0;
+}
+
+.sidenav {
+  height: 30%;
+  width: 0px;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  background-color: rgb(255, 234, 237, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+  border-radius: 13px;
+  margin-left: 8px;
+}
+
+.close-icon {
   position: absolute;
   top: 1;
   right: 25px;
@@ -136,6 +136,10 @@ form {
   margin-right: 4px;
   margin-bottom: 4px;
 }
+
+/* P .reaction-number {
+  display: flex;
+} */
 
 footer {
   background: deeppink;
