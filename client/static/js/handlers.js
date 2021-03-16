@@ -91,7 +91,7 @@ function renderItem(data) {
     //create div to append comment input container - before comments
     const commentPostCont = document.createElement('div')
     postContainer.append(commentPostCont)
-    commentButton.addEventListener('click', () => addComment(commentPostCont, commentButton, data.id))
+    commentButton.addEventListener('click', () => addComment(commentPostCont, postContainer, data.id))
     
     
     likeButton.addEventListener('click', (event) => addReaction(event, 'happy', data.id))
@@ -102,6 +102,7 @@ function renderItem(data) {
     
     //append the comments 
     const commentCont = document.createElement('div')
+    commentCont.className = 'comment-cont'
     for (comment of data.comments) {
         //append each comment
         commentCont.appendChild(renderComment(comment))
@@ -124,16 +125,13 @@ function addReaction(event, reactionType, id) {
 
 
 
-async function addComment(parent, commentButton, id) {
-    if (typeof parent.getElementsByClassName('add-comment-cont')[0] === 'undefined') {
+async function addComment(parent, topParent, id) {
+    if (typeof parent.getElementsByClassName('post-comment-cont')[0] === 'undefined') {
         const newComment = document.createElement('div')
-        newComment.className = 'add-comment-cont'
+        newComment.className = 'post-comment-cont'
         //new text area
         const textArea = document.createElement('textarea')
-        textArea.className = 'add-comment-textarea'
-        textArea.required = true
-        textArea.minLength = 1
-        textArea.maxLength = 300
+        textArea.className = 'post-comment-textarea'
         newComment.append(textArea)
 
         //comment button to post value from text area
@@ -141,11 +139,20 @@ async function addComment(parent, commentButton, id) {
         commentSubmitBttn.textContent = 'submit comment'
 
         commentSubmitBttn.addEventListener('click', () =>  {
-            const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/comments`
-            const commentValue = textArea.value
-            const date = new Date().toString()
-            const data = { text: commentValue, date: date }
-            apiFuncs.patchData(url, data)
+            try {
+                const commentValue = textArea.value
+                if (commentValue.length < 1) throw new Error('comment too short')
+                const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/comments`
+                const date = new Date().toString()
+                const data = { text: commentValue, date: date }
+                apiFuncs.patchData(url, data)
+                //apend comment for client too
+                topParent.getElementsByClassName('comment-cont')[0].append(renderComment({text: commentValue}))
+                parent.getElementsByClassName('post-comment-cont')[0].remove()
+            } catch(err){
+                console.log(err)
+                throw err
+            }
         })
         newComment.append(commentSubmitBttn)
 
@@ -154,7 +161,7 @@ async function addComment(parent, commentButton, id) {
 
     }
     else {
-        parent.getElementsByClassName('add-comment-cont')[0].remove()
+        parent.getElementsByClassName('post-comment-cont')[0].remove()
     }
 }
 
