@@ -98,11 +98,26 @@ p {
   padding-right: 1rem;
   background-color: gray;
   margin: 0.5rem;
-  
 }
 
-.blog-entry-text {
+.blog-entry-font-1 {
   font-family: 'Reenie Beanie', cursive;
+  font-size: 2em;
+}
+
+.blog-entry-font-2 {
+  font-family: 'Indie Flower', cursive;
+  font-size: 2em;
+}
+
+.blog-entry-font-3 {
+  font-family: 'Schoolbell', cursive;
+  font-size: 2em;
+}
+
+.blog-entry-font-4 {
+  font-family: 'Just Another Hand', cursive;
+  font-size: 2em;
 }
 
 form {
