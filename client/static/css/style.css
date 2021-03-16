@@ -139,6 +139,10 @@ form {
   margin-bottom: 4px;
 }
 
+/* P .reaction-number {
+  display: flex;
+} */
+
 footer {
   background: deeppink;
   position: fixed;
