@@ -8775,6 +8775,13 @@ function renderItem(data) {
     // return a full post element with text and gif + class names
     const postContainer = document.createElement('div')
     postContainer.className = "blog-entry"
+
+    //append the parsed date
+    const postDate = document.createElement('p')
+    postDate.textContent = data.dateFrom
+    postContainer.appendChild(postDate)
+
+    //append the main text content for post
     const postText = document.createElement('p')
     postText.textContent = data.text
 
@@ -8783,16 +8790,11 @@ function renderItem(data) {
         const randNum = Math.floor(Math.random() * differentFontClass.length)
         return differentFontClass[randNum]
     }
-
     postText.className = `${randomclass()}`
 
-    //append the parsed date
-    const postDate = document.createElement('p')
-    postDate.textContent = data.dateFrom
-
-
     postContainer.appendChild(postText)
-    postContainer.appendChild(postDate)
+
+    //apend a gif if post has one
     const postGif = document.createElement('div')
     if (data.giphy) {
         postContainer.appendChild(postGif)
@@ -8850,26 +8852,25 @@ function renderItem(data) {
 
 
 
-
-
     commentButton.addEventListener('click', () => addComment(postContainer, commentButton, data.id))
-    likeButton.addEventListener('click', () => addReaction(data.id))
+    
+    
+    likeButton.addEventListener('click', () => addReaction('happy', data.id))
+    shockedButton.addEventListener('click', () => addReaction('unhappy', data.id))
+    laughButton.addEventListener('click', () => addReaction('funny', data.id))
 
 
     return postContainer
 
 }
 
-function addReaction(id) {
+function addReaction(reactionType, id) {
     //send click to server
-
     const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/reactions`
-    const data = { reaction: "happy" }
+    const data = { reaction: reactionType }
     apiFuncs.patchData(url, data)
 
     //send back number of times it has been clicked
-
-
 }
 
 
