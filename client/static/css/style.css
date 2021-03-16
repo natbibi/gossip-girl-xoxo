@@ -19,6 +19,10 @@
     height: 500px;
     border-radius: 5px;
   }
+
+  .post-section {
+    padding-bottom: 50px
+  }
   
   .topnav {
     display: flex;
