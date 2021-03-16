@@ -17,11 +17,17 @@ document.querySelector('#popup-post').addEventListener("click", () => {
   popupTextArea.focus()
 })
 
-
+//async submit function in order to post then refresh on mobile browsers
+async function submit(data){
+  await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
+  location.reload()
+}
 document.querySelector('#submit-post').addEventListener("click", () => {
+  const popupTextArea = document.querySelector('#popup-textarea')
   const textToPost = popupTextArea.value
   const date = new Date().toString()
-  apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', {text: textToPost, date: date})
+  const data = {text: textToPost, date: date}
+  submit(data)
 })
 
 

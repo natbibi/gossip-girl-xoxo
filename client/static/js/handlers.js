@@ -19,9 +19,10 @@ function renderItem(data){
     postDate.textContent = data.date
     postContainer.appendChild(postText)
     postContainer.appendChild(postDate)
-    const postGif = document.createElement('div')
-    postContainer.appendChild(postGif)
-    renderGif(data.giphy, postGif)
+    // apend the giphy gif if it exists
+    // const postGif = document.createElement('div')
+    // postContainer.appendChild(postGif)
+    // renderGif(data.giphy, postGif)
 
 
     //make buttons
