@@ -30,14 +30,18 @@ In a seperate terminal:
 1. Start by planning out a plan!!! Use of GitHub Projects to set up a Kanban board and a 'Source of Truth' shared document on Google Docs.
 2. Create Figma design plan.
 3. Create server side folder and client side folder with testing and relevant pages.
+4. Peer coding, drive and navigation, and splitting up tasks
 
 # License
 
 # Bugs
 - [x] Deployment issues
-- [ ] Posts not showing when sent from mobile devices.
-- [ ] Submit button not closing text area
-- [ ] Styling.
+- [x] Posts not showing when sent from mobile devices.
+- [x] Submit button not closing text area
+- [x] Styling
+- [ ] Comment Submit button not functioning 
+- [ ] Comment submit button can be pressed multiple times and each click will bring up new comment textarea
+- [ ] Date and time 
 
 # Changelog
 
@@ -47,6 +51,7 @@ In a seperate terminal:
 3. Add api testing and model testing
 4. Originally planned to use Bootstrap but due to issue with color customisation, decided not to proceed with using Bootstrap as it doesn't seem worth the hassle
 5. Deploy to Heroku
+6. Date and time to show relative time rather than time of post 
 
 ## Client-side
 1. Download necessary packages
@@ -54,7 +59,8 @@ In a seperate terminal:
 3. Add layout testing
 4. Create skeleton of page, add basic functionality, basic styling
 6. Add Giphy carousel to post area
-7. Add comment button within post, emoji reaction ability and reaction counter
+7. Add comment textarea and submit button within post, emoji reaction ability and reaction counter
+8. Function to pick random font for each entry
 
 
 # Wins & Challenges
