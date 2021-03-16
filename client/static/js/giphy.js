@@ -90,11 +90,10 @@ const makeCarousel = (targetEl, query) => {
 
 // create a GiphyFetch with your api key
 // apply for a new Web SDK key. Use a separate key for every platform (Android, iOS, Web)
-
 const vanillaJSGif = async (mountNode, id) => {
     // render a single gif
     const { data: gif1 } = await gf.gif(id)
-    renderGif({ gif: gif1, width: 300, noLink: true }, mountNode)
+    renderGif({ gif: gif1, width:  300, noLink: true }, mountNode)
 }
 
 // To remove

@@ -35,6 +35,7 @@ function renderItem(data) {
 
     //apend a gif if post has one
     const postGif = document.createElement('div')
+    postGif.className = 'gifCont'
     if (data.giphy) {
         postContainer.appendChild(postGif)
         renderGif(postGif, data.giphy)
@@ -94,22 +95,22 @@ function renderItem(data) {
     commentButton.addEventListener('click', () => addComment(postContainer, commentButton, data.id))
     
     
-    likeButton.addEventListener('click', () => addReaction('happy', data.id))
-    shockedButton.addEventListener('click', () => addReaction('unhappy', data.id))
-    laughButton.addEventListener('click', () => addReaction('funny', data.id))
+    likeButton.addEventListener('click', (event) => addReaction(event, 'happy', data.id))
+    shockedButton.addEventListener('click', (event) => addReaction(event, 'unhappy', data.id))
+    laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
 
 
     return postContainer
 
 }
 
-function addReaction(reactionType, id) {
+function addReaction(event, reactionType, id) {
     //send click to server
     const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/reactions`
     const data = { reaction: reactionType }
     apiFuncs.patchData(url, data)
-
-    //send back number of times it has been clicked
+    //update emoji number for client
+    event.currentTarget.children[0].textContent++
 }
 
 

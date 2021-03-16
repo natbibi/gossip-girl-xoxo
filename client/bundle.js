@@ -8638,7 +8638,8 @@ async function patchData(url = '', data = {}) {
       referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
       body: JSON.stringify(data) // body data type must match "Content-Type" header
     });
-    return response.json(); // parses JSON response into native JavaScript objects
+    // we don't need patch to return data
+    // return response.json(); // parses JSON response into native JavaScript objects
   }
 
 
@@ -8744,11 +8745,10 @@ const makeCarousel = (targetEl, query) => {
 
 // create a GiphyFetch with your api key
 // apply for a new Web SDK key. Use a separate key for every platform (Android, iOS, Web)
-
 const vanillaJSGif = async (mountNode, id) => {
     // render a single gif
     const { data: gif1 } = await gf.gif(id)
-    renderGif({ gif: gif1, width: 300, noLink: true }, mountNode)
+    renderGif({ gif: gif1, width:  300, noLink: true }, mountNode)
 }
 
 // To remove
@@ -8796,6 +8796,7 @@ function renderItem(data) {
 
     //apend a gif if post has one
     const postGif = document.createElement('div')
+    postGif.className = 'gifCont'
     if (data.giphy) {
         postContainer.appendChild(postGif)
         renderGif(postGif, data.giphy)
@@ -8855,22 +8856,22 @@ function renderItem(data) {
     commentButton.addEventListener('click', () => addComment(postContainer, commentButton, data.id))
     
     
-    likeButton.addEventListener('click', () => addReaction('happy', data.id))
-    shockedButton.addEventListener('click', () => addReaction('unhappy', data.id))
-    laughButton.addEventListener('click', () => addReaction('funny', data.id))
+    likeButton.addEventListener('click', (event) => addReaction(event, 'happy', data.id))
+    shockedButton.addEventListener('click', (event) => addReaction(event, 'unhappy', data.id))
+    laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
 
 
     return postContainer
 
 }
 
-function addReaction(reactionType, id) {
+function addReaction(event, reactionType, id) {
     //send click to server
     const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/reactions`
     const data = { reaction: reactionType }
     apiFuncs.patchData(url, data)
-
-    //send back number of times it has been clicked
+    //update emoji number for client
+    event.currentTarget.children[0].textContent++
 }
 
 
