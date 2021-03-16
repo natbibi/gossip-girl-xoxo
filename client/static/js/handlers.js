@@ -11,7 +11,7 @@ function renderList(data){
 }
 
 function renderItem(data){
-    console.log(data)
+    // console.log(data)
     // return a full post element with text and gif + class names
     const postContainer = document.createElement('div')
     postContainer.className = "blog-entry" 
@@ -21,10 +21,11 @@ function renderItem(data){
     postDate.textContent = data.date
     postContainer.appendChild(postText)
     postContainer.appendChild(postDate)
-    // apend the giphy gif if it exists
-    // const postGif = document.createElement('div')
-    // postContainer.appendChild(postGif)
-    // renderGif(data.giphy, postGif)
+    const postGif = document.createElement('div')
+    if (data.giphy) {
+        postContainer.appendChild(postGif)
+        renderGif(postGif, data.giphy)
+    }
 
 
     //make buttons
