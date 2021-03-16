@@ -10,7 +10,8 @@ window.addEventListener("load", async () => {
   handlerFuncs.renderList(data)
 })
 
-document.querySelector('#popup-post').addEventListener("click", () => {
+document.querySelector('#popup-post').addEventListener("click", (event) => {
+  event.currentTarget.classList.toggle('rotate')
   const popupPostArea = document.querySelector('#popup-postarea')
   const popupTextArea = document.querySelector('#popup-textarea')
   popupPostArea.classList.toggle('display')

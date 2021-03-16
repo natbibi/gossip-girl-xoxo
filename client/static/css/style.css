@@ -41,7 +41,7 @@ html {
 }
 
 .post-section {
-  padding-bottom: 50px
+  padding-bottom: 200px
 }
   
 .sidenav {
@@ -103,27 +103,27 @@ p {
 
 .blog-entry-font-1 {
   font-family: 'Reenie Beanie', cursive;
-  font-size: 1.2em;
+  font-size: 2rem
 }
 
 .blog-entry-font-2 {
   font-family: 'Indie Flower', cursive;
-  font-size: 1em;
+  font-size: 2rem
 }
 
 .blog-entry-font-3 {
   font-family: 'Schoolbell', cursive;
-  font-size: 1em;
+  font-size: 2em;
 }
 
 .blog-entry-font-4 {
   font-family: 'Nanum Pen Script', cursive;
-  font-family: 1.2em;
+  font-size: 2rem;
 }
 
 .blog-entry-font-5 {
   font-family: 'Just Another Hand', cursive;
-  font-family: 2em;
+  font-size: 2rem
 }
 
 form {
@@ -134,31 +134,37 @@ form {
   background-color: deeppink;
   border: 4px solid deeppink;
   border-radius: 4px;
-  margin-bottom: 4px;
 }
 
 .reaction-bttn {
   background-color: deeppink;
-  border: 4px solid deeppink;
-  border-radius: 20px;
-  margin-right: 17px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  width: 35px;
-  height: 35px;
+  border: none;
+  border-radius: 50px;
+  width: 42px;
+  height: 42px;
+  font-size: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer
 }
+
+.reaction-bttn:hover {
+  background-color: limegreen;
+}
+
 .reaction-badge {
   position: relative;
-  right: -15px;
-  bottom: 28px;
-  transform: translateX(8px);
   background-color: #8500ff;
+  border: solid 1px black;
   font-size: 14px;
   line-height: 0;
   font-weight: 500;
   color: #fff;
-  padding: 0.2em 0.5em;
-  border-radius: 100vh;
+  padding: 0.2rem 0.5rem;
+  border-radius: 50px;
+  right: 12px;
+  bottom: 24px;
 }
 
 footer {
@@ -182,22 +188,32 @@ footer textarea {
   visibility: hidden;
   width: 100%;
   height: 0;
-  padding: 0;
 }
 
 .display {
   visibility: visible;
   height: auto;
-  padding: 15px 0;
+  padding-top: 1rem;
 }
 
 #popup-post {
-  border-radius: 60%;
+  border-radius: 50%;
   border: none;
   font-size: 1.8em;
+  height: 3rem;
+  width: 3rem;
+  transition: .3s;
+}
+
+.rotate {
+  transform: rotate(45deg)
 }
 
 #giphy-search {
   font-size: 16px;
 }
 
+/* css for comment box + comments should move */
+.add-comment-textarea {
+  font-size: 16px
+}

@@ -2659,38 +2659,35 @@ exports.onGifHover = firePingback('HOVER');
 
 },{"@giphy/js-analytics":11,"@giphy/js-util":54}],33:[function(require,module,exports){
 module.exports={
-  "_args": [
-    [
-      "@giphy/js-components@4.3.1",
-      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
-    ]
-  ],
-  "_from": "@giphy/js-components@4.3.1",
+  "_from": "@giphy/js-components@^4.3.1",
   "_id": "@giphy/js-components@4.3.1",
   "_inBundle": false,
   "_integrity": "sha512-DByKMgivmuJFrt5zUNnn5r4dtfqhjAj9H76/r15rEXJdtSXz+mdbp89yt0DTQnPQJMP93X1owaFu2PBA9UX/Cg==",
   "_location": "/@giphy/js-components",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "@giphy/js-components@4.3.1",
+    "raw": "@giphy/js-components@^4.3.1",
     "name": "@giphy/js-components",
     "escapedName": "@giphy%2fjs-components",
     "scope": "@giphy",
-    "rawSpec": "4.3.1",
+    "rawSpec": "^4.3.1",
     "saveSpec": null,
-    "fetchSpec": "4.3.1"
+    "fetchSpec": "^4.3.1"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
-  "_spec": "4.3.1",
-  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
+  "_shasum": "93aaf3aa2d85c2cfc21f6a6d1d06df6a026f2040",
+  "_spec": "@giphy/js-components@^4.3.1",
+  "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
   "author": {
     "name": "giannif"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "@giphy/js-analytics": "^3.0.0",
     "@giphy/js-brand": "^2.0.2",
@@ -2703,6 +2700,7 @@ module.exports={
     "preact": "10.4.8",
     "throttle-debounce": "^2.3.0"
   },
+  "deprecated": false,
   "description": "A lightweight set of components, focused on easy-of-use and performance.",
   "devDependencies": {
     "@types/bricks.js": "^1.8.1",
@@ -4051,41 +4049,39 @@ module.exports = {
 
 },{"./formats":42}],47:[function(require,module,exports){
 module.exports={
-  "_args": [
-    [
-      "@giphy/js-fetch-api@2.4.0",
-      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
-    ]
-  ],
-  "_from": "@giphy/js-fetch-api@2.4.0",
+  "_from": "@giphy/js-fetch-api@^2.4.0",
   "_id": "@giphy/js-fetch-api@2.4.0",
   "_inBundle": false,
   "_integrity": "sha512-xiMHnv81XZjgut4yrkHB5QHDWGNhVHoyMDb3kQBy5H0NruwtQ+aM5BE9xbP+XQlxt3eRnPRJcLy5ORk9+K0fIQ==",
   "_location": "/@giphy/js-fetch-api",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "@giphy/js-fetch-api@2.4.0",
+    "raw": "@giphy/js-fetch-api@^2.4.0",
     "name": "@giphy/js-fetch-api",
     "escapedName": "@giphy%2fjs-fetch-api",
     "scope": "@giphy",
-    "rawSpec": "2.4.0",
+    "rawSpec": "^2.4.0",
     "saveSpec": null,
-    "fetchSpec": "2.4.0"
+    "fetchSpec": "^2.4.0"
   },
   "_requiredBy": [
+    "#USER",
     "/",
     "/@giphy/js-components"
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
-  "_spec": "2.4.0",
-  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
+  "_shasum": "e96c7a2599b720d3e40ea409d8e4c4a692aa4611",
+  "_spec": "@giphy/js-fetch-api@^2.4.0",
+  "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
+  "bundleDependencies": false,
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
     "qs": "^6.9.4"
   },
+  "deprecated": false,
   "description": "Javascript API to fetch gifs and stickers from the GIPHY API.",
   "devDependencies": {
     "@types/qs": "^6.9.4",
@@ -8642,7 +8638,8 @@ async function patchData(url = '', data = {}) {
       referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
       body: JSON.stringify(data) // body data type must match "Content-Type" header
     });
-    return response.json(); // parses JSON response into native JavaScript objects
+    // we don't need patch to return data
+    // return response.json(); // parses JSON response into native JavaScript objects
   }
 
 
@@ -8667,7 +8664,7 @@ const apiFuncs = require('./api')
 
 //helper funcs for select styles
 function toggleBorder(element){
-    element.style.border = 'solid pink 4px'
+    element.style.border = 'solid limegreen 4px'
 }
 function removeAllBorders(){
     const giphyGifs = document.getElementsByClassName('giphy-gif')
@@ -8748,11 +8745,10 @@ const makeCarousel = (targetEl, query) => {
 
 // create a GiphyFetch with your api key
 // apply for a new Web SDK key. Use a separate key for every platform (Android, iOS, Web)
-
 const vanillaJSGif = async (mountNode, id) => {
     // render a single gif
     const { data: gif1 } = await gf.gif(id)
-    renderGif({ gif: gif1, width: 300, noLink: true }, mountNode)
+    renderGif({ gif: gif1, width:  300, noLink: true }, mountNode)
 }
 
 // To remove
@@ -8776,10 +8772,16 @@ function renderList(data) {
 }
 
 function renderItem(data) {
-    // console.log(data)
     // return a full post element with text and gif + class names
     const postContainer = document.createElement('div')
     postContainer.className = "blog-entry"
+
+    //append the parsed date
+    const postDate = document.createElement('p')
+    postDate.textContent = data.dateFrom
+    postContainer.appendChild(postDate)
+
+    //append the main text content for post
     const postText = document.createElement('p')
     postText.textContent = data.text
 
@@ -8788,14 +8790,13 @@ function renderItem(data) {
         const randNum = Math.floor(Math.random() * differentFontClass.length)
         return differentFontClass[randNum]
     }
-
     postText.className = `${randomclass()}`
 
-    const postDate = document.createElement('p')
-    postDate.textContent = data.date
     postContainer.appendChild(postText)
-    postContainer.appendChild(postDate)
+
+    //apend a gif if post has one
     const postGif = document.createElement('div')
+    postGif.className = 'gifCont'
     if (data.giphy) {
         postContainer.appendChild(postGif)
         renderGif(postGif, data.giphy)
@@ -8828,77 +8829,108 @@ function renderItem(data) {
 
 
     //show number of likes 
-    const numberOfLikes = data.reactions.happy
     const showTotalLikes = document.createElement('span') 
     showTotalLikes.className = 'reaction-badge'
-    showTotalLikes.append(numberOfLikes)
-    likeButton.append(showTotalLikes)
+    showTotalLikes.textContent = data.reactions.happy
+    likeButton.after(showTotalLikes)
 
 
     //show number of shocks
-    const numberOfShocks = data.reactions.unhappy
     const showTotalShocks = document.createElement('span')
     showTotalShocks.className = 'reaction-badge'
-    showTotalShocks.append(numberOfShocks)
-    shockedButton.append(showTotalShocks)
+    showTotalShocks.textContent = data.reactions.unhappy
+    shockedButton.after(showTotalShocks)
 
 
     //show number of laughs
-    const numberOflaughs = data.reactions.funny
-    const showTotallaughs = document.createElement('span')  
+    const showTotallaughs = document.createElement('span')
     showTotallaughs.className = 'reaction-badge'
-    showTotallaughs.append(numberOflaughs)
-    laughButton.append(showTotallaughs)
-
-    console.log(showTotalShocks)
+    showTotallaughs.textContent = data.reactions.funny
+    laughButton.after(showTotallaughs)
 
 
+    //create div to append comment input container - before comments
+    const commentPostCont = document.createElement('div')
+    postContainer.append(commentPostCont)
+    commentButton.addEventListener('click', () => addComment(commentPostCont, postContainer, data.id))
+    
+    
+    likeButton.addEventListener('click', (event) => addReaction(event, 'happy', data.id))
+    shockedButton.addEventListener('click', (event) => addReaction(event, 'unhappy', data.id))
+    laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
 
 
-    commentButton.addEventListener('click', () => addComment(postContainer, commentButton, data.id))
-    likeButton.addEventListener('click', () => addReaction(data.id))
-
+    
+    //append the comments 
+    const commentCont = document.createElement('div')
+    commentCont.className = 'comment-cont'
+    for (comment of data.comments) {
+        //append each comment
+        commentCont.appendChild(renderComment(comment))
+    }
+    
+    postContainer.append(commentCont)
 
     return postContainer
 
 }
 
-function addReaction(id) {
+function addReaction(event, reactionType, id) {
     //send click to server
-
     const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/reactions`
-    const data = { reaction: "happy" }
+    const data = { reaction: reactionType }
     apiFuncs.patchData(url, data)
-
-    //send back number of times it has been clicked
-
-
+    //update emoji number for client
+    event.currentTarget.nextSibling.textContent++
 }
 
 
 
-function addComment(parent, commentButton, id) {
-    const newComment = document.createElement('div')
-    //new text area
-    const textArea = document.createElement('textarea')
-    newComment.append(textArea)
+async function addComment(parent, topParent, id) {
+    if (typeof parent.getElementsByClassName('post-comment-cont')[0] === 'undefined') {
+        const newComment = document.createElement('div')
+        newComment.className = 'post-comment-cont'
+        //new text area
+        const textArea = document.createElement('textarea')
+        textArea.className = 'post-comment-textarea'
+        newComment.append(textArea)
 
-    //comment button to post value from text area
-    const commentSubmitBttn = document.createElement('button')
-    commentSubmitBttn.textContent = 'submit comment'
+        //comment button to post value from text area
+        const commentSubmitBttn = document.createElement('button')
+        commentSubmitBttn.textContent = 'submit comment'
 
-    commentSubmitBttn.addEventListener('click', () => {
-        const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/comments`
-        const commentValue = textArea.value
-        const date = new Date().toString()
-        const data = { text: commentValue, date: date }
-        apiFuncs.patchData(url, data)
-    })
-    newComment.append(commentSubmitBttn)
+        commentSubmitBttn.addEventListener('click', () =>  {
+            try {
+                const commentValue = textArea.value
+                if (commentValue.length < 1) throw new Error('comment too short')
+                const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/comments`
+                const date = new Date().toString()
+                const data = { text: commentValue, date: date }
+                apiFuncs.patchData(url, data)
+                //apend comment for client too
+                topParent.getElementsByClassName('comment-cont')[0].append(renderComment({text: commentValue}))
+                parent.getElementsByClassName('post-comment-cont')[0].remove()
+            } catch(err){
+                console.log(err)
+                throw err
+            }
+        })
+        newComment.append(commentSubmitBttn)
 
-    parent.append(newComment)
-    // commentButton.addEventListener('click', () => newComment.remove())
+        await parent.append(newComment)
+        textArea.focus()
 
+    }
+    else {
+        parent.getElementsByClassName('post-comment-cont')[0].remove()
+    }
+}
+
+function renderComment(comment) {
+    const commentPara = document.createElement('p')
+    commentPara.addClass = 'comment-item'
+    commentPara.textContent = comment.text
+    return commentPara
 }
 
 
@@ -8919,7 +8951,8 @@ window.addEventListener("load", async () => {
   handlerFuncs.renderList(data)
 })
 
-document.querySelector('#popup-post').addEventListener("click", () => {
+document.querySelector('#popup-post').addEventListener("click", (event) => {
+  event.currentTarget.classList.toggle('rotate')
   const popupPostArea = document.querySelector('#popup-postarea')
   const popupTextArea = document.querySelector('#popup-textarea')
   popupPostArea.classList.toggle('display')

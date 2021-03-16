@@ -11,10 +11,16 @@ function renderList(data) {
 }
 
 function renderItem(data) {
-    // console.log(data)
     // return a full post element with text and gif + class names
     const postContainer = document.createElement('div')
     postContainer.className = "blog-entry"
+
+    //append the parsed date
+    const postDate = document.createElement('p')
+    postDate.textContent = data.dateFrom
+    postContainer.appendChild(postDate)
+
+    //append the main text content for post
     const postText = document.createElement('p')
     postText.textContent = data.text
 
@@ -23,14 +29,13 @@ function renderItem(data) {
         const randNum = Math.floor(Math.random() * differentFontClass.length)
         return differentFontClass[randNum]
     }
-
     postText.className = `${randomclass()}`
 
-    const postDate = document.createElement('p')
-    postDate.textContent = data.date
     postContainer.appendChild(postText)
-    postContainer.appendChild(postDate)
+
+    //apend a gif if post has one
     const postGif = document.createElement('div')
+    postGif.className = 'gifCont'
     if (data.giphy) {
         postContainer.appendChild(postGif)
         renderGif(postGif, data.giphy)
@@ -63,79 +68,108 @@ function renderItem(data) {
 
 
     //show number of likes 
-    const numberOfLikes = data.reactions.happy
     const showTotalLikes = document.createElement('span') 
     showTotalLikes.className = 'reaction-badge'
-    showTotalLikes.append(numberOfLikes)
-    likeButton.append(showTotalLikes)
+    showTotalLikes.textContent = data.reactions.happy
+    likeButton.after(showTotalLikes)
 
 
     //show number of shocks
-    const numberOfShocks = data.reactions.unhappy
     const showTotalShocks = document.createElement('span')
     showTotalShocks.className = 'reaction-badge'
-    showTotalShocks.append(numberOfShocks)
-    shockedButton.append(showTotalShocks)
+    showTotalShocks.textContent = data.reactions.unhappy
+    shockedButton.after(showTotalShocks)
 
 
     //show number of laughs
-    const numberOflaughs = data.reactions.funny
-    const showTotallaughs = document.createElement('span')  
-    showTotallaughs.className = 'reaction-badge'
     const showTotallaughs = document.createElement('span')
-    showTotallaughs.className = "reaction-number"
-    showTotallaughs.append(numberOflaughs)
-    laughButton.append(showTotallaughs)
-
-    console.log(showTotalShocks)
+    showTotallaughs.className = 'reaction-badge'
+    showTotallaughs.textContent = data.reactions.funny
+    laughButton.after(showTotallaughs)
 
 
+    //create div to append comment input container - before comments
+    const commentPostCont = document.createElement('div')
+    postContainer.append(commentPostCont)
+    commentButton.addEventListener('click', () => addComment(commentPostCont, postContainer, data.id))
+    
+    
+    likeButton.addEventListener('click', (event) => addReaction(event, 'happy', data.id))
+    shockedButton.addEventListener('click', (event) => addReaction(event, 'unhappy', data.id))
+    laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
 
 
-    commentButton.addEventListener('click', () => addComment(postContainer, commentButton, data.id))
-    likeButton.addEventListener('click', () => addReaction(data.id))
-
+    
+    //append the comments 
+    const commentCont = document.createElement('div')
+    commentCont.className = 'comment-cont'
+    for (comment of data.comments) {
+        //append each comment
+        commentCont.appendChild(renderComment(comment))
+    }
+    
+    postContainer.append(commentCont)
 
     return postContainer
 
 }
 
-function addReaction(id) {
+function addReaction(event, reactionType, id) {
     //send click to server
-
     const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/reactions`
-    const data = { reaction: "happy" }
+    const data = { reaction: reactionType }
     apiFuncs.patchData(url, data)
-
-    //send back number of times it has been clicked
-
-
+    //update emoji number for client
+    event.currentTarget.nextSibling.textContent++
 }
 
 
 
-function addComment(parent, commentButton, id) {
-    const newComment = document.createElement('div')
-    //new text area
-    const textArea = document.createElement('textarea')
-    newComment.append(textArea)
+async function addComment(parent, topParent, id) {
+    if (typeof parent.getElementsByClassName('post-comment-cont')[0] === 'undefined') {
+        const newComment = document.createElement('div')
+        newComment.className = 'post-comment-cont'
+        //new text area
+        const textArea = document.createElement('textarea')
+        textArea.className = 'post-comment-textarea'
+        newComment.append(textArea)
 
-    //comment button to post value from text area
-    const commentSubmitBttn = document.createElement('button')
-    commentSubmitBttn.textContent = 'submit comment'
+        //comment button to post value from text area
+        const commentSubmitBttn = document.createElement('button')
+        commentSubmitBttn.textContent = 'submit comment'
 
-    commentSubmitBttn.addEventListener('click', () => {
-        const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/comments`
-        const commentValue = textArea.value
-        const date = new Date().toString()
-        const data = { text: commentValue, date: date }
-        apiFuncs.patchData(url, data)
-    })
-    newComment.append(commentSubmitBttn)
+        commentSubmitBttn.addEventListener('click', () =>  {
+            try {
+                const commentValue = textArea.value
+                if (commentValue.length < 1) throw new Error('comment too short')
+                const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/comments`
+                const date = new Date().toString()
+                const data = { text: commentValue, date: date }
+                apiFuncs.patchData(url, data)
+                //apend comment for client too
+                topParent.getElementsByClassName('comment-cont')[0].append(renderComment({text: commentValue}))
+                parent.getElementsByClassName('post-comment-cont')[0].remove()
+            } catch(err){
+                console.log(err)
+                throw err
+            }
+        })
+        newComment.append(commentSubmitBttn)
 
-    parent.append(newComment)
-    // commentButton.addEventListener('click', () => newComment.remove())
+        await parent.append(newComment)
+        textArea.focus()
 
+    }
+    else {
+        parent.getElementsByClassName('post-comment-cont')[0].remove()
+    }
+}
+
+function renderComment(comment) {
+    const commentPara = document.createElement('p')
+    commentPara.addClass = 'comment-item'
+    commentPara.textContent = comment.text
+    return commentPara
 }
 
 
