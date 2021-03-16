@@ -8653,12 +8653,13 @@ module.exports = {
 
 },{}],86:[function(require,module,exports){
 const key = require('./key')
-
 const GiphyJsFetchApi = require('@giphy/js-fetch-api')
 const giphyComponents =  require('@giphy/js-components')
 const renderCarousel = giphyComponents.renderCarousel
 const GiphyFetch = GiphyJsFetchApi.GiphyFetch
 const renderGif = giphyComponents.renderGif
+const apiFuncs = require('./api')
+
 
 //helper funcs for select styles
 function toggleBorder(element){
@@ -8672,12 +8673,44 @@ function removeAllBorders(){
 
     }
 }
+//async submit function in order to post then refresh on mobile browsers
+async function submit(data) {
+    await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
+    location.reload()
+  }
+
+const popupTextArea = document.querySelector('#popup-textarea')
+const submitNewPost = document.querySelector('#submit-post')
+let giphSelected = false
+function prepPost(gifId){
+    giphSelected = true
+    let data = {}
+    submitNewPost.onclick = () => {
+        data.text = popupTextArea.value
+        data.date = new Date().toString()
+        data.giphy = gifId
+        console.log(data)
+        submit(data)
+    }
+}
+submitNewPost.addEventListener("click", () => { 
+    if (!giphSelected) {
+    let data = {}
+    data.text = popupTextArea.value
+    data.date = new Date().toString()
+    submit(data)
+    }
+})
+
+
+
 // create a GiphyFetch with your api key
 // apply for a new Web SDK key. Use a separate key for every platform (Android, iOS, Web)
 const gf = new GiphyFetch(key)
 
 // Creating a carousel with window resizing and remove-ability
 const makeCarousel = (targetEl, query) => {
+    let selectedGif
     const fetchGifs = (offset) => {
         return gf.search(query, {offset, sort: 'relevant', lang: 'en', limit: 3})
     }
@@ -8693,9 +8726,9 @@ const makeCarousel = (targetEl, query) => {
               gutter: 0,
               onGifClick: (gif, event) => {
                   event.preventDefault();
-                  console.log(gif)
                   removeAllBorders()
                   toggleBorder(event.currentTarget)
+                  prepPost(gif.id)
                 }
             },
             targetEl
@@ -8715,7 +8748,7 @@ const makeCarousel = (targetEl, query) => {
 const vanillaJSGif = async (mountNode, id) => {
     // render a single gif
     const { data: gif1 } = await gf.gif(id)
-    renderGif({ gif: gif1, width: 300 }, mountNode)
+    renderGif({ gif: gif1, width: 300, noLink: true }, mountNode)
 }
 
 // To remove
@@ -8723,9 +8756,9 @@ const vanillaJSGif = async (mountNode, id) => {
 
 module.exports = { 
     makeCarousel,
-    vanillaJSGif
+    vanillaJSGif,
 } 
-},{"./key":89,"@giphy/js-components":30,"@giphy/js-fetch-api":36}],87:[function(require,module,exports){
+},{"./api":85,"./key":89,"@giphy/js-components":30,"@giphy/js-fetch-api":36}],87:[function(require,module,exports){
 const giphy = require('./giphy')
 const renderGif = giphy.vanillaJSGif
 
@@ -8739,7 +8772,7 @@ function renderList(data){
 }
 
 function renderItem(data){
-    console.log(data)
+    // console.log(data)
     // return a full post element with text and gif + class names
     const postContainer = document.createElement('div')
     postContainer.className = "blog-entry" 
@@ -8749,10 +8782,11 @@ function renderItem(data){
     postDate.textContent = data.date
     postContainer.appendChild(postText)
     postContainer.appendChild(postDate)
-    // apend the giphy gif if it exists
-    // const postGif = document.createElement('div')
-    // postContainer.appendChild(postGif)
-    // renderGif(data.giphy, postGif)
+    const postGif = document.createElement('div')
+    if (data.giphy) {
+        postContainer.appendChild(postGif)
+        renderGif(postGif, data.giphy)
+    }
 
 
     //make buttons
@@ -8837,17 +8871,18 @@ document.querySelector('#popup-post').addEventListener("click", () => {
 })
 
 //async submit function in order to post then refresh on mobile browsers
-async function submit(data){
-  await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
-  location.reload()
-}
-document.querySelector('#submit-post').addEventListener("click", () => {
-  const popupTextArea = document.querySelector('#popup-textarea')
-  const textToPost = popupTextArea.value
-  const date = new Date().toString()
-  const data = {text: textToPost, date: date}
-  submit(data)
-})
+// async function submit(data) {
+  // await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
+  // location.reload()
+// }
+// document.querySelector('#submit-post').addEventListener("click", () => {
+//   const popupTextArea = document.querySelector('#popup-textarea')
+//   const textToPost = popupTextArea.value
+//   const date = new Date().toString()
+//   const data = { text: textToPost, date: date, giphy: giphy.makeCarousel() }
+//   console.log(data)
+//   submit(data)
+// })
 
 
 function giphySearch() {
@@ -8859,10 +8894,15 @@ function giphySearch() {
     giphySearch()
   })
 }
-giphySearch() 
+giphySearch()
 
+document.querySelector('.icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "350px";
+})
 
-
+document.querySelector('.close-icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "0";
+})
 },{"./api":85,"./giphy":86,"./handlers":87}],89:[function(require,module,exports){
 const key = 'UzgKyDqtQeJd63SnS23S9ok7Kg604SUU'
 
