@@ -213,3 +213,7 @@ footer textarea {
   font-size: 16px;
 }
 
+/* css for comment box + comments should move */
+.add-comment-textarea {
+  font-size: 16px
+}

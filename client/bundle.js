@@ -8664,7 +8664,7 @@ const apiFuncs = require('./api')
 
 //helper funcs for select styles
 function toggleBorder(element){
-    element.style.border = 'solid pink 4px'
+    element.style.border = 'solid limegreen 4px'
 }
 function removeAllBorders(){
     const giphyGifs = document.getElementsByClassName('giphy-gif')
@@ -8849,14 +8849,26 @@ function renderItem(data) {
     laughButton.after(showTotallaughs)
 
 
-
-    commentButton.addEventListener('click', () => addComment(postContainer, commentButton, data.id))
+    //create div to append comment input container - before comments
+    const commentPostCont = document.createElement('div')
+    postContainer.append(commentPostCont)
+    commentButton.addEventListener('click', () => addComment(commentPostCont, commentButton, data.id))
     
     
     likeButton.addEventListener('click', (event) => addReaction(event, 'happy', data.id))
     shockedButton.addEventListener('click', (event) => addReaction(event, 'unhappy', data.id))
     laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
 
+
+    
+    //append the comments 
+    const commentCont = document.createElement('div')
+    for (comment of data.comments) {
+        //append each comment
+        commentCont.appendChild(renderComment(comment))
+    }
+    
+    postContainer.append(commentCont)
 
     return postContainer
 
@@ -8873,28 +8885,45 @@ function addReaction(event, reactionType, id) {
 
 
 
-function addComment(parent, commentButton, id) {
-    const newComment = document.createElement('div')
-    //new text area
-    const textArea = document.createElement('textarea')
-    newComment.append(textArea)
+async function addComment(parent, commentButton, id) {
+    if (typeof parent.getElementsByClassName('add-comment-cont')[0] === 'undefined') {
+        const newComment = document.createElement('div')
+        newComment.className = 'add-comment-cont'
+        //new text area
+        const textArea = document.createElement('textarea')
+        textArea.className = 'add-comment-textarea'
+        textArea.required = true
+        textArea.minLength = 1
+        textArea.maxLength = 300
+        newComment.append(textArea)
 
-    //comment button to post value from text area
-    const commentSubmitBttn = document.createElement('button')
-    commentSubmitBttn.textContent = 'submit comment'
+        //comment button to post value from text area
+        const commentSubmitBttn = document.createElement('button')
+        commentSubmitBttn.textContent = 'submit comment'
 
-    commentSubmitBttn.addEventListener('click', () => {
-        const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/comments`
-        const commentValue = textArea.value
-        const date = new Date().toString()
-        const data = { text: commentValue, date: date }
-        apiFuncs.patchData(url, data)
-    })
-    newComment.append(commentSubmitBttn)
+        commentSubmitBttn.addEventListener('click', () =>  {
+            const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/comments`
+            const commentValue = textArea.value
+            const date = new Date().toString()
+            const data = { text: commentValue, date: date }
+            apiFuncs.patchData(url, data)
+        })
+        newComment.append(commentSubmitBttn)
 
-    parent.append(newComment)
-    // commentButton.addEventListener('click', () => newComment.remove())
+        await parent.append(newComment)
+        textArea.focus()
 
+    }
+    else {
+        parent.getElementsByClassName('add-comment-cont')[0].remove()
+    }
+}
+
+function renderComment(comment) {
+    const commentPara = document.createElement('p')
+    commentPara.addClass = 'comment-item'
+    commentPara.textContent = comment.text
+    return commentPara
 }
 
 

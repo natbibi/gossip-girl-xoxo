@@ -9,7 +9,7 @@ const apiFuncs = require('./api')
 
 //helper funcs for select styles
 function toggleBorder(element){
-    element.style.border = 'solid pink 4px'
+    element.style.border = 'solid limegreen 4px'
 }
 function removeAllBorders(){
     const giphyGifs = document.getElementsByClassName('giphy-gif')
