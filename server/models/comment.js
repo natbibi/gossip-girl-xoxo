@@ -8,8 +8,8 @@ class Comment {
     constructor(data) {
         this.id = data.id;
         this.text = data.text
-        this.date = moment(data.date).fromNow()
-        this.dateData = data.date
+        this.date = data.date
+        this.dateFrom = moment(Date.parse(data.date)).fromNow()
     }
 }
 
