@@ -33,9 +33,6 @@ function giphySearch() {
     grid.remove()
     giphySearch()
   })
-  document.querySelector('#clear-giphy').addEventListener("click", () => {
-    grid.remove()
-  })
 }
 giphySearch() 
 
