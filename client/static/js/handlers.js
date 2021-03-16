@@ -1,6 +1,8 @@
 const giphy = require('./giphy')
 const renderGif = giphy.vanillaJSGif
 
+const apiFuncs = require('./api') 
+
 function renderList(data){
     for (item of data) {
         document.getElementById('root').prepend(renderItem(item))
@@ -36,10 +38,52 @@ function renderItem(data){
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
+    commentButton.addEventListener('click', () => addComment(postContainer, commentButton))
+
+
+
 
     return postContainer
+    
 
 }
+function addComment(parent, commentButton){
+const newComment = document.createElement('div')
+//new text area
+const textArea = document.createElement('textarea')
+newComment.append(textArea)
+
+//comment button to post value from text area
+const commentSubmitBttn = document.createElement('button')
+commentSubmitBttn.textContent = 'submit comment'
+
+commentSubmitBttn.addEventListener('click', () => {
+    const url = `https://gossip-girl-api.herokuapp.com/posts/1/comments`
+    const commentValue = textArea.value
+    const date = new Date().toString()
+    const data = {text: commentValue, date: date}
+    apiFuncs.patchData(url, data)
+})
+newComment.append(commentSubmitBttn)
+
+
+
+//append text to post section
+parent.append(newComment)
+// commentButton.addEventListener('click', () => newComment.remove())
+
+
+
+}
+
+
+//popup speech bubble - text area 
+
+//right id to submit text 
+
+//create element to put text in
+
+//append on submit, send data to server
 
 module.exports = {
     renderList
