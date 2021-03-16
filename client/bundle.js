@@ -8822,7 +8822,7 @@ function renderItem(data){
     //show number of likes 
     const numberOfLikes = data.reactions.happy
     const showTotalLikes = document.createElement('span') 
-    showTotalLikes.className = "reaction-number" 
+    showTotalLikes.className = 'reaction-badge'
     showTotalLikes.append(numberOfLikes)
     likeButton.append(showTotalLikes)
 
@@ -8830,7 +8830,7 @@ function renderItem(data){
     //show number of shocks
     const numberOfShocks = data.reactions.unhappy
     const showTotalShocks = document.createElement('span')
-    showTotalShocks.className = "reaction-number"
+    showTotalShocks.className = 'reaction-badge'
     showTotalShocks.append(numberOfShocks)
     shockedButton.append(showTotalShocks)
 
@@ -8838,7 +8838,7 @@ function renderItem(data){
     //show number of laughs
     const numberOflaughs = data.reactions.funny
     const showTotallaughs = document.createElement('span')  
-    showTotallaughs.className = "reaction-number"
+    showTotallaughs.className = 'reaction-badge'
     showTotallaughs.append(numberOflaughs)
     laughButton.append(showTotallaughs)
 
