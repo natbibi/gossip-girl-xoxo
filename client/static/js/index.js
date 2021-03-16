@@ -1,3 +1,6 @@
+const giphy = require('./giphy')
+const makeCarousel = giphy.makeCarousel
+const renderGif = giphy.vanillaJSGif
 const apiFuncs = require('./api')
 const handlerFuncs = require('./handlers')
 
@@ -14,9 +17,29 @@ document.querySelector('#popup-post').addEventListener("click", () => {
   popupTextArea.focus()
 })
 
-
+//async submit function in order to post then refresh on mobile browsers
+async function submit(data){
+  await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
+  location.reload()
+}
 document.querySelector('#submit-post').addEventListener("click", () => {
+  const popupTextArea = document.querySelector('#popup-textarea')
   const textToPost = popupTextArea.value
   const date = new Date().toString()
-  apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', {text: textToPost, date: date})
+  const data = {text: textToPost, date: date}
+  submit(data)
 })
+
+
+function giphySearch() {
+  const root = document.querySelector('#giphy-root')
+  const query = document.querySelector('#giphy-search').value
+  const grid = makeCarousel(root, query)
+  document.querySelector('#search-giphy').addEventListener("click", () => {
+    grid.remove()
+    giphySearch()
+  })
+}
+giphySearch() 
+
+
