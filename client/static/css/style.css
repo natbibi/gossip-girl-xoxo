@@ -141,13 +141,25 @@ form {
   background-color: deeppink;
   border: 4px solid deeppink;
   border-radius: 20px;
-  margin-right: 4px;
-  margin-bottom: 4px;
+  margin-right: 17px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 35px;
+  height: 35px;
 }
-
-/* P .reaction-number {
-  display: flex;
-} */
+.reaction-badge {
+  position: relative;
+  right: -15px;
+  bottom: 28px;
+  transform: translateX(8px);
+  background-color: #8500ff;
+  font-size: 14px;
+  line-height: 0;
+  font-weight: 500;
+  color: #fff;
+  padding: 0.2em 0.5em;
+  border-radius: 100vh;
+}
 
 footer {
   background: deeppink;
