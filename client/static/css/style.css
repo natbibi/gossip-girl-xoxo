@@ -1,5 +1,16 @@
+/* font-family: 'Dosis', sans-serif;
+font-family: 'Indie Flower', cursive;
+font-family: 'Just Another Hand', cursive;
+font-family: 'Nanum Pen Script', cursive;
+font-family: 'Reenie Beanie', cursive;
+font-family: 'Schoolbell', cursive; */
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  font-family: 'Dosis', sans-serif;
 }
 
 .giphy-gif {
@@ -29,41 +40,10 @@
   top: 0;
 }
 
-.sidenav {
-  height: 30%;
-  width: 0px;
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  background-color: rgb(255, 234, 237, 0.9);
-  overflow-x: hidden;
-  transition: 0.5s;
-  border-radius: 13px;
-  margin-left: 8px;
-}
-
-.close-icon {
-  max-width: 480px;
-  width: 100%;
-  margin: 0 auto;
-  background-color: snow;
-  height: 500px;
-  border-radius: 5px;
-}
-
 .post-section {
-  padding-bottom: 50px;
+  padding-bottom: 50px
 }
-
-.topnav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: white;
-  position: relative;
-  top: 0;
-}
-
+  
 .sidenav {
   height: 30%;
   width: 0px;
@@ -75,14 +55,17 @@
   transition: 0.5s;
   border-radius: 13px;
   margin-left: 8px;
+  margin-top: 8px;
+  max-width: 370px;
 }
 
 .close-icon {
-  position: absolute;
-  top: 1;
-  right: 25px;
-  margin-left: 50px;
-  padding-top: 5px;
+position: absolute;
+top: 1;
+right: 0;
+margin-left: 50px;
+padding: 10px;
+cursor: pointer;
 }
 
 .nav-info {
@@ -90,7 +73,7 @@
 }
 
 .icon {
-  margin: 7px;
+  margin: 8px;
   font-size: 1.4em;
 }
 
@@ -110,12 +93,37 @@ p {
 }
 
 .blog-entry {
-  border: 2px solid gray;
+  border: 2px solid rgb(170, 170, 170);
   border-radius: 10px;
   padding-left: 1rem;
   padding-right: 1rem;
-  background-color: gray;
+  background-color: rgb(170, 170, 170);
   margin: 0.5rem;
+}
+
+.blog-entry-font-1 {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 1.2em;
+}
+
+.blog-entry-font-2 {
+  font-family: 'Indie Flower', cursive;
+  font-size: 1em;
+}
+
+.blog-entry-font-3 {
+  font-family: 'Schoolbell', cursive;
+  font-size: 1em;
+}
+
+.blog-entry-font-4 {
+  font-family: 'Nanum Pen Script', cursive;
+  font-family: 1.2em;
+}
+
+.blog-entry-font-5 {
+  font-family: 'Just Another Hand', cursive;
+  font-family: 2em;
 }
 
 form {
@@ -193,16 +201,3 @@ footer textarea {
   font-size: 16px;
 }
 
-/* The side navigation menu */
-#sidenav {
-  height: 100%; /* 100% Full-height */
-  width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Stay on top */
-  top: 0; /* Stay at the top */
-  left: 0;
-  background-color: #111; /* Black*/
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-}

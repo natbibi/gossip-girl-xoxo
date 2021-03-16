@@ -2662,7 +2662,7 @@ module.exports={
   "_args": [
     [
       "@giphy/js-components@4.3.1",
-      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
+      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
     ]
   ],
   "_from": "@giphy/js-components@4.3.1",
@@ -2687,7 +2687,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
   "_spec": "4.3.1",
-  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
+  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
   "author": {
     "name": "giannif"
   },
@@ -4054,7 +4054,7 @@ module.exports={
   "_args": [
     [
       "@giphy/js-fetch-api@2.4.0",
-      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
+      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
     ]
   ],
   "_from": "@giphy/js-fetch-api@2.4.0",
@@ -4080,7 +4080,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
   "_spec": "2.4.0",
-  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
+  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
@@ -8766,23 +8766,31 @@ module.exports = {
 const giphy = require('./giphy')
 const renderGif = giphy.vanillaJSGif
 
-const apiFuncs = require('./api') 
+const apiFuncs = require('./api')
 
-function renderList(data){
+function renderList(data) {
     for (item of data) {
         document.getElementById('root').prepend(renderItem(item))
     }
     //function to render data to the DOM
 }
 
-function renderItem(data){
+function renderItem(data) {
     // console.log(data)
     // return a full post element with text and gif + class names
     const postContainer = document.createElement('div')
-    postContainer.className = "blog-entry" 
+    postContainer.className = "blog-entry"
     const postText = document.createElement('p')
     postText.textContent = data.text
-    postText.className = "blog-entry-text"
+
+    function randomclass() {
+        const differentFontClass = ["blog-entry-font-1", "blog-entry-font-2", "blog-entry-font-3", "blog-entry-font-4", "blog-entry-font-5"]
+        const randNum = Math.floor(Math.random() * differentFontClass.length)
+        return differentFontClass[randNum]
+    }
+
+    postText.className = `${randomclass()}`
+
     const postDate = document.createElement('p')
     postDate.textContent = data.date
     postContainer.appendChild(postText)
@@ -8852,44 +8860,44 @@ function renderItem(data){
 
 
     return postContainer
-    
+
 }
 
-function addReaction(id){
-//send click to server
+function addReaction(id) {
+    //send click to server
 
     const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/reactions`
-    const data = {reaction: "happy"}
+    const data = { reaction: "happy" }
     apiFuncs.patchData(url, data)
 
-//send back number of times it has been clicked
+    //send back number of times it has been clicked
 
 
 }
 
 
 
-function addComment(parent, commentButton, id){
-const newComment = document.createElement('div')
-//new text area
-const textArea = document.createElement('textarea')
-newComment.append(textArea)
+function addComment(parent, commentButton, id) {
+    const newComment = document.createElement('div')
+    //new text area
+    const textArea = document.createElement('textarea')
+    newComment.append(textArea)
 
-//comment button to post value from text area
-const commentSubmitBttn = document.createElement('button')
-commentSubmitBttn.textContent = 'submit comment'
+    //comment button to post value from text area
+    const commentSubmitBttn = document.createElement('button')
+    commentSubmitBttn.textContent = 'submit comment'
 
-commentSubmitBttn.addEventListener('click', () => {
-    const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/comments`
-    const commentValue = textArea.value
-    const date = new Date().toString()
-    const data = {text: commentValue, date: date}
-    apiFuncs.patchData(url, data)
-})
-newComment.append(commentSubmitBttn)
+    commentSubmitBttn.addEventListener('click', () => {
+        const url = `https://gossip-girl-api.herokuapp.com/posts/${id}/comments`
+        const commentValue = textArea.value
+        const date = new Date().toString()
+        const data = { text: commentValue, date: date }
+        apiFuncs.patchData(url, data)
+    })
+    newComment.append(commentSubmitBttn)
 
-parent.append(newComment)
-// commentButton.addEventListener('click', () => newComment.remove())
+    parent.append(newComment)
+    // commentButton.addEventListener('click', () => newComment.remove())
 
 }
 
@@ -8920,8 +8928,8 @@ document.querySelector('#popup-post').addEventListener("click", () => {
 
 //async submit function in order to post then refresh on mobile browsers
 // async function submit(data) {
-  // await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
-  // location.reload()
+// await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
+// location.reload()
 // }
 // document.querySelector('#submit-post').addEventListener("click", () => {
 //   const popupTextArea = document.querySelector('#popup-textarea')
@@ -8945,11 +8953,11 @@ function giphySearch() {
 giphySearch()
 
 document.querySelector('.icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "350px";
+  document.querySelector(".sidenav").style.width = "50%";
 })
 
 document.querySelector('.close-icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "0";
+  document.querySelector(".sidenav").style.width = "0%";
 })
 },{"./api":85,"./giphy":86,"./handlers":87}],89:[function(require,module,exports){
 const key = 'UzgKyDqtQeJd63SnS23S9ok7Kg604SUU'
