@@ -16,7 +16,7 @@ class Post extends Comment {
     static create(post) {
         const newPostId = postsData.length + 1
         const newPost = new Post({ id: newPostId, ...post });
-        postsData.push(newPost);
+        postsData.unshift(newPost);
         return newPost;
       }
     static findById(id) {
