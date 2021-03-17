@@ -66,6 +66,10 @@ function renderItem(data) {
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
+    //make share button
+    const shareButton = document.createElement('button')
+    shareButton.textContent = "📣"
+    postContainer.append(shareButton)
 
     //show number of likes 
     const showTotalLikes = document.createElement('span') 
@@ -124,9 +128,6 @@ function renderItem(data) {
         firstToComment.textContent = "Be the first to comment!"
         postContainer.append(firstToComment)
     }
-
-
-    console.log(numberOfComments)
 
 
     //append the comments 

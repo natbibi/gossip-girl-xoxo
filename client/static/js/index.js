@@ -21,12 +21,12 @@ window.addEventListener("load", async () => {
     try {
       if (sortOrder === '?hot') {
         const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/hot/${currentIndex}/${currentIndex + 5}`)
-        if (newData.length === 0) throw new Error('no more posts')
+        if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
         handlerFuncs.renderList(newData)
       }
       else {
         const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${currentIndex}/${currentIndex + 5}`)
-        if (newData.length === 0) throw new Error('no more posts')
+        if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
         handlerFuncs.renderList(newData)
       }
       currentIndex += 5
