@@ -9040,7 +9040,7 @@ window.addEventListener("load", async () => {
       }
       currentIndex += 5
   } catch(err) {
-    alert(err)
+    alert('You\'re up to date 🎉 ')
     throw err
   }
   })
