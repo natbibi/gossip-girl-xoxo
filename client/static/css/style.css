@@ -187,8 +187,8 @@ form {
   font-family: "Times New Roman", Times, serif;
 }
 
-.primary-bttn {
-  /* hot, new, comment */
+.primary-bttn { 
+  /* hot, new, comment on post, share post */
   background: var(--button-color);
   color: var(--text-color);
   border: none;
@@ -221,6 +221,23 @@ form {
   font-family: "Dosis", sans-serif;
 }
 
+#submit-post, #search-giphy {
+  color: var(--text-color);
+  font-family: "Dosis", sans-serif;
+  background: var(--button-color);
+  border: none;
+  background: var(--container-color);
+  margin-left: 2px;
+  font-size: 16px;
+  border-radius: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#submit-post:hover, #search-giphy:hover {
+  transform: scale(1.03);
+} 
+
 .read-comment-bttn {
   background-color: var(--accent-color);
   color: var(--text-color);
@@ -228,6 +245,15 @@ form {
   padding: 6px;
   transition: var(--transition-delay);
   font-family: "Dosis", sans-serif;
+  font-size: 14px;
+}
+
+.comment-item {
+  /* the reply to post comment */
+  margin: 0px;
+  margin-bottom: 10px;
+  padding: 6px;
+  transition: var(--transition-delay);
 }
 
 .reaction-bttn {
@@ -289,6 +315,7 @@ footer textarea {
   font-size: 16px;
   background-color: var(--container-color);
   color: var(--text-color);
+  font-family: 'Dosis', sans-serif;
 }
 
 input {
@@ -314,6 +341,7 @@ input {
 
 #giphy-search {
   font-size: 16px;
+  border-radius: 2px;
 }
 
 .top-button-section {
@@ -338,7 +366,12 @@ input {
 }
 
 .post-comment-textarea {
-  font-size: 16px;
+  font-size: 18px;
+  font-family: 'Dosis', sans-serif;
+  resize: none;
+  width: 270px;
+  background: var(--background-color);
+  transition: var(--transition-delay); 
 }
 
 .post-comment-cont {

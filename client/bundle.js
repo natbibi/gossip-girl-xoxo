@@ -2662,7 +2662,7 @@ module.exports={
   "_args": [
     [
       "@giphy/js-components@4.3.1",
-      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
+      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
     ]
   ],
   "_from": "@giphy/js-components@4.3.1",
@@ -2687,7 +2687,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
   "_spec": "4.3.1",
-  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
+  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
   "author": {
     "name": "giannif"
   },
@@ -4054,7 +4054,7 @@ module.exports={
   "_args": [
     [
       "@giphy/js-fetch-api@2.4.0",
-      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
+      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
     ]
   ],
   "_from": "@giphy/js-fetch-api@2.4.0",
@@ -4080,7 +4080,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
   "_spec": "2.4.0",
-  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
+  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
@@ -8936,12 +8936,13 @@ async function addComment(parent, topParent, id) {
         //new text area
         const textArea = document.createElement('textarea')
         textArea.className = 'post-comment-textarea'
+        textArea.placeholder = "Share your thoughts 💭"
         newComment.append(textArea)
 
         //comment button to post value from text area
         const commentSubmitBttn = document.createElement('button')
         commentSubmitBttn.classList.add('primary-bttn')
-        commentSubmitBttn.textContent = 'changename'
+        commentSubmitBttn.textContent = 'reply'
 
         commentSubmitBttn.addEventListener('click', () => {
             try {
@@ -8982,7 +8983,7 @@ function copyUrl(id, parent) {
 
 function renderComment(comment) {
     const commentPara = document.createElement('p')
-    commentPara.addClass = 'comment-item'
+    commentPara.classList.add('comment-item')
     commentPara.textContent = comment.text
     return commentPara
 }
