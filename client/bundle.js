@@ -2662,7 +2662,7 @@ module.exports={
   "_args": [
     [
       "@giphy/js-components@4.3.1",
-      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
+      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
     ]
   ],
   "_from": "@giphy/js-components@4.3.1",
@@ -2687,7 +2687,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
   "_spec": "4.3.1",
-  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
+  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
   "author": {
     "name": "giannif"
   },
@@ -4054,7 +4054,7 @@ module.exports={
   "_args": [
     [
       "@giphy/js-fetch-api@2.4.0",
-      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
+      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
     ]
   ],
   "_from": "@giphy/js-fetch-api@2.4.0",
@@ -4080,7 +4080,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
   "_spec": "2.4.0",
-  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
+  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
@@ -8828,12 +8828,12 @@ function renderItem(data) {
 
     //make comment button 
     const commentButton = document.createElement('button')
-    commentButton.className = 'primary-button'
+    commentButton.className = 'primary-bttn'
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
     //show number of likes 
-    const showTotalLikes = document.createElement('span') 
+    const showTotalLikes = document.createElement('span')
     showTotalLikes.className = 'reaction-badge'
     showTotalLikes.textContent = data.reactions.happy
     likeButton.after(showTotalLikes)
@@ -8866,8 +8866,8 @@ function renderItem(data) {
     const commentPostCont = document.createElement('div')
     postContainer.append(commentPostCont)
     commentButton.addEventListener('click', () => addComment(commentPostCont, postContainer, data.id))
-    
-    
+
+
     likeButton.addEventListener('click', (event) => addReaction(event, 'happy', data.id))
     shockedButton.addEventListener('click', (event) => addReaction(event, 'unhappy', data.id))
     laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
@@ -8877,22 +8877,23 @@ function renderItem(data) {
     const numberOfComments = data.comments.length
     if (numberOfComments > 1) {
 
-    //button to display comments
-    const readCommentsBttn = document.createElement('button')
-    readCommentsBttn.textContent = `read comments ${numberOfComments}`
-    readCommentsBttn.addEventListener('click', () => {
-    commentCont.classList.toggle('display-comments')
-    })
+        //button to display comments
+        const readCommentsBttn = document.createElement('button')
+        readCommentsBttn.classList.add("read-comment-bttn")
+        readCommentsBttn.textContent = `read comments ${numberOfComments}`
+        readCommentsBttn.addEventListener('click', () => {
+            commentCont.classList.toggle('display-comments')
+        })
 
-    postContainer.append(readCommentsBttn)  
+        postContainer.append(readCommentsBttn)
 
     } else if (numberOfComments == 1) {
-    const readCommentsBttn = document.createElement('button')
-    readCommentsBttn.textContent = `read comment`
-    readCommentsBttn.addEventListener('click', () => {
-    commentCont.classList.toggle('display-comments')          
+        const readCommentsBttn = document.createElement('button')
+        readCommentsBttn.textContent = `read comment`
+        readCommentsBttn.addEventListener('click', () => {
+            commentCont.classList.toggle('display-comments')
         });
-    postContainer.append(readCommentsBttn) 
+        postContainer.append(readCommentsBttn)
     } else {
         const firstToComment = document.createElement('div')
         firstToComment.textContent = "Be the first to comment!"
@@ -8907,7 +8908,7 @@ function renderItem(data) {
         //append each comment
         commentCont.appendChild(renderComment(comment))
     }
-    
+
     postContainer.append(commentCont)
 
 
@@ -8939,7 +8940,7 @@ async function addComment(parent, topParent, id) {
         const commentSubmitBttn = document.createElement('button')
         commentSubmitBttn.textContent = 'submit comment'
 
-        commentSubmitBttn.addEventListener('click', () =>  {
+        commentSubmitBttn.addEventListener('click', () => {
             try {
                 const commentValue = textArea.value
                 if (commentValue.length < 1) throw new Error('comment too short')
@@ -8948,9 +8949,9 @@ async function addComment(parent, topParent, id) {
                 const data = { text: commentValue, date: date }
                 apiFuncs.patchData(url, data)
                 //apend comment for client too
-                topParent.getElementsByClassName('comment-cont')[0].append(renderComment({text: commentValue}))
+                topParent.getElementsByClassName('comment-cont')[0].append(renderComment({ text: commentValue }))
                 parent.getElementsByClassName('post-comment-cont')[0].remove()
-            } catch(err){
+            } catch (err) {
                 console.log(err)
                 throw err
             }
@@ -8983,7 +8984,7 @@ function renderComment(comment) {
     return commentPara
 }
 
-function renderError(error){
+function renderError(error) {
     const errorCont = document.createElement('div')
     errorCont.className = 'error'
     errorCont.textContent = `${error}`
@@ -9068,21 +9069,6 @@ function giphySearch() {
 giphySearch()
 
 
-// Nav button opens and closes on click
-document.querySelector('.icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "50%";
-})
-
-document.querySelector('.close-icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "0%";
-})
-
-// Dark Mode 
-
-document.querySelector('.dark-mode-button').addEventListener('click', () => {
-  document.body.classList.toggle('dark')
-})
-
 document.querySelector('#hot-sort').addEventListener("click", () => updateUrlQuery('hot'))
 document.querySelector('#new-sort').addEventListener("click", () => updateUrlQuery('new'))
 
@@ -9099,6 +9085,21 @@ document.querySelector('#popup-post').addEventListener("click", (event) => {
 }
 }
 runPage()
+
+// Nav button opens and closes on click
+document.querySelector('.icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "50%";
+})
+
+document.querySelector('.close-icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "0%";
+})
+
+// Dark Mode 
+
+document.querySelector('.dark-mode-button').addEventListener('click', () => {
+  document.body.classList.toggle('dark')
+})
 
 },{"./api":85,"./giphy":86,"./handlers":87}],89:[function(require,module,exports){
 const key = 'UzgKyDqtQeJd63SnS23S9ok7Kg604SUU'
