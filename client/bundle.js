@@ -8688,19 +8688,31 @@ function prepPost(gifId){
     giphSelected = true
     let data = {}
     submitNewPost.onclick = () => {
-        data.text = popupTextArea.value
-        data.date = new Date().toString()
-        data.giphy = gifId
-        console.log(data)
-        submit(data)
+        try {
+            if (popupTextArea.value.length < 1) throw new Error('add some text!')
+            data.text = popupTextArea.value
+            data.date = new Date().toString()
+            data.giphy = gifId
+            console.log(data)
+            submit(data)
+        } catch(err) {
+            alert('add some text!')
+            throw err
+        }
     }
 }
 submitNewPost.addEventListener("click", () => { 
     if (!giphSelected) {
-    let data = {}
-    data.text = popupTextArea.value
-    data.date = new Date().toString()
-    submit(data)
+        try {
+            if (popupTextArea.value.length < 1) throw new Error('add some text!')
+            let data = {}
+            data.text = popupTextArea.value
+            data.date = new Date().toString()
+            submit(data)
+        } catch(err) {
+            alert('add some text!')
+            throw err
+        }
     }
 })
 

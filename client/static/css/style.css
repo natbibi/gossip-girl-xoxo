@@ -26,6 +26,8 @@ body {
 
   background-color: var(--background-color);
   transition: var(--transition-delay);
+  margin: 0;
+  padding: 0;
 }
 
 body.dark {
@@ -42,12 +44,14 @@ body.dark {
 /* some essential element rules */
 button {
   min-height: 48px;
-  min-width: 48px
+  min-width: 48px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 input, textarea {
   min-height: 48px;
   border-radius: 5px;
-  border: solid 2px transparent;
+  border: solid 2px var(--accent-color);
   box-shadow: inset 0 0 1.5px #000000;
   transition: 0s;
   background: var(--background-color);
@@ -171,11 +175,10 @@ p {
 
 .blog-entry {
   border-radius: 10px;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
   background-color: var(--accent-color);
   transition: var(--transition-delay);
-  margin: 0.5rem;
+  margin: 2rem 0.5rem;
   border-top: solid 1px var(--accent-color-pink);
   border-bottom: solid 1px var(--accent-color);
   position:relative;
@@ -185,7 +188,8 @@ p {
   font-size: 0.8rem;
   opacity: 0.8;
   position: absolute;
-  right: 1rem
+  right: 1rem;
+  top: 0;
 }
 
 .blog-entry-main {
@@ -273,16 +277,31 @@ form {
   background: var(--button-color);
   border: none;
   background: var(--container-color);
-  margin-left: 2px;
-  font-size: 16px;
-  border-radius: 4px;
-  padding-top: 4px;
-  padding-bottom: 4px;
 }
 
 #submit-post:hover, #search-giphy:hover {
   transform: scale(1.03);
 } 
+.giphy-search-cont {
+  width: max-content;
+  height: 48px;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 0
+}
+#giphy-search{
+  border-radius: 50px 0 0 50px;
+  width: 100%;
+  height: 48px;
+  padding: 0 1rem
+}
+#search-giphy{
+  border-radius: 0 50px 50px 0;
+  height: 48px;
+  padding: 0;
+  margin:0;
+  font-size: 16px;
+}
 
 .read-comment-bttn {
   background-color: var(--accent-color);
@@ -353,7 +372,22 @@ footer {
   max-width: 480px;
   left: 50%;
   transform: translateX(-50%);
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup-buttons-cont {
+  width: 90%;
+  justify-self: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-left: 5%;
+}
+
+.giphy-carousel {
+  margin-top: 1rem;
 }
 
 footer textarea {
@@ -365,6 +399,7 @@ footer textarea {
   font-family: 'Dosis', sans-serif;
 }
 
+
 input {
   background-color: var(--container-color);
   color: var(--text-color);
@@ -374,6 +409,7 @@ input {
   visibility: hidden;
   width: 100%;
   height: 0;
+  text-align: center;
 }
 
 .display {
@@ -384,11 +420,6 @@ input {
 
 .rotate {
   transform: rotate(45deg);
-}
-
-#giphy-search {
-  font-size: 16px;
-  border-radius: 2px;
 }
 
 .top-button-section {
@@ -418,12 +449,14 @@ input {
   font-family: 'Dosis', sans-serif;
   resize: none;
   width: 100%;
+  height: 76px;
   margin-right: 1rem;
 }
 
 .post-comment-cont {
   display: flex;
   align-items: center;
+  margin: 1rem 0;
 }
 
 /* About and contact pages */
