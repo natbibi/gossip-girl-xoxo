@@ -43,8 +43,13 @@ describe('index.html', () => {
         })
 
         test('it has a dark/light mode switch button', () => {
-            let switchBtn = document.querySelector('#switch-mode');
+            let switchBtn = document.querySelector('.dark-mode-button');
             expect(switchBtn).toBeTruthy();
         })
+
+        // test('it has a nav bar', () => {
+        //     let navbar = document.querySelector('.sidenav');
+        //     expect(navbar).toBe
+        // })
     })
 })
