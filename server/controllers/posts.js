@@ -2,34 +2,36 @@ const express = require("express");
 const router = express.Router();
 
 const Post = require("../models/post");
-
+const helperFuncs = require("../helpers.js")
 
 router.get("/", (req, res) => {
   const postData = Post.all;
   res.send(postData);
 });
 
-const totalEngagement = (post) => {
-  const reactions = post.reactions
-  const comments = post.comments.length 
-  return reactions.happy + reactions.unhappy + reactions.funny + comments
-}
+//pagination for new
+router.get("/:from/:to", (req, res) => {
+  const from = req.params.from
+  const to = req.params.to
+  const postData = Post.all;
+  const sliceData = postData.slice(from, to)
+  res.send(sliceData);
+});
 
 router.get("/hot", (req, res) => {
   const postData = Post.all;
-  const sortedData = postData.sort(
-    function compare(a, b) {
-      if (totalEngagement(a) < totalEngagement(b)) {
-        return 1;
-      }
-      if (totalEngagement(a) > totalEngagement(b)) {
-        return -1;
-      }
-      // a must be equal to b
-      return 0;
-    }
-  )
+  const sortedData = postData.sort((a,b) => helperFuncs.compare(a, b))
   res.send(sortedData);
+});
+
+// pagination for hot
+router.get("/hot/:from/:to", (req, res) => {
+  const from = req.params.from
+  const to = req.params.to
+  const postData = Post.all;
+  const sortedData = postData.sort((a,b) => helperFuncs.compare(a, b))
+  const sliceData = sortedData.slice(from, to)
+  res.send(sliceData);
 });
 
 router.get("/:id", (req, res) => {
