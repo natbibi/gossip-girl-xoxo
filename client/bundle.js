@@ -8876,7 +8876,7 @@ function renderItem(data) {
         //button to display comments
         const readCommentsBttn = document.createElement('button')
         readCommentsBttn.classList.add("read-comment-bttn")
-        readCommentsBttn.textContent = `read comments ${numberOfComments}`
+        readCommentsBttn.textContent = `read comments: ${numberOfComments}`
         readCommentsBttn.addEventListener('click', () => {
             commentCont.classList.toggle('display-comments')
         })
@@ -8885,6 +8885,7 @@ function renderItem(data) {
 
     } else if (numberOfComments == 1) {
         const readCommentsBttn = document.createElement('button')
+        readCommentsBttn.classList.add("read-comment-bttn")
         readCommentsBttn.textContent = `read comment`
         readCommentsBttn.addEventListener('click', () => {
             commentCont.classList.toggle('display-comments')
@@ -8892,6 +8893,7 @@ function renderItem(data) {
         postContainer.append(readCommentsBttn)
     } else {
         const firstToComment = document.createElement('div')
+        firstToComment.classList.add('first-to-comment')
         firstToComment.textContent = "Be the first to comment!"
         postContainer.append(firstToComment)
     }
@@ -8930,11 +8932,13 @@ async function addComment(parent, topParent, id) {
         //new text area
         const textArea = document.createElement('textarea')
         textArea.className = 'post-comment-textarea'
+        textArea.placeholder = "Share your thoughts 💭"
         newComment.append(textArea)
 
         //comment button to post value from text area
         const commentSubmitBttn = document.createElement('button')
-        commentSubmitBttn.textContent = 'submit comment'
+        commentSubmitBttn.classList.add('primary-bttn')
+        commentSubmitBttn.textContent = 'reply'
 
         commentSubmitBttn.addEventListener('click', () => {
             try {
@@ -8975,7 +8979,7 @@ function copyUrl(id, parent) {
 
 function renderComment(comment) {
     const commentPara = document.createElement('p')
-    commentPara.addClass = 'comment-item'
+    commentPara.classList.add('comment-item')
     commentPara.textContent = comment.text
     return commentPara
 }
@@ -9098,7 +9102,7 @@ document.querySelector('.dark-mode-button').addEventListener('click', () => {
 })
 
 },{"./api":85,"./giphy":86,"./handlers":87}],89:[function(require,module,exports){
-const key = 'UzgKyDqtQeJd63SnS23S9ok7Kg604SUU'
+const key = 'HPtiYWEeMXDaI1bJuNQ9L9ypMfbpwnKh'
 
 module.exports = key
 },{}]},{},[88]);

@@ -12,7 +12,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Dosis&family=Indie+Flower&family=Just+Another+Hand&family=Nanum+Pen+Script&family=Reenie+Beanie&family=Schoolbell&display=swap"
         rel="stylesheet">
-    <title>Gossip Girls</title>
+    <link rel="icon" href="static/images/xoxo-transparent.png">
+    <title>Gossip Girl</title>
 </head>
 
 <body>
@@ -23,10 +24,12 @@
 
             <div class="sidenav" id="mySidenav">
                 <i class="fas fa-times close-icon"></i>
-                <p class="nav-info">Gossip Girls XOXO 2021<br>
-                    Contact Us </p>
+                <p class="nav-info"> <a href="./about.html">
+                About</a>
+                <br>
+                <a href="./about.html">Contact </a></p>
 
-                <p class="dark-mode-button">Darkside<i class="far fa-moon"></i></p>
+                <p class="dark-mode-button">Theme <i class="fas fa-moon moon-icon"></i></p>
 
             </div>
 
@@ -34,8 +37,8 @@
 
                 <i class="fa fa-bars icon"></i>
 
-                <a href="/">
-                    <img src="static/images/XOXO.png" id="logo" alt="xoxo logo" width="100" height="100">
+                <a href="https://gossip-girl-xoxo.netlify.app/">
+                    <img src="static/images/xoxo-transparent.png" id="logo" alt="xoxo logo" width="100" height="100">
                 </a>
             </div>
             <div class="top-button-section">
@@ -49,7 +52,6 @@
                 <div id="root"></div>
                 <button id="get-more-posts" class="secondary-bttn">brew more tea... ☕️</button>
             </div>
-            <button id="get-more-posts">get more posts</button>
         </section>
 
 
@@ -58,7 +60,7 @@
                 <textarea maxlength="300" rows="5" id="popup-textarea" placeholder="Spill the tea! ☕️"></textarea><br>
                 <input autocomplete="off" id="giphy-search" type="text" /><button id="search-giphy">giphy
                     search</button>
-                <button id="submit-post">submit</button>
+                <button id="submit-post">post</button>
                 <div id="giphy-root"></div>
             </div>
             <button id="popup-post">+</button>

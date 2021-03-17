@@ -15,12 +15,14 @@ html {
 }
 
 body {
-  --container-color: snow;
-  --background-color: white; 
-  --accent-color: rgb(170, 170, 170);
-  --text-color: black;
+  --container-color: #f9f3f3;
+  --background-color: white;
+  --accent-color: #dddddd;
+  --text-color: rgb(27, 26, 26);
   --transition-delay: 1.5s;
-  --button-color: deeppink;
+  --button-color: #f25287;
+  --accent-color-pink: #f7d9d9;
+  --button-shadow: 1px 1.5px rgb(182, 181, 181);
 
   background-color: var(--background-color);
   transition: var(--transition-delay);
@@ -32,6 +34,7 @@ body.dark {
   --accent-color: rgb(53, 53, 53);
   --text-color: rgb(230, 230, 230);
   --button-color: rgb(252, 84, 173);
+  --button-shadow: 1px 1.5px rgb(68, 66, 66);
 
   background-color: var(--background-color);
 }
@@ -60,6 +63,11 @@ body.dark {
   justify-content: space-between;
   position: relative;
   top: 0;
+}
+
+button {
+  min-height: 48px;
+  min-width: 48px
 }
 
 .post-section {
@@ -95,7 +103,7 @@ body.dark {
   bottom: 0;
   margin: 20px;
   color: black;
-} 
+}
 
 .moon-icon {
   color: black;
@@ -106,15 +114,16 @@ body.dark {
   transition: 1s;
 }
 
-.nav-info {
+.nav-info a {
   padding: 20px;
   color: black;
+  text-decoration: none;
 }
 
 .icon {
   margin: 8px;
   font-size: 1.4em;
-  color: var(--text-color)
+  color: var(--text-color);
 }
 
 .icon:hover {
@@ -139,8 +148,8 @@ p {
   background-color: var(--accent-color);
   transition: var(--transition-delay);
   margin: 0.5rem;
-  border-top: solid 1px hotpink;
-  border-bottom: solid 1px hotpink;
+  border-top: solid 1px var(--accent-color-pink);
+  border-bottom: solid 1px var(--accent-color);
 }
 
 .blog-entry-font-1 {
@@ -183,25 +192,28 @@ form {
   width: 3rem;
   transition: 0.3s;
   transition-delay: none;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 
 .primary-bttn { 
-  /* hot, new, comment */
+  /* hot, new, comment on post, share post */
   background: var(--button-color);
   color: var(--text-color);
-  border: none; 
+  border: none;
   border-radius: 4px;
   font-size: 16px;
   padding-top: 1px;
   padding-bottom: 2px;
+  margin: 3px;
+  margin-left: 2px;
   cursor: pointer;
   font-family: "Dosis", sans-serif;
+  box-shadow: var(--button-shadow);
 }
 
 .primary-bttn:hover {
   transform: scale(1.03);
-} 
+}
 
 .secondary-bttn {
   /* getmoreposts */
@@ -216,15 +228,42 @@ form {
   transform: scale(1.03);
   transition: var(--transition-delay);
   font-family: "Dosis", sans-serif;
+  box-shadow: var(--button-shadow);
 }
 
+#submit-post, #search-giphy {
+  color: var(--text-color);
+  font-family: "Dosis", sans-serif;
+  background: var(--button-color);
+  border: none;
+  background: var(--container-color);
+  margin-left: 2px;
+  font-size: 16px;
+  border-radius: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#submit-post:hover, #search-giphy:hover {
+  transform: scale(1.03);
+} 
+
 .read-comment-bttn {
-  background-color: var( --accent-color);
+  background-color: var(--accent-color);
   color: var(--text-color);
   border: none;
   padding: 6px;
   transition: var(--transition-delay);
   font-family: "Dosis", sans-serif;
+  font-size: 14px;
+}
+
+.comment-item {
+  /* the reply to post comment */
+  margin: 0px;
+  margin-bottom: 10px;
+  padding: 6px;
+  transition: var(--transition-delay);
 }
 
 .reaction-bttn {
@@ -238,6 +277,7 @@ form {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: var(--button-shadow);
 }
 
 .reaction-bttn:hover {
@@ -248,10 +288,16 @@ form {
   background-color: rgb(84, 201, 84);
 }
 
+.first-to-comment {
+  padding: 3px;
+  color: var(--text-color);
+  font-family: "Dosis", sans-serif;
+}
+
 .reaction-badge {
   position: relative;
   background-color: #8500ff;
-  border: solid 1px black;
+  border: solid 0.2px #4c0192;
   font-size: 14px;
   line-height: 0;
   font-weight: 500;
@@ -280,6 +326,7 @@ footer textarea {
   font-size: 16px;
   background-color: var(--container-color);
   color: var(--text-color);
+  font-family: 'Dosis', sans-serif;
 }
 
 input {
@@ -305,6 +352,7 @@ input {
 
 #giphy-search {
   font-size: 16px;
+  border-radius: 2px;
 }
 
 .top-button-section {
@@ -329,5 +377,28 @@ input {
 }
 
 .post-comment-textarea {
-  font-size: 16px;
+  font-size: 18px;
+  font-family: 'Dosis', sans-serif;
+  resize: none;
+  width: 270px;
+  background: var(--background-color);
+  transition: var(--transition-delay); 
+}
+
+.post-comment-cont {
+  display: flex;
+  align-items: center;
+}
+
+/* About and contact pages */
+
+#info-pages {
+  margin: 0.5rem;
+}
+
+.profiles {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
