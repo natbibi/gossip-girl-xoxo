@@ -18,6 +18,7 @@ function renderItem(data) {
     //append the parsed date
     const postDate = document.createElement('p')
     postDate.textContent = data.dateFrom
+    postDate.className = 'blog-entry-timestamp'
     postContainer.appendChild(postDate)
 
     //append the main text content for post
@@ -29,7 +30,7 @@ function renderItem(data) {
         const randNum = Math.floor(Math.random() * differentFontClass.length)
         return differentFontClass[randNum]
     }
-    postText.className = `${randomclass()}`
+    postText.className = `${randomclass()} blog-entry-main`
 
     postContainer.appendChild(postText)
 
