@@ -8978,17 +8978,36 @@ const apiFuncs = require('./api')
 const handlerFuncs = require('./handlers')
 
 // on page load fetch all posts data and render them as post DOM items check url to find query to sort by.
+let currentIndex = 0
 window.addEventListener("load", async () => {
   const sortOrder = window.location.search
-  console.log(sortOrder)
   if (sortOrder === '?hot') {
-    const data = await apiFuncs.getData('https://gossip-girl-api.herokuapp.com/posts/hot')
+    const data = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/hot/${currentIndex}/${currentIndex + 5}`)
     handlerFuncs.renderList(data)
   }
   else {
-    const data = await apiFuncs.getData('https://gossip-girl-api.herokuapp.com/posts')
+    const data = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${currentIndex}/${currentIndex + 5}`)
     handlerFuncs.renderList(data)
   }
+  currentIndex += 5
+  document.getElementById('get-more-posts').addEventListener("click", async () => {
+    try {
+      if (sortOrder === '?hot') {
+        const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/hot/${currentIndex}/${currentIndex + 5}`)
+        if (newData.length === 0) throw new Error('no more posts')
+        handlerFuncs.renderList(newData)
+      }
+      else {
+        const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${currentIndex}/${currentIndex + 5}`)
+        if (newData.length === 0) throw new Error('no more posts')
+        handlerFuncs.renderList(newData)
+      }
+      currentIndex += 5
+  } catch(err) {
+    alert(err)
+    throw err
+  }
+  })
 })
 
 function updateUrlQuery(query){
