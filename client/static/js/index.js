@@ -18,7 +18,7 @@ window.addEventListener("load", async () => {
   }
 })
 
-function updateUrlQuery(query){
+function updateUrlQuery(query) {
   window.location.search = query
 }
 
@@ -46,10 +46,18 @@ function giphySearch() {
 }
 giphySearch()
 
+
+// Nav button opens and closes on click
 document.querySelector('.icon').addEventListener('click', () => {
   document.querySelector(".sidenav").style.width = "50%";
 })
 
 document.querySelector('.close-icon').addEventListener('click', () => {
   document.querySelector(".sidenav").style.width = "0%";
+})
+
+// Dark Mode 
+
+document.querySelector('.dark-mode-button').addEventListener('click', () => {
+  document.body.classList.toggle('dark')
 })
