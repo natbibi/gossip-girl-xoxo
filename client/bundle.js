@@ -8767,7 +8767,7 @@ const apiFuncs = require('./api')
 
 function renderList(data) {
     for (item of data) {
-        document.getElementById('root').prepend(renderItem(item))
+        document.getElementById('root').append(renderItem(item))
     }
     //function to render data to the DOM
 }
@@ -8824,7 +8824,7 @@ function renderItem(data) {
 
     //make comment button 
     const commentButton = document.createElement('button')
-    commentButton.className = 'comment-bttn'
+    commentButton.className = 'primary-button'
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
@@ -8849,6 +8849,15 @@ function renderItem(data) {
     showTotallaughs.textContent = data.reactions.funny
     laughButton.after(showTotallaughs)
 
+    //append share button 
+    const shareButton = document.createElement('button')
+    shareButton.className = 'primary-bttn'
+    shareButton.textContent = 'share'
+    postContainer.append(shareButton)
+    //share click event
+    shareButton.addEventListener("click", () => {
+        copyUrl(data.id, postContainer)
+    })
 
     //create div to append comment input container - before comments
     const commentPostCont = document.createElement('div')
@@ -8955,6 +8964,16 @@ async function addComment(parent, topParent, id) {
     else {
         parent.getElementsByClassName('post-comment-cont')[0].remove()
     }
+}
+
+function copyUrl(id, parent) {
+    const copyText = document.createElement('textarea')
+    copyText.value = `https://gossip-girl-xoxo.netlify.app/post?${id}`
+    parent.append(copyText)
+    copyText.select();
+    document.execCommand("copy");
+    copyText.remove()
+    alert('link copied')
 }
 
 function renderComment(comment) {
