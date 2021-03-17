@@ -8828,7 +8828,6 @@ function renderItem(data) {
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
-
     //show number of likes 
     const showTotalLikes = document.createElement('span') 
     showTotalLikes.className = 'reaction-badge'
@@ -8895,9 +8894,6 @@ function renderItem(data) {
         firstToComment.textContent = "Be the first to comment!"
         postContainer.append(firstToComment)
     }
-
-
-    console.log(numberOfComments)
 
 
     //append the comments 
@@ -9034,12 +9030,12 @@ window.addEventListener("load", async () => {
     try {
       if (sortOrder === '?hot') {
         const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/hot/${currentIndex}/${currentIndex + 5}`)
-        if (newData.length === 0) throw new Error('no more posts')
+        if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
         handlerFuncs.renderList(newData)
       }
       else {
         const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${currentIndex}/${currentIndex + 5}`)
-        if (newData.length === 0) throw new Error('no more posts')
+        if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
         handlerFuncs.renderList(newData)
       }
       currentIndex += 5

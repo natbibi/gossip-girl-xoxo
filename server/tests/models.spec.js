@@ -36,24 +36,24 @@ describe('Post model', () => {
     };
     it('should make an instance of a post', () => {
         const post = new Post({ id: 10, ...testPost });
-        expect(post.id).toBe(10);
+        expect(post.id).toBeGreaterThanOrEqual(1);
         expect(typeof post.date).toBe('string');
         expect(post.text).toBe('This is a test post');
     });
     it('should create a new post', () => {
         const newPost = Post.create(testPost);
-        expect(newPost).toEqual({id:2, comments: [], giphy: null, reactions: {happy:0, funny:0, unhappy:0}, ...testPost})
+        expect(newPost).toBe({id:2, comments: [], dateFrom: "5 days ago", giphy: null, reactions: {happy:0, funny:0, unhappy:0}, ...testPost})
     })
     it('should create and append a new comment to a post', () => {
         const testComment = {
                 date: "Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)",     
-                text: 'This is a new test comment',
-                dateFrom: "5 days ago"
+                text: 'This is a new test comment'
+            
             }
             const testComment2 = {
                 date: "Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)",
-                text: 'This is a new test comment as well',
-                dateFrom: "5 days ago"
+                text: 'This is a new test comment as well'
+               
             }       
         const postToUpdate = Post.findById(1)
         postToUpdate.addComment(testComment)
