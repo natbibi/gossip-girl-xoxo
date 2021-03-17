@@ -66,11 +66,6 @@ function renderItem(data) {
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
-    //make share button
-    const shareButton = document.createElement('button')
-    shareButton.textContent = "📣"
-    postContainer.append(shareButton)
-
     //show number of likes 
     const showTotalLikes = document.createElement('span') 
     showTotalLikes.className = 'reaction-badge'
