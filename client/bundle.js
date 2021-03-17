@@ -8867,15 +8867,29 @@ function renderItem(data) {
 
     //number of comments on button
     const numberOfComments = data.comments.length
+    if (numberOfComments > 1) {
 
     //button to display comments
     const readCommentsBttn = document.createElement('button')
     readCommentsBttn.textContent = `read comments ${numberOfComments}`
     readCommentsBttn.addEventListener('click', () => {
-        commentCont.classList.toggle('display-comments')
+    commentCont.classList.toggle('display-comments')
     })
 
     postContainer.append(readCommentsBttn)  
+
+    } else if (numberOfComments == 1) {
+    const readCommentsBttn = document.createElement('button')
+    readCommentsBttn.textContent = `read comment`
+    readCommentsBttn.addEventListener('click', () => {
+    commentCont.classList.toggle('display-comments')          
+        });
+    postContainer.append(readCommentsBttn) 
+    } else {
+        const firstToComment = document.createElement('div')
+        firstToComment.textContent = "Be the first to comment!"
+        postContainer.append(firstToComment)
+    }
 
 
     console.log(numberOfComments)
