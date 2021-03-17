@@ -238,7 +238,7 @@ input {
   height: 3rem;
   width: 3rem;
   transition: 0.3s;
-  background-color: deeppink;
+  background-color: transparent;
   font-family: Arial, Helvetica, sans-serif;
 }
 

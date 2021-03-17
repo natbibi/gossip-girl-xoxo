@@ -5,7 +5,7 @@ const apiFuncs = require('./api')
 
 function renderList(data) {
     for (item of data) {
-        document.getElementById('root').append(renderItem(item))
+        document.getElementById('root').prepend(renderItem(item))
     }
     //function to render data to the DOM
 }
@@ -202,9 +202,17 @@ function renderComment(comment) {
     return commentPara
 }
 
+function renderError(error){
+    const errorCont = document.createElement('div')
+    errorCont.className = 'error'
+    errorCont.textContent = `${error}`
+    document.getElementById('root').prepend(errorCont)
+}
+
 
 
 module.exports = {
     renderList,
     renderItem,
+    renderError
 }
