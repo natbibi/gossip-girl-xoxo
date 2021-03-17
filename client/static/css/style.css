@@ -23,7 +23,7 @@ body {
   --background-color: white; 
   --accent-color: rgb(170, 170, 170);
   --text-color: black;
-  --transition-delay: 2s;
+  --transition-delay: 1s;
 
   background-color: var(--background-color);
   transition: var(--transition-delay);
@@ -249,11 +249,13 @@ input {
 
 #popup-post {
   border-radius: 50%;
+  background: none;
   border: none;
   font-size: 1.8em;
   height: 3rem;
   width: 3rem;
   transition: 0.3s;
+  transition-delay: none;
   font-family: 'Times New Roman', Times, serif;
 }
 
