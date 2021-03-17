@@ -2659,35 +2659,38 @@ exports.onGifHover = firePingback('HOVER');
 
 },{"@giphy/js-analytics":11,"@giphy/js-util":54}],33:[function(require,module,exports){
 module.exports={
-  "_from": "@giphy/js-components@^4.3.1",
+  "_args": [
+    [
+      "@giphy/js-components@4.3.1",
+      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
+    ]
+  ],
+  "_from": "@giphy/js-components@4.3.1",
   "_id": "@giphy/js-components@4.3.1",
   "_inBundle": false,
   "_integrity": "sha512-DByKMgivmuJFrt5zUNnn5r4dtfqhjAj9H76/r15rEXJdtSXz+mdbp89yt0DTQnPQJMP93X1owaFu2PBA9UX/Cg==",
   "_location": "/@giphy/js-components",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "@giphy/js-components@^4.3.1",
+    "raw": "@giphy/js-components@4.3.1",
     "name": "@giphy/js-components",
     "escapedName": "@giphy%2fjs-components",
     "scope": "@giphy",
-    "rawSpec": "^4.3.1",
+    "rawSpec": "4.3.1",
     "saveSpec": null,
-    "fetchSpec": "^4.3.1"
+    "fetchSpec": "4.3.1"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
-  "_shasum": "93aaf3aa2d85c2cfc21f6a6d1d06df6a026f2040",
-  "_spec": "@giphy/js-components@^4.3.1",
-  "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
+  "_spec": "4.3.1",
+  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
   "author": {
     "name": "giannif"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "@giphy/js-analytics": "^3.0.0",
     "@giphy/js-brand": "^2.0.2",
@@ -2700,7 +2703,6 @@ module.exports={
     "preact": "10.4.8",
     "throttle-debounce": "^2.3.0"
   },
-  "deprecated": false,
   "description": "A lightweight set of components, focused on easy-of-use and performance.",
   "devDependencies": {
     "@types/bricks.js": "^1.8.1",
@@ -4049,39 +4051,41 @@ module.exports = {
 
 },{"./formats":42}],47:[function(require,module,exports){
 module.exports={
-  "_from": "@giphy/js-fetch-api@^2.4.0",
+  "_args": [
+    [
+      "@giphy/js-fetch-api@2.4.0",
+      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
+    ]
+  ],
+  "_from": "@giphy/js-fetch-api@2.4.0",
   "_id": "@giphy/js-fetch-api@2.4.0",
   "_inBundle": false,
   "_integrity": "sha512-xiMHnv81XZjgut4yrkHB5QHDWGNhVHoyMDb3kQBy5H0NruwtQ+aM5BE9xbP+XQlxt3eRnPRJcLy5ORk9+K0fIQ==",
   "_location": "/@giphy/js-fetch-api",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "@giphy/js-fetch-api@^2.4.0",
+    "raw": "@giphy/js-fetch-api@2.4.0",
     "name": "@giphy/js-fetch-api",
     "escapedName": "@giphy%2fjs-fetch-api",
     "scope": "@giphy",
-    "rawSpec": "^2.4.0",
+    "rawSpec": "2.4.0",
     "saveSpec": null,
-    "fetchSpec": "^2.4.0"
+    "fetchSpec": "2.4.0"
   },
   "_requiredBy": [
-    "#USER",
     "/",
     "/@giphy/js-components"
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
-  "_shasum": "e96c7a2599b720d3e40ea409d8e4c4a692aa4611",
-  "_spec": "@giphy/js-fetch-api@^2.4.0",
-  "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
-  "bundleDependencies": false,
+  "_spec": "2.4.0",
+  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
     "qs": "^6.9.4"
   },
-  "deprecated": false,
   "description": "Javascript API to fetch gifs and stickers from the GIPHY API.",
   "devDependencies": {
     "@types/qs": "^6.9.4",
@@ -8824,12 +8828,12 @@ function renderItem(data) {
 
     //make comment button 
     const commentButton = document.createElement('button')
-    commentButton.className = 'primary-button'
+    commentButton.className = 'primary-bttn'
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
     //show number of likes 
-    const showTotalLikes = document.createElement('span') 
+    const showTotalLikes = document.createElement('span')
     showTotalLikes.className = 'reaction-badge'
     showTotalLikes.textContent = data.reactions.happy
     likeButton.after(showTotalLikes)
@@ -8862,8 +8866,8 @@ function renderItem(data) {
     const commentPostCont = document.createElement('div')
     postContainer.append(commentPostCont)
     commentButton.addEventListener('click', () => addComment(commentPostCont, postContainer, data.id))
-    
-    
+
+
     likeButton.addEventListener('click', (event) => addReaction(event, 'happy', data.id))
     shockedButton.addEventListener('click', (event) => addReaction(event, 'unhappy', data.id))
     laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
@@ -8873,22 +8877,23 @@ function renderItem(data) {
     const numberOfComments = data.comments.length
     if (numberOfComments > 1) {
 
-    //button to display comments
-    const readCommentsBttn = document.createElement('button')
-    readCommentsBttn.textContent = `read comments ${numberOfComments}`
-    readCommentsBttn.addEventListener('click', () => {
-    commentCont.classList.toggle('display-comments')
-    })
+        //button to display comments
+        const readCommentsBttn = document.createElement('button')
+        readCommentsBttn.classList.add("read-comment-bttn")
+        readCommentsBttn.textContent = `read comments ${numberOfComments}`
+        readCommentsBttn.addEventListener('click', () => {
+            commentCont.classList.toggle('display-comments')
+        })
 
-    postContainer.append(readCommentsBttn)  
+        postContainer.append(readCommentsBttn)
 
     } else if (numberOfComments == 1) {
-    const readCommentsBttn = document.createElement('button')
-    readCommentsBttn.textContent = `read comment`
-    readCommentsBttn.addEventListener('click', () => {
-    commentCont.classList.toggle('display-comments')          
+        const readCommentsBttn = document.createElement('button')
+        readCommentsBttn.textContent = `read comment`
+        readCommentsBttn.addEventListener('click', () => {
+            commentCont.classList.toggle('display-comments')
         });
-    postContainer.append(readCommentsBttn) 
+        postContainer.append(readCommentsBttn)
     } else {
         const firstToComment = document.createElement('div')
         firstToComment.textContent = "Be the first to comment!"
@@ -8903,7 +8908,7 @@ function renderItem(data) {
         //append each comment
         commentCont.appendChild(renderComment(comment))
     }
-    
+
     postContainer.append(commentCont)
 
 
@@ -8935,7 +8940,7 @@ async function addComment(parent, topParent, id) {
         const commentSubmitBttn = document.createElement('button')
         commentSubmitBttn.textContent = 'submit comment'
 
-        commentSubmitBttn.addEventListener('click', () =>  {
+        commentSubmitBttn.addEventListener('click', () => {
             try {
                 const commentValue = textArea.value
                 if (commentValue.length < 1) throw new Error('comment too short')
@@ -8944,9 +8949,9 @@ async function addComment(parent, topParent, id) {
                 const data = { text: commentValue, date: date }
                 apiFuncs.patchData(url, data)
                 //apend comment for client too
-                topParent.getElementsByClassName('comment-cont')[0].append(renderComment({text: commentValue}))
+                topParent.getElementsByClassName('comment-cont')[0].append(renderComment({ text: commentValue }))
                 parent.getElementsByClassName('post-comment-cont')[0].remove()
-            } catch(err){
+            } catch (err) {
                 console.log(err)
                 throw err
             }
@@ -8979,7 +8984,7 @@ function renderComment(comment) {
     return commentPara
 }
 
-function renderError(error){
+function renderError(error) {
     const errorCont = document.createElement('div')
     errorCont.className = 'error'
     errorCont.textContent = `${error}`
