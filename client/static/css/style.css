@@ -9,8 +9,27 @@ font-family: 'Schoolbell', cursive; */
   box-sizing: border-box;
 }
 
-html {
+html, button {
   font-family: "Dosis", sans-serif;
+}
+
+body {
+  --container-color: snow;
+  --background-color: white; 
+  --accent-color: rgb(170, 170, 170);
+  --text-color: black;
+  --transition-delay: 1s;
+
+  background-color: var(--background-color);
+}
+
+body.dark {
+  --container-color: rgb(0, 0, 0);
+  --background-color: rgb(0, 0, 0);
+  --accent-color: rgb(53, 53, 53);
+  --text-color: white;
+
+  background-color: var(--background-color);
 }
 
 .giphy-gif {
@@ -26,8 +45,8 @@ html {
   max-width: 480px;
   width: 100%;
   margin: 0 auto;
-  background-color: snow;
-  height: 500px;
+  background-color: var(--container-color);
+  transition: var(--transition-delay);
   border-radius: 5px;
 }
 
@@ -35,7 +54,6 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
   position: relative;
   top: 0;
 }
@@ -68,13 +86,22 @@ html {
   cursor: pointer;
 }
 
+.dark-mode-button {
+  position: absolute;
+  bottom: 0;
+  margin: 20px;
+  color: black;
+} 
+
 .nav-info {
   padding: 20px;
+  color: black;
 }
 
 .icon {
   margin: 8px;
   font-size: 1.4em;
+  color: var(--text-color)
 }
 
 .icon:hover {
@@ -89,16 +116,17 @@ html {
 }
 
 p {
-  color: black;
+  color: var(--text-color);
 }
 
 .blog-entry {
-  border: 2px solid rgb(170, 170, 170);
   border-radius: 10px;
   padding-left: 1rem;
   padding-right: 1rem;
-  background-color: rgb(170, 170, 170);
+  background-color: var(--accent-color);
   margin: 0.5rem;
+  border-top: solid 1px hotpink;
+  border-bottom: solid 1px hotpink;
 }
 
 .blog-entry-font-1 {
@@ -132,7 +160,7 @@ form {
 
 .comment-bttn {
   background-color: deeppink;
-  border: 4px solid deeppink;
+  border: none;
   border-radius: 4px;
 }
 
@@ -182,6 +210,13 @@ footer textarea {
   resize: none;
   width: 90%;
   font-size: 16px;
+  background-color: var(--container-color);
+  color: var(--text-color);
+}
+
+input {
+  background-color: var(--container-color);
+  color: var(--text-color);
 }
 
 .popup-postarea {
@@ -199,10 +234,12 @@ footer textarea {
 #popup-post {
   border-radius: 50%;
   border: none;
-  font-size: 1.8em;
+  font-size: 3em;
   height: 3rem;
   width: 3rem;
   transition: 0.3s;
+  background-color: transparent;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .rotate {
