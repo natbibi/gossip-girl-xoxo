@@ -5,7 +5,7 @@ const apiFuncs = require('./api')
 
 function renderList(data) {
     for (item of data) {
-        document.getElementById('root').prepend(renderItem(item))
+        document.getElementById('root').append(renderItem(item))
     }
     //function to render data to the DOM
 }
@@ -99,7 +99,36 @@ function renderItem(data) {
     laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
 
 
-    
+    //number of comments on button
+    const numberOfComments = data.comments.length
+    if (numberOfComments > 1) {
+
+    //button to display comments
+    const readCommentsBttn = document.createElement('button')
+    readCommentsBttn.textContent = `read comments ${numberOfComments}`
+    readCommentsBttn.addEventListener('click', () => {
+    commentCont.classList.toggle('display-comments')
+    })
+
+    postContainer.append(readCommentsBttn)  
+
+    } else if (numberOfComments == 1) {
+    const readCommentsBttn = document.createElement('button')
+    readCommentsBttn.textContent = `read comment`
+    readCommentsBttn.addEventListener('click', () => {
+    commentCont.classList.toggle('display-comments')          
+        });
+    postContainer.append(readCommentsBttn) 
+    } else {
+        const firstToComment = document.createElement('div')
+        firstToComment.textContent = "Be the first to comment!"
+        postContainer.append(firstToComment)
+    }
+
+
+    console.log(numberOfComments)
+
+
     //append the comments 
     const commentCont = document.createElement('div')
     commentCont.className = 'comment-cont'
@@ -109,6 +138,7 @@ function renderItem(data) {
     }
     
     postContainer.append(commentCont)
+
 
     return postContainer
 

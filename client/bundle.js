@@ -8681,7 +8681,8 @@ function removeAllBorders(){
 //async submit function in order to post then refresh on mobile browsers
 async function submit(data) {
     await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
-    location.reload()
+    window.location.search = ''
+    window.location.reload()
   }
 
 const popupTextArea = document.querySelector('#popup-textarea')
@@ -8770,7 +8771,7 @@ const apiFuncs = require('./api')
 
 function renderList(data) {
     for (item of data) {
-        document.getElementById('root').prepend(renderItem(item))
+        document.getElementById('root').append(renderItem(item))
     }
     //function to render data to the DOM
 }
@@ -8864,7 +8865,36 @@ function renderItem(data) {
     laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
 
 
-    
+    //number of comments on button
+    const numberOfComments = data.comments.length
+    if (numberOfComments > 1) {
+
+    //button to display comments
+    const readCommentsBttn = document.createElement('button')
+    readCommentsBttn.textContent = `read comments ${numberOfComments}`
+    readCommentsBttn.addEventListener('click', () => {
+    commentCont.classList.toggle('display-comments')
+    })
+
+    postContainer.append(readCommentsBttn)  
+
+    } else if (numberOfComments == 1) {
+    const readCommentsBttn = document.createElement('button')
+    readCommentsBttn.textContent = `read comment`
+    readCommentsBttn.addEventListener('click', () => {
+    commentCont.classList.toggle('display-comments')          
+        });
+    postContainer.append(readCommentsBttn) 
+    } else {
+        const firstToComment = document.createElement('div')
+        firstToComment.textContent = "Be the first to comment!"
+        postContainer.append(firstToComment)
+    }
+
+
+    console.log(numberOfComments)
+
+
     //append the comments 
     const commentCont = document.createElement('div')
     commentCont.className = 'comment-cont'
@@ -8874,6 +8904,7 @@ function renderItem(data) {
     }
     
     postContainer.append(commentCont)
+
 
     return postContainer
 
@@ -8950,11 +8981,28 @@ const renderGif = giphy.vanillaJSGif
 const apiFuncs = require('./api')
 const handlerFuncs = require('./handlers')
 
-// on page load fetch all posts data and render them as post DOM items.
+// on page load fetch all posts data and render them as post DOM items check url to find query to sort by.
 window.addEventListener("load", async () => {
-  const data = await apiFuncs.getData('https://gossip-girl-api.herokuapp.com/posts')
-  handlerFuncs.renderList(data)
+  const sortOrder = window.location.search
+  console.log(sortOrder)
+  if (sortOrder === '?hot') {
+    const data = await apiFuncs.getData('https://gossip-girl-api.herokuapp.com/posts/hot')
+    handlerFuncs.renderList(data)
+  }
+  else {
+    const data = await apiFuncs.getData('https://gossip-girl-api.herokuapp.com/posts')
+    handlerFuncs.renderList(data)
+  }
 })
+
+function updateUrlQuery(query){
+  window.location.search = query
+}
+
+document.querySelector('#hot-sort').addEventListener("click", () => updateUrlQuery('hot'))
+document.querySelector('#new-sort').addEventListener("click", () => updateUrlQuery('new'))
+
+
 
 document.querySelector('#popup-post').addEventListener("click", (event) => {
   event.currentTarget.classList.toggle('rotate')
@@ -8963,21 +9011,6 @@ document.querySelector('#popup-post').addEventListener("click", (event) => {
   popupPostArea.classList.toggle('display')
   popupTextArea.focus()
 })
-
-//async submit function in order to post then refresh on mobile browsers
-// async function submit(data) {
-// await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
-// location.reload()
-// }
-// document.querySelector('#submit-post').addEventListener("click", () => {
-//   const popupTextArea = document.querySelector('#popup-textarea')
-//   const textToPost = popupTextArea.value
-//   const date = new Date().toString()
-//   const data = { text: textToPost, date: date, giphy: giphy.makeCarousel() }
-//   console.log(data)
-//   submit(data)
-// })
-
 
 function giphySearch() {
   const root = document.querySelector('#giphy-root')
