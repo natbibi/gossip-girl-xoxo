@@ -22,7 +22,8 @@ function removeAllBorders(){
 //async submit function in order to post then refresh on mobile browsers
 async function submit(data) {
     await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
-    location.reload()
+    window.location.search = ''
+    window.location.reload()
   }
 
 const popupTextArea = document.querySelector('#popup-textarea')
