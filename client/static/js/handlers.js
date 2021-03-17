@@ -99,7 +99,22 @@ function renderItem(data) {
     laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
 
 
-    
+    //number of comments on button
+    const numberOfComments = data.comments.length
+
+    //button to display comments
+    const readCommentsBttn = document.createElement('button')
+    readCommentsBttn.textContent = `read comments ${numberOfComments}`
+    readCommentsBttn.addEventListener('click', () => {
+        commentCont.classList.toggle('display-comments')
+    })
+
+    postContainer.append(readCommentsBttn)  
+
+
+    console.log(numberOfComments)
+
+
     //append the comments 
     const commentCont = document.createElement('div')
     commentCont.className = 'comment-cont'
@@ -109,6 +124,7 @@ function renderItem(data) {
     }
     
     postContainer.append(commentCont)
+
 
     return postContainer
 
