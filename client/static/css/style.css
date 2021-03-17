@@ -16,7 +16,7 @@ html {
 
 body {
   --container-color: snow;
-  --background-color: white; 
+  --background-color: white;
   --accent-color: rgb(170, 170, 170);
   --text-color: black;
   --transition-delay: 1.5s;
@@ -95,7 +95,7 @@ body.dark {
   bottom: 0;
   margin: 20px;
   color: black;
-} 
+}
 
 .moon-icon {
   color: black;
@@ -106,15 +106,16 @@ body.dark {
   transition: 1s;
 }
 
-.nav-info {
+.nav-info a {
   padding: 20px;
   color: black;
+  text-decoration: none;
 }
 
 .icon {
   margin: 8px;
   font-size: 1.4em;
-  color: var(--text-color)
+  color: var(--text-color);
 }
 
 .icon:hover {
@@ -183,14 +184,14 @@ form {
   width: 3rem;
   transition: 0.3s;
   transition-delay: none;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
 }
 
-.primary-bttn { 
+.primary-bttn {
   /* hot, new, comment */
   background: var(--button-color);
   color: var(--text-color);
-  border: none; 
+  border: none;
   border-radius: 4px;
   font-size: 16px;
   padding-top: 1px;
@@ -203,7 +204,7 @@ form {
 
 .primary-bttn:hover {
   transform: scale(1.03);
-} 
+}
 
 .secondary-bttn {
   /* getmoreposts */
@@ -221,7 +222,7 @@ form {
 }
 
 .read-comment-bttn {
-  background-color: var( --accent-color);
+  background-color: var(--accent-color);
   color: var(--text-color);
   border: none;
   padding: 6px;
@@ -343,4 +344,17 @@ input {
 .post-comment-cont {
   display: flex;
   align-items: center;
+}
+
+/* About and contact pages */
+
+#info-pages {
+  margin: 0.5rem;
+}
+
+.profiles {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
