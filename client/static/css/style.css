@@ -195,6 +195,8 @@ form {
   font-size: 16px;
   padding-top: 1px;
   padding-bottom: 2px;
+  margin: 3px;
+  margin-left: 2px;
   cursor: pointer;
   font-family: "Dosis", sans-serif;
 }
@@ -246,6 +248,12 @@ form {
 
 .dark .reaction-bttn:hover {
   background-color: rgb(84, 201, 84);
+}
+
+.first-to-comment {
+  padding: 3px;
+  color: var(--text-color);
+  font-family: "Dosis", sans-serif;
 }
 
 .reaction-badge {
@@ -330,4 +338,9 @@ input {
 
 .post-comment-textarea {
   font-size: 16px;
+}
+
+.post-comment-cont {
+  display: flex;
+  align-items: center;
 }
