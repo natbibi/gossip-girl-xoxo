@@ -7,9 +7,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest",
-    "dev": "concurrently \"watchify ./static/js/index.js -o bundle.js\" \"py -m http.server\""
-
+    "test": "jest --watchAll",
+    "dev": "concurrently \"watchify ./static/js/index.js -o bundle.js\" \"python -m http.server\""
   },
   "repository": {
     "type": "git",
@@ -24,6 +23,7 @@
   "devDependencies": {
     "concurrently": "^6.0.0",
     "jest": "^26.6.3",
+    "jest-fetch-mock": "^3.0.3",
     "watchify": "^4.0.0"
   },
   "dependencies": {
