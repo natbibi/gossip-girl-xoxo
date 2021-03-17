@@ -2659,38 +2659,35 @@ exports.onGifHover = firePingback('HOVER');
 
 },{"@giphy/js-analytics":11,"@giphy/js-util":54}],33:[function(require,module,exports){
 module.exports={
-  "_args": [
-    [
-      "@giphy/js-components@4.3.1",
-      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
-    ]
-  ],
-  "_from": "@giphy/js-components@4.3.1",
+  "_from": "@giphy/js-components@^4.3.1",
   "_id": "@giphy/js-components@4.3.1",
   "_inBundle": false,
   "_integrity": "sha512-DByKMgivmuJFrt5zUNnn5r4dtfqhjAj9H76/r15rEXJdtSXz+mdbp89yt0DTQnPQJMP93X1owaFu2PBA9UX/Cg==",
   "_location": "/@giphy/js-components",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "@giphy/js-components@4.3.1",
+    "raw": "@giphy/js-components@^4.3.1",
     "name": "@giphy/js-components",
     "escapedName": "@giphy%2fjs-components",
     "scope": "@giphy",
-    "rawSpec": "4.3.1",
+    "rawSpec": "^4.3.1",
     "saveSpec": null,
-    "fetchSpec": "4.3.1"
+    "fetchSpec": "^4.3.1"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
-  "_spec": "4.3.1",
-  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
+  "_shasum": "93aaf3aa2d85c2cfc21f6a6d1d06df6a026f2040",
+  "_spec": "@giphy/js-components@^4.3.1",
+  "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
   "author": {
     "name": "giannif"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "@giphy/js-analytics": "^3.0.0",
     "@giphy/js-brand": "^2.0.2",
@@ -2703,6 +2700,7 @@ module.exports={
     "preact": "10.4.8",
     "throttle-debounce": "^2.3.0"
   },
+  "deprecated": false,
   "description": "A lightweight set of components, focused on easy-of-use and performance.",
   "devDependencies": {
     "@types/bricks.js": "^1.8.1",
@@ -4051,41 +4049,39 @@ module.exports = {
 
 },{"./formats":42}],47:[function(require,module,exports){
 module.exports={
-  "_args": [
-    [
-      "@giphy/js-fetch-api@2.4.0",
-      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
-    ]
-  ],
-  "_from": "@giphy/js-fetch-api@2.4.0",
+  "_from": "@giphy/js-fetch-api@^2.4.0",
   "_id": "@giphy/js-fetch-api@2.4.0",
   "_inBundle": false,
   "_integrity": "sha512-xiMHnv81XZjgut4yrkHB5QHDWGNhVHoyMDb3kQBy5H0NruwtQ+aM5BE9xbP+XQlxt3eRnPRJcLy5ORk9+K0fIQ==",
   "_location": "/@giphy/js-fetch-api",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "@giphy/js-fetch-api@2.4.0",
+    "raw": "@giphy/js-fetch-api@^2.4.0",
     "name": "@giphy/js-fetch-api",
     "escapedName": "@giphy%2fjs-fetch-api",
     "scope": "@giphy",
-    "rawSpec": "2.4.0",
+    "rawSpec": "^2.4.0",
     "saveSpec": null,
-    "fetchSpec": "2.4.0"
+    "fetchSpec": "^2.4.0"
   },
   "_requiredBy": [
+    "#USER",
     "/",
     "/@giphy/js-components"
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
-  "_spec": "2.4.0",
-  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
+  "_shasum": "e96c7a2599b720d3e40ea409d8e4c4a692aa4611",
+  "_spec": "@giphy/js-fetch-api@^2.4.0",
+  "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
+  "bundleDependencies": false,
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
     "qs": "^6.9.4"
   },
+  "deprecated": false,
   "description": "Javascript API to fetch gifs and stickers from the GIPHY API.",
   "devDependencies": {
     "@types/qs": "^6.9.4",
@@ -8692,19 +8688,31 @@ function prepPost(gifId){
     giphSelected = true
     let data = {}
     submitNewPost.onclick = () => {
-        data.text = popupTextArea.value
-        data.date = new Date().toString()
-        data.giphy = gifId
-        console.log(data)
-        submit(data)
+        try {
+            if (popupTextArea.value.length < 1) throw new Error('add some text!')
+            data.text = popupTextArea.value
+            data.date = new Date().toString()
+            data.giphy = gifId
+            console.log(data)
+            submit(data)
+        } catch(err) {
+            alert('add some text!')
+            throw err
+        }
     }
 }
 submitNewPost.addEventListener("click", () => { 
     if (!giphSelected) {
-    let data = {}
-    data.text = popupTextArea.value
-    data.date = new Date().toString()
-    submit(data)
+        try {
+            if (popupTextArea.value.length < 1) throw new Error('add some text!')
+            let data = {}
+            data.text = popupTextArea.value
+            data.date = new Date().toString()
+            submit(data)
+        } catch(err) {
+            alert('add some text!')
+            throw err
+        }
     }
 })
 
@@ -8784,6 +8792,7 @@ function renderItem(data) {
     //append the parsed date
     const postDate = document.createElement('p')
     postDate.textContent = data.dateFrom
+    postDate.className = 'blog-entry-timestamp'
     postContainer.appendChild(postDate)
 
     //append the main text content for post
@@ -8795,7 +8804,7 @@ function renderItem(data) {
         const randNum = Math.floor(Math.random() * differentFontClass.length)
         return differentFontClass[randNum]
     }
-    postText.className = `${randomclass()}`
+    postText.className = `${randomclass()} blog-entry-main`
 
     postContainer.appendChild(postText)
 
@@ -9039,17 +9048,17 @@ window.addEventListener("load", async () => {
     try {
       if (sortOrder === '?hot') {
         const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/hot/${currentIndex}/${currentIndex + 5}`)
-        if (newData.length === 0) throw new Error('no more posts')
+        if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
         handlerFuncs.renderList(newData)
       }
       else {
         const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${currentIndex}/${currentIndex + 5}`)
-        if (newData.length === 0) throw new Error('no more posts')
+        if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
         handlerFuncs.renderList(newData)
       }
       currentIndex += 5
   } catch(err) {
-    alert(err)
+    alert('You\'re up to date 🎉 ')
     throw err
   }
   })
@@ -9073,21 +9082,6 @@ function giphySearch() {
 giphySearch()
 
 
-// Nav button opens and closes on click
-document.querySelector('.icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "50%";
-})
-
-document.querySelector('.close-icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "0%";
-})
-
-// Dark Mode 
-
-document.querySelector('.dark-mode-button').addEventListener('click', () => {
-  document.body.classList.toggle('dark')
-})
-
 document.querySelector('#hot-sort').addEventListener("click", () => updateUrlQuery('hot'))
 document.querySelector('#new-sort').addEventListener("click", () => updateUrlQuery('new'))
 
@@ -9105,8 +9099,23 @@ document.querySelector('#popup-post').addEventListener("click", (event) => {
 }
 runPage()
 
+// Nav button opens and closes on click
+document.querySelector('.icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "50%";
+})
+
+document.querySelector('.close-icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "0%";
+})
+
+// Dark Mode 
+
+document.querySelector('.dark-mode-button').addEventListener('click', () => {
+  document.body.classList.toggle('dark')
+})
+
 },{"./api":85,"./giphy":86,"./handlers":87}],89:[function(require,module,exports){
-const key = 'UzgKyDqtQeJd63SnS23S9ok7Kg604SUU'
+const key = 'HPtiYWEeMXDaI1bJuNQ9L9ypMfbpwnKh'
 
 module.exports = key
 },{}]},{},[88]);
