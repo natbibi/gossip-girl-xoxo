@@ -26,11 +26,13 @@ body {
 
   background-color: var(--background-color);
   transition: var(--transition-delay);
+  margin: 0;
+  padding: 0;
 }
 
 body.dark {
-  --container-color: rgb(0, 0, 0);
-  --background-color: rgb(0, 0, 0);
+  --container-color: rgb(20, 19, 20);
+  --background-color: rgb(28, 26, 29);
   --accent-color: rgb(53, 53, 53);
   --text-color: rgb(230, 230, 230);
   --button-color: rgb(252, 84, 173);
@@ -39,11 +41,43 @@ body.dark {
   background-color: var(--background-color);
 }
 
+/* some essential element rules */
+button {
+  min-height: 48px;
+  min-width: 48px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input, textarea {
+  min-height: 48px;
+  border-radius: 5px;
+  border: solid 2px var(--accent-color);
+  box-shadow: inset 0 0 1.5px #000000;
+  transition: 0s;
+  background: var(--background-color);
+  padding: 0.5rem;
+  font-size: 16px;
+}
+input:focus, textarea:focus {
+  outline: none;
+  border-color: limegreen
+}
+
 .giphy-gif {
   border: solid 4px transparent;
   margin: 0 2px;
   border-radius: 12px !important;
   cursor: pointer;
+}
+
+.gifCont{
+  margin: 0 auto 1rem auto;
+}
+
+.gifCont .giphy-gif {
+  border: none;
+  margin: 0;
+  cursor: default
 }
 
 /* Nav bar */
@@ -67,6 +101,9 @@ body.dark {
 
 .post-section {
   padding-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 /* What is this sidenav for? */
 .sidenav {
@@ -138,38 +175,46 @@ p {
 
 .blog-entry {
   border-radius: 10px;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 1rem;
   background-color: var(--accent-color);
   transition: var(--transition-delay);
-  margin: 0.5rem;
+  margin: 2rem 0.5rem;
   border-top: solid 1px var(--accent-color-pink);
   border-bottom: solid 1px var(--accent-color);
+  position:relative;
+}
+
+.blog-entry-timestamp {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  position: absolute;
+  right: 1rem;
+  top: 0;
+}
+
+.blog-entry-main {
+  font-size: 1.5rem;
+  white-space: pre-line
 }
 
 .blog-entry-font-1 {
   font-family: "Reenie Beanie", cursive;
-  font-size: 2rem;
 }
 
 .blog-entry-font-2 {
   font-family: "Indie Flower", cursive;
-  font-size: 2rem;
 }
 
 .blog-entry-font-3 {
   font-family: "Schoolbell", cursive;
-  font-size: 2em;
 }
 
 .blog-entry-font-4 {
   font-family: "Nanum Pen Script", cursive;
-  font-size: 2rem;
 }
 
 .blog-entry-font-5 {
   font-family: "Just Another Hand", cursive;
-  font-size: 2rem;
 }
 
 form {
@@ -212,11 +257,11 @@ form {
 
 .secondary-bttn {
   /* getmoreposts */
-  border: var(--button-color) dotted 2px;
+  border: var(--button-color) solid 2px;
   background-color: var(--background-color);
   color: var(--text-color);
   border-radius: 4px;
-  font-size: 25px;
+  font-size: 1rem;
   padding-top: 1px;
   padding-bottom: 2px;
   cursor: pointer;
@@ -232,16 +277,31 @@ form {
   background: var(--button-color);
   border: none;
   background: var(--container-color);
-  margin-left: 2px;
-  font-size: 16px;
-  border-radius: 4px;
-  padding-top: 4px;
-  padding-bottom: 4px;
 }
 
 #submit-post:hover, #search-giphy:hover {
   transform: scale(1.03);
 } 
+.giphy-search-cont {
+  width: max-content;
+  height: 48px;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 0
+}
+#giphy-search{
+  border-radius: 50px 0 0 50px;
+  width: 100%;
+  height: 48px;
+  padding: 0 1rem
+}
+#search-giphy{
+  border-radius: 0 50px 50px 0;
+  height: 48px;
+  padding: 0;
+  margin:0;
+  font-size: 16px;
+}
 
 .read-comment-bttn {
   background-color: var(--accent-color);
@@ -312,7 +372,22 @@ footer {
   max-width: 480px;
   left: 50%;
   transform: translateX(-50%);
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popup-buttons-cont {
+  width: 90%;
+  justify-self: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  margin-left: 5%;
+}
+
+.giphy-carousel {
+  margin-top: 1rem;
 }
 
 footer textarea {
@@ -324,6 +399,7 @@ footer textarea {
   font-family: 'Dosis', sans-serif;
 }
 
+
 input {
   background-color: var(--container-color);
   color: var(--text-color);
@@ -333,6 +409,7 @@ input {
   visibility: hidden;
   width: 100%;
   height: 0;
+  text-align: center;
 }
 
 .display {
@@ -345,17 +422,14 @@ input {
   transform: rotate(45deg);
 }
 
-#giphy-search {
-  font-size: 16px;
-  border-radius: 2px;
-}
-
 .top-button-section {
   margin: 0.5rem;
 }
 
 #get-more-posts {
-  margin: 0.5rem;
+  margin-top: 1rem;
+  width: max-content;
+  align-self:center;
 }
 
 /* css for comment box + comments should move */
@@ -372,17 +446,17 @@ input {
 }
 
 .post-comment-textarea {
-  font-size: 18px;
   font-family: 'Dosis', sans-serif;
   resize: none;
-  width: 270px;
-  background: var(--background-color);
-  transition: var(--transition-delay); 
+  width: 100%;
+  height: 76px;
+  margin-right: 1rem;
 }
 
 .post-comment-cont {
   display: flex;
   align-items: center;
+  margin: 1rem 0;
 }
 
 /* About and contact pages */
