@@ -11,6 +11,11 @@ font-family: 'Schoolbell', cursive; */
 
 html, button {
   font-family: "Dosis", sans-serif;
+  color: var(--text-color);
+}
+
+button:hover {
+  transform: scale(1.03)
 }
 
 body {
@@ -18,16 +23,17 @@ body {
   --background-color: white; 
   --accent-color: rgb(170, 170, 170);
   --text-color: black;
-  --transition-delay: 1s;
+  --transition-delay: 2s;
 
   background-color: var(--background-color);
+  transition: var(--transition-delay);
 }
 
 body.dark {
   --container-color: rgb(0, 0, 0);
   --background-color: rgb(0, 0, 0);
   --accent-color: rgb(53, 53, 53);
-  --text-color: white;
+  --text-color: rgb(230, 230, 230);
 
   background-color: var(--background-color);
 }
@@ -93,6 +99,15 @@ body.dark {
   color: black;
 } 
 
+.moon-icon {
+  color: black;
+}
+
+.dark .moon-icon {
+  color: rgb(253, 192, 60);
+  transition: 1s;
+}
+
 .nav-info {
   padding: 20px;
   color: black;
@@ -124,6 +139,7 @@ p {
   padding-left: 1rem;
   padding-right: 1rem;
   background-color: var(--accent-color);
+  transition: var(--transition-delay);
   margin: 0.5rem;
   border-top: solid 1px hotpink;
   border-bottom: solid 1px hotpink;
@@ -234,12 +250,11 @@ input {
 #popup-post {
   border-radius: 50%;
   border: none;
-  font-size: 3em;
+  font-size: 1.8em;
   height: 3rem;
   width: 3rem;
   transition: 0.3s;
-  background-color: deeppink;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .rotate {
@@ -248,6 +263,14 @@ input {
 
 #giphy-search {
   font-size: 16px;
+}
+
+.top-button-section {
+  margin: 0.5rem;
+}
+
+#get-more-posts {
+  margin: 0.5rem;
 }
 
 /* css for comment box + comments should move */
