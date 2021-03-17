@@ -8,7 +8,8 @@ const Post = require('../models/post');
 describe('Comment model', () => {
     const testComment = {
         text: 'This is a test comment',
-        date: "Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)"
+        date: "Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)",
+        dateFrom: "5 days ago"
     };
     it('should make an instance of a comment', () => {
         const comment = new Comment({ id: 10, ...testComment });
@@ -45,14 +46,14 @@ describe('Post model', () => {
     })
     it('should create and append a new comment to a post', () => {
         const testComment = {
-                parentId: 1,
-                date: "Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)",
+                date: "Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)",     
                 text: 'This is a new test comment',
+                dateFrom: "5 days ago"
             }
             const testComment2 = {
-                parentId: 1,
                 date: "Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)",
                 text: 'This is a new test comment as well',
+                dateFrom: "5 days ago"
             }       
         const postToUpdate = Post.findById(1)
         postToUpdate.addComment(testComment)
@@ -62,9 +63,9 @@ describe('Post model', () => {
     })
     it('should update a posts reactions', () => {
         const postToUpdate = Post.findById(1)
-        postToUpdate.addReaction("happy")
-        postToUpdate.addReaction("funny")
-        postToUpdate.addReaction("happy")
+        postToUpdate.addReaction({reaction: "happy"})
+        postToUpdate.addReaction({reaction: "funny"})
+        postToUpdate.addReaction({reaction: "happy"})
         expect(postsData[0].reactions).toStrictEqual({happy: 2, funny: 1, unhappy: 0})
     })
 });

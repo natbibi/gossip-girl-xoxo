@@ -4,17 +4,21 @@ const server = require("../server");
 const data = require("../data.json");
 const postsData = data.posts
 
+const moment = require('moment')
+
 const testPost = {
     id: 2,
     text: 'post text here',
-    date: 'Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)',
+    date: 'Mon Mar 15 2021 09:39:25 GMT+0000 (Greenwich Mean Time)',
+    dateFrom: moment(Date.parse('Mon Mar 15 2021 09:39:25 GMT+0000 (Greenwich Mean Time)')).fromNow(),
     comments: [],
     reactions: { happy: 0, funny: 0, unhappy: 0 },
     giphy: null
   }
 
 const testComment = {
-  date: "Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)",
+  date: "Mon Mar 15 2021 09:39:25 GMT+0000 (Greenwich Mean Time)",
+  dateFrom: moment(Date.parse('Mon Mar 15 2021 09:39:25 GMT+0000 (Greenwich Mean Time)')).fromNow(),
   text: "comment text here",
 };
 

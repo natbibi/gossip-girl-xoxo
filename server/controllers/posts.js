@@ -1,13 +1,34 @@
 const express = require("express");
 const router = express.Router();
 
-const Comment = require("../models/comment");
 const Post = require("../models/post");
 
 
 router.get("/", (req, res) => {
   const postData = Post.all;
   res.send(postData);
+});
+
+const totalReactions = (post) => {
+  const reactions = post.reactions
+  return reactions.happy + reactions.unhappy + reactions.funny
+}
+
+router.get("/hot", (req, res) => {
+  const postData = Post.all;
+  const sortedData = postData.sort(
+    function compare(a, b) {
+      if (totalReactions(a) < totalReactions(b)) {
+        return 1;
+      }
+      if (totalReactions(a) > totalReactions(b)) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    }
+  )
+  res.send(sortedData);
 });
 
 router.get("/:id", (req, res) => {
