@@ -22,6 +22,7 @@
   "homepage": "https://github.com/natbibi/LAP-1-Portfolio-Week-Project#readme",
   "devDependencies": {
     "concurrently": "^6.0.0",
+    "coverage": "^0.4.1",
     "jest": "^26.6.3",
     "jest-fetch-mock": "^3.0.3",
     "watchify": "^4.0.0"

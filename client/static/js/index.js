@@ -34,12 +34,12 @@ window.addEventListener("load", async () => {
     try {
       if (sortOrder === '?hot') {
         const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/hot/${currentIndex}/${currentIndex + 5}`)
-        if (newData.length === 0) throw new Error('no more posts')
+        if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
         handlerFuncs.renderList(newData)
       }
       else {
         const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${currentIndex}/${currentIndex + 5}`)
-        if (newData.length === 0) throw new Error('no more posts')
+        if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
         handlerFuncs.renderList(newData)
       }
       currentIndex += 5
@@ -68,21 +68,6 @@ function giphySearch() {
 giphySearch()
 
 
-// Nav button opens and closes on click
-document.querySelector('.icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "50%";
-})
-
-document.querySelector('.close-icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "0%";
-})
-
-// Dark Mode 
-
-document.querySelector('.dark-mode-button').addEventListener('click', () => {
-  document.body.classList.toggle('dark')
-})
-
 document.querySelector('#hot-sort').addEventListener("click", () => updateUrlQuery('hot'))
 document.querySelector('#new-sort').addEventListener("click", () => updateUrlQuery('new'))
 
@@ -99,3 +84,18 @@ document.querySelector('#popup-post').addEventListener("click", (event) => {
 }
 }
 runPage()
+
+// Nav button opens and closes on click
+document.querySelector('.icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "50%";
+})
+
+document.querySelector('.close-icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "0%";
+})
+
+// Dark Mode 
+
+document.querySelector('.dark-mode-button').addEventListener('click', () => {
+  document.body.classList.toggle('dark')
+})

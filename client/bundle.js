@@ -8771,7 +8771,7 @@ const apiFuncs = require('./api')
 
 function renderList(data) {
     for (item of data) {
-        document.getElementById('root').prepend(renderItem(item))
+        document.getElementById('root').append(renderItem(item))
     }
     //function to render data to the DOM
 }
@@ -8832,7 +8832,6 @@ function renderItem(data) {
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
-
     //show number of likes 
     const showTotalLikes = document.createElement('span')
     showTotalLikes.className = 'reaction-badge'
@@ -8853,6 +8852,15 @@ function renderItem(data) {
     showTotallaughs.textContent = data.reactions.funny
     laughButton.after(showTotallaughs)
 
+    //append share button 
+    const shareButton = document.createElement('button')
+    shareButton.className = 'primary-bttn'
+    shareButton.textContent = 'share'
+    postContainer.append(shareButton)
+    //share click event
+    shareButton.addEventListener("click", () => {
+        copyUrl(data.id, postContainer)
+    })
 
     //create div to append comment input container - before comments
     const commentPostCont = document.createElement('div')
@@ -8891,9 +8899,6 @@ function renderItem(data) {
         firstToComment.textContent = "Be the first to comment!"
         postContainer.append(firstToComment)
     }
-
-
-    console.log(numberOfComments)
 
 
     //append the comments 
@@ -8962,6 +8967,16 @@ async function addComment(parent, topParent, id) {
     }
 }
 
+function copyUrl(id, parent) {
+    const copyText = document.createElement('textarea')
+    copyText.value = `https://gossip-girl-xoxo.netlify.app/post?${id}`
+    parent.append(copyText)
+    copyText.select();
+    document.execCommand("copy");
+    copyText.remove()
+    alert('link copied')
+}
+
 function renderComment(comment) {
     const commentPara = document.createElement('p')
     commentPara.addClass = 'comment-item'
@@ -9020,12 +9035,12 @@ window.addEventListener("load", async () => {
     try {
       if (sortOrder === '?hot') {
         const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/hot/${currentIndex}/${currentIndex + 5}`)
-        if (newData.length === 0) throw new Error('no more posts')
+        if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
         handlerFuncs.renderList(newData)
       }
       else {
         const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${currentIndex}/${currentIndex + 5}`)
-        if (newData.length === 0) throw new Error('no more posts')
+        if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
         handlerFuncs.renderList(newData)
       }
       currentIndex += 5
@@ -9054,21 +9069,6 @@ function giphySearch() {
 giphySearch()
 
 
-// Nav button opens and closes on click
-document.querySelector('.icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "50%";
-})
-
-document.querySelector('.close-icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "0%";
-})
-
-// Dark Mode 
-
-document.querySelector('.dark-mode-button').addEventListener('click', () => {
-  document.body.classList.toggle('dark')
-})
-
 document.querySelector('#hot-sort').addEventListener("click", () => updateUrlQuery('hot'))
 document.querySelector('#new-sort').addEventListener("click", () => updateUrlQuery('new'))
 
@@ -9085,6 +9085,21 @@ document.querySelector('#popup-post').addEventListener("click", (event) => {
 }
 }
 runPage()
+
+// Nav button opens and closes on click
+document.querySelector('.icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "50%";
+})
+
+document.querySelector('.close-icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "0%";
+})
+
+// Dark Mode 
+
+document.querySelector('.dark-mode-button').addEventListener('click', () => {
+  document.body.classList.toggle('dark')
+})
 
 },{"./api":85,"./giphy":86,"./handlers":87}],89:[function(require,module,exports){
 const key = 'UzgKyDqtQeJd63SnS23S9ok7Kg604SUU'

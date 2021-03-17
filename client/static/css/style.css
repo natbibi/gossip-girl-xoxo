@@ -9,7 +9,7 @@ font-family: 'Schoolbell', cursive; */
   box-sizing: border-box;
 }
 
-html, button {
+html {
   font-family: "Dosis", sans-serif;
   color: var(--text-color);
 }
@@ -65,7 +65,7 @@ body.dark {
 .post-section {
   padding-bottom: 200px;
 }
-
+/* What is this sidenav for? */
 .sidenav {
   height: 30%;
   width: 0px;
@@ -196,6 +196,7 @@ form {
   padding-top: 1px;
   padding-bottom: 2px;
   cursor: pointer;
+  font-family: "Dosis", sans-serif;
 }
 
 .primary-bttn:hover {
@@ -214,6 +215,7 @@ form {
   cursor: pointer;
   transform: scale(1.03);
   transition: var(--transition-delay);
+  font-family: "Dosis", sans-serif;
 }
 
 .read-comment-bttn {
@@ -222,6 +224,7 @@ form {
   border: none;
   padding: 6px;
   transition: var(--transition-delay);
+  font-family: "Dosis", sans-serif;
 }
 
 .reaction-bttn {
@@ -257,6 +260,7 @@ form {
   border-radius: 50px;
   right: 12px;
   bottom: 24px;
+  font-family: "Dosis", sans-serif;
 }
 
 footer {
