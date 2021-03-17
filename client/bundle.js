@@ -8965,7 +8965,7 @@ async function addComment(parent, topParent, id) {
                 topParent.getElementsByClassName('comment-cont')[0].append(renderComment({ text: commentValue }))
                 parent.getElementsByClassName('post-comment-cont')[0].remove()
             } catch (err) {
-                console.log(err)
+                alert("add some text")
                 throw err
             }
         })
