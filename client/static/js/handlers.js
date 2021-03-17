@@ -5,7 +5,7 @@ const apiFuncs = require('./api')
 
 function renderList(data) {
     for (item of data) {
-        document.getElementById('root').prepend(renderItem(item))
+        document.getElementById('root').append(renderItem(item))
     }
     //function to render data to the DOM
 }
