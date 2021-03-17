@@ -9,19 +9,20 @@ router.get("/", (req, res) => {
   res.send(postData);
 });
 
-const totalReactions = (post) => {
+const totalEngagement = (post) => {
   const reactions = post.reactions
-  return reactions.happy + reactions.unhappy + reactions.funny
+  const comments = post.comments.length 
+  return reactions.happy + reactions.unhappy + reactions.funny + comments
 }
 
 router.get("/hot", (req, res) => {
   const postData = Post.all;
   const sortedData = postData.sort(
     function compare(a, b) {
-      if (totalReactions(a) < totalReactions(b)) {
+      if (totalEngagement(a) < totalEngagement(b)) {
         return 1;
       }
-      if (totalReactions(a) > totalReactions(b)) {
+      if (totalEngagement(a) > totalEngagement(b)) {
         return -1;
       }
       // a must be equal to b

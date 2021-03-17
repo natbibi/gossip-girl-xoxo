@@ -205,5 +205,6 @@ function renderComment(comment) {
 
 
 module.exports = {
-    renderList
+    renderList,
+    renderItem,
 }

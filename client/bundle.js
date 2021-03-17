@@ -8967,7 +8967,8 @@ function renderComment(comment) {
 
 
 module.exports = {
-    renderList
+    renderList,
+    renderItem,
 }
 },{"./api":85,"./giphy":86}],88:[function(require,module,exports){
 const giphy = require('./giphy')
