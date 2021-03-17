@@ -9064,21 +9064,6 @@ function giphySearch() {
 giphySearch()
 
 
-// Nav button opens and closes on click
-document.querySelector('.icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "50%";
-})
-
-document.querySelector('.close-icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "0%";
-})
-
-// Dark Mode 
-
-document.querySelector('.dark-mode-button').addEventListener('click', () => {
-  document.body.classList.toggle('dark')
-})
-
 document.querySelector('#hot-sort').addEventListener("click", () => updateUrlQuery('hot'))
 document.querySelector('#new-sort').addEventListener("click", () => updateUrlQuery('new'))
 
@@ -9095,6 +9080,21 @@ document.querySelector('#popup-post').addEventListener("click", (event) => {
 }
 }
 runPage()
+
+// Nav button opens and closes on click
+document.querySelector('.icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "50%";
+})
+
+document.querySelector('.close-icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "0%";
+})
+
+// Dark Mode 
+
+document.querySelector('.dark-mode-button').addEventListener('click', () => {
+  document.body.classList.toggle('dark')
+})
 
 },{"./api":85,"./giphy":86,"./handlers":87}],89:[function(require,module,exports){
 const key = 'UzgKyDqtQeJd63SnS23S9ok7Kg604SUU'
