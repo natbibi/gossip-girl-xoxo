@@ -15,12 +15,14 @@ html {
 }
 
 body {
-  --container-color: snow;
+  --container-color: #f9f3f3;
   --background-color: white;
-  --accent-color: rgb(170, 170, 170);
-  --text-color: black;
+  --accent-color: #dddddd;
+  --text-color: rgb(27, 26, 26);
   --transition-delay: 1.5s;
-  --button-color: deeppink;
+  --button-color: #f25287;
+  --accent-color-pink: #f7d9d9;
+  --button-shadow: 1px 1.5px rgb(182, 181, 181);
 
   background-color: var(--background-color);
   transition: var(--transition-delay);
@@ -32,6 +34,7 @@ body.dark {
   --accent-color: rgb(53, 53, 53);
   --text-color: rgb(230, 230, 230);
   --button-color: rgb(252, 84, 173);
+  --button-shadow: 1px 1.5px rgb(68, 66, 66);
 
   background-color: var(--background-color);
 }
@@ -140,8 +143,8 @@ p {
   background-color: var(--accent-color);
   transition: var(--transition-delay);
   margin: 0.5rem;
-  border-top: solid 1px hotpink;
-  border-bottom: solid 1px hotpink;
+  border-top: solid 1px var(--accent-color-pink);
+  border-bottom: solid 1px var(--accent-color);
 }
 
 .blog-entry-font-1 {
@@ -200,6 +203,7 @@ form {
   margin-left: 2px;
   cursor: pointer;
   font-family: "Dosis", sans-serif;
+  box-shadow: var(--button-shadow);
 }
 
 .primary-bttn:hover {
@@ -219,6 +223,7 @@ form {
   transform: scale(1.03);
   transition: var(--transition-delay);
   font-family: "Dosis", sans-serif;
+  box-shadow: var(--button-shadow);
 }
 
 .read-comment-bttn {
@@ -241,6 +246,7 @@ form {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: var(--button-shadow);
 }
 
 .reaction-bttn:hover {
@@ -260,7 +266,7 @@ form {
 .reaction-badge {
   position: relative;
   background-color: #8500ff;
-  border: solid 1px black;
+  border: solid 0.2px #4c0192;
   font-size: 14px;
   line-height: 0;
   font-weight: 500;
