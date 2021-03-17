@@ -170,12 +170,13 @@ async function addComment(parent, topParent, id) {
         //new text area
         const textArea = document.createElement('textarea')
         textArea.className = 'post-comment-textarea'
+        textArea.placeholder = "Share your thoughts 💭"
         newComment.append(textArea)
 
         //comment button to post value from text area
         const commentSubmitBttn = document.createElement('button')
         commentSubmitBttn.classList.add('primary-bttn')
-        commentSubmitBttn.textContent = 'changename'
+        commentSubmitBttn.textContent = 'reply'
 
         commentSubmitBttn.addEventListener('click', () => {
             try {
@@ -216,7 +217,7 @@ function copyUrl(id, parent) {
 
 function renderComment(comment) {
     const commentPara = document.createElement('p')
-    commentPara.addClass = 'comment-item'
+    commentPara.classList.add('comment-item')
     commentPara.textContent = comment.text
     return commentPara
 }
