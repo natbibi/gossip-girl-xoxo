@@ -8880,7 +8880,7 @@ function renderItem(data) {
         //button to display comments
         const readCommentsBttn = document.createElement('button')
         readCommentsBttn.classList.add("read-comment-bttn")
-        readCommentsBttn.textContent = `read comments ${numberOfComments}`
+        readCommentsBttn.textContent = `read comments: ${numberOfComments}`
         readCommentsBttn.addEventListener('click', () => {
             commentCont.classList.toggle('display-comments')
         })
@@ -8889,6 +8889,7 @@ function renderItem(data) {
 
     } else if (numberOfComments == 1) {
         const readCommentsBttn = document.createElement('button')
+        readCommentsBttn.classList.add("read-comment-bttn")
         readCommentsBttn.textContent = `read comment`
         readCommentsBttn.addEventListener('click', () => {
             commentCont.classList.toggle('display-comments')
@@ -8896,6 +8897,7 @@ function renderItem(data) {
         postContainer.append(readCommentsBttn)
     } else {
         const firstToComment = document.createElement('div')
+        firstToComment.classList.add('first-to-comment')
         firstToComment.textContent = "Be the first to comment!"
         postContainer.append(firstToComment)
     }
@@ -8938,7 +8940,8 @@ async function addComment(parent, topParent, id) {
 
         //comment button to post value from text area
         const commentSubmitBttn = document.createElement('button')
-        commentSubmitBttn.textContent = 'submit comment'
+        commentSubmitBttn.classList.add('primary-bttn')
+        commentSubmitBttn.textContent = 'changename'
 
         commentSubmitBttn.addEventListener('click', () => {
             try {
@@ -9035,12 +9038,12 @@ window.addEventListener("load", async () => {
     try {
       if (sortOrder === '?hot') {
         const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/hot/${currentIndex}/${currentIndex + 5}`)
-        if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
+        if (newData.length === 0) throw new Error('no more posts')
         handlerFuncs.renderList(newData)
       }
       else {
         const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${currentIndex}/${currentIndex + 5}`)
-        if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
+        if (newData.length === 0) throw new Error('no more posts')
         handlerFuncs.renderList(newData)
       }
       currentIndex += 5
@@ -9069,6 +9072,21 @@ function giphySearch() {
 giphySearch()
 
 
+// Nav button opens and closes on click
+document.querySelector('.icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "50%";
+})
+
+document.querySelector('.close-icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "0%";
+})
+
+// Dark Mode 
+
+document.querySelector('.dark-mode-button').addEventListener('click', () => {
+  document.body.classList.toggle('dark')
+})
+
 document.querySelector('#hot-sort').addEventListener("click", () => updateUrlQuery('hot'))
 document.querySelector('#new-sort').addEventListener("click", () => updateUrlQuery('new'))
 
@@ -9085,21 +9103,6 @@ document.querySelector('#popup-post').addEventListener("click", (event) => {
 }
 }
 runPage()
-
-// Nav button opens and closes on click
-document.querySelector('.icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "50%";
-})
-
-document.querySelector('.close-icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "0%";
-})
-
-// Dark Mode 
-
-document.querySelector('.dark-mode-button').addEventListener('click', () => {
-  document.body.classList.toggle('dark')
-})
 
 },{"./api":85,"./giphy":86,"./handlers":87}],89:[function(require,module,exports){
 const key = 'UzgKyDqtQeJd63SnS23S9ok7Kg604SUU'
