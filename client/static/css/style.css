@@ -14,16 +14,13 @@ html, button {
   color: var(--text-color);
 }
 
-button:hover {
-  transform: scale(1.03)
-}
-
 body {
   --container-color: snow;
   --background-color: white; 
   --accent-color: rgb(170, 170, 170);
   --text-color: black;
-  --transition-delay: 2s;
+  --transition-delay: 1.5s;
+  --button-color: deeppink;
 
   background-color: var(--background-color);
   transition: var(--transition-delay);
@@ -34,6 +31,7 @@ body.dark {
   --background-color: rgb(0, 0, 0);
   --accent-color: rgb(53, 53, 53);
   --text-color: rgb(230, 230, 230);
+  --button-color: rgb(252, 84, 173);
 
   background-color: var(--background-color);
 }
@@ -174,14 +172,60 @@ form {
   padding-top: 10px;
 }
 
-.comment-bttn {
-  background-color: deeppink;
+/* Buttons */
+
+#popup-post {
+  border-radius: 50%;
+  background: none;
   border: none;
+  font-size: 1.8em;
+  height: 3rem;
+  width: 3rem;
+  transition: 0.3s;
+  transition-delay: none;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.primary-bttn { 
+  /* hot, new, comment */
+  background: var(--button-color);
+  color: var(--text-color);
+  border: none; 
   border-radius: 4px;
+  font-size: 16px;
+  padding-top: 1px;
+  padding-bottom: 2px;
+  cursor: pointer;
+}
+
+.primary-bttn:hover {
+  transform: scale(1.03);
+} 
+
+.secondary-bttn {
+  /* getmoreposts */
+  border: var(--button-color) dotted 2px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-radius: 4px;
+  font-size: 25px;
+  padding-top: 1px;
+  padding-bottom: 2px;
+  cursor: pointer;
+  transform: scale(1.03);
+  transition: var(--transition-delay);
+}
+
+.read-comment-bttn {
+  background-color: var( --accent-color);
+  color: var(--text-color);
+  border: none;
+  padding: 6px;
+  transition: var(--transition-delay);
 }
 
 .reaction-bttn {
-  background-color: deeppink;
+  background: var(--button-color);
   border: none;
   border-radius: 50px;
   width: 42px;
@@ -195,6 +239,10 @@ form {
 
 .reaction-bttn:hover {
   background-color: limegreen;
+}
+
+.dark .reaction-bttn:hover {
+  background-color: rgb(84, 201, 84);
 }
 
 .reaction-badge {
@@ -212,7 +260,7 @@ form {
 }
 
 footer {
-  background: deeppink;
+  background: var(--button-color);
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -247,16 +295,6 @@ input {
   padding-top: 1rem;
 }
 
-#popup-post {
-  border-radius: 50%;
-  border: none;
-  font-size: 1.8em;
-  height: 3rem;
-  width: 3rem;
-  transition: 0.3s;
-  font-family: 'Times New Roman', Times, serif;
-}
-
 .rotate {
   transform: rotate(45deg);
 }
@@ -284,4 +322,8 @@ input {
 
 .display-comments {
   display: block;
+}
+
+.post-comment-textarea {
+  font-size: 16px;
 }
