@@ -8828,7 +8828,7 @@ function renderItem(data) {
 
     //make comment button 
     const commentButton = document.createElement('button')
-    commentButton.className = 'comment-bttn'
+    commentButton.className = 'primary-button'
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
@@ -8857,6 +8857,15 @@ function renderItem(data) {
     showTotallaughs.textContent = data.reactions.funny
     laughButton.after(showTotallaughs)
 
+    //append share button 
+    const shareButton = document.createElement('button')
+    shareButton.className = 'primary-bttn'
+    shareButton.textContent = 'share'
+    postContainer.append(shareButton)
+    //share click event
+    shareButton.addEventListener("click", () => {
+        copyUrl(data.id, postContainer)
+    })
 
     //create div to append comment input container - before comments
     const commentPostCont = document.createElement('div')
@@ -8962,6 +8971,16 @@ async function addComment(parent, topParent, id) {
     }
 }
 
+function copyUrl(id, parent) {
+    const copyText = document.createElement('textarea')
+    copyText.value = `https://gossip-girl-xoxo.netlify.app/post?${id}`
+    parent.append(copyText)
+    copyText.select();
+    document.execCommand("copy");
+    copyText.remove()
+    alert('link copied')
+}
+
 function renderComment(comment) {
     const commentPara = document.createElement('p')
     commentPara.addClass = 'comment-item'
@@ -8969,11 +8988,19 @@ function renderComment(comment) {
     return commentPara
 }
 
+function renderError(error){
+    const errorCont = document.createElement('div')
+    errorCont.className = 'error'
+    errorCont.textContent = `${error}`
+    document.getElementById('root').prepend(errorCont)
+}
+
 
 
 module.exports = {
     renderList,
     renderItem,
+    renderError
 }
 },{"./api":85,"./giphy":86}],88:[function(require,module,exports){
 const giphy = require('./giphy')
@@ -8983,8 +9010,21 @@ const apiFuncs = require('./api')
 const handlerFuncs = require('./handlers')
 
 // on page load fetch all posts data and render them as post DOM items check url to find query to sort by.
+async function runPage() {
+  if (window.location.href.includes('post')) {
+    try {
+      const index = window.location.search.substring(1)
+      const singleData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${index}`)  
+      handlerFuncs.renderList([singleData])
+    } catch(err) {
+      handlerFuncs.renderError('404: post not found 😞')
+      throw err
+    }
+  }
+  else {
 let currentIndex = 0
 window.addEventListener("load", async () => {
+
   const sortOrder = window.location.search
   if (sortOrder === '?hot') {
     const data = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/hot/${currentIndex}/${currentIndex + 5}`)
@@ -9015,9 +9055,38 @@ window.addEventListener("load", async () => {
   })
 })
 
-function updateUrlQuery(query){
+function updateUrlQuery(query) {
   window.location.search = query
 }
+
+
+
+function giphySearch() {
+  const root = document.querySelector('#giphy-root')
+  const query = document.querySelector('#giphy-search').value
+  const grid = makeCarousel(root, query)
+  document.querySelector('#search-giphy').addEventListener("click", () => {
+    grid.remove()
+    giphySearch()
+  })
+}
+giphySearch()
+
+
+// Nav button opens and closes on click
+document.querySelector('.icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "50%";
+})
+
+document.querySelector('.close-icon').addEventListener('click', () => {
+  document.querySelector(".sidenav").style.width = "0%";
+})
+
+// Dark Mode 
+
+document.querySelector('.dark-mode-button').addEventListener('click', () => {
+  document.body.classList.toggle('dark')
+})
 
 document.querySelector('#hot-sort').addEventListener("click", () => updateUrlQuery('hot'))
 document.querySelector('#new-sort').addEventListener("click", () => updateUrlQuery('new'))
@@ -9032,24 +9101,10 @@ document.querySelector('#popup-post').addEventListener("click", (event) => {
   popupTextArea.focus()
 })
 
-function giphySearch() {
-  const root = document.querySelector('#giphy-root')
-  const query = document.querySelector('#giphy-search').value
-  const grid = makeCarousel(root, query)
-  document.querySelector('#search-giphy').addEventListener("click", () => {
-    grid.remove()
-    giphySearch()
-  })
 }
-giphySearch()
+}
+runPage()
 
-document.querySelector('.icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "50%";
-})
-
-document.querySelector('.close-icon').addEventListener('click', () => {
-  document.querySelector(".sidenav").style.width = "0%";
-})
 },{"./api":85,"./giphy":86,"./handlers":87}],89:[function(require,module,exports){
 const key = 'UzgKyDqtQeJd63SnS23S9ok7Kg604SUU'
 

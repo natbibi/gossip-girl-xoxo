@@ -62,7 +62,7 @@ function renderItem(data) {
 
     //make comment button 
     const commentButton = document.createElement('button')
-    commentButton.className = 'comment-bttn'
+    commentButton.className = 'primary-button'
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
@@ -91,6 +91,15 @@ function renderItem(data) {
     showTotallaughs.textContent = data.reactions.funny
     laughButton.after(showTotallaughs)
 
+    //append share button 
+    const shareButton = document.createElement('button')
+    shareButton.className = 'primary-bttn'
+    shareButton.textContent = 'share'
+    postContainer.append(shareButton)
+    //share click event
+    shareButton.addEventListener("click", () => {
+        copyUrl(data.id, postContainer)
+    })
 
     //create div to append comment input container - before comments
     const commentPostCont = document.createElement('div')
@@ -196,6 +205,16 @@ async function addComment(parent, topParent, id) {
     }
 }
 
+function copyUrl(id, parent) {
+    const copyText = document.createElement('textarea')
+    copyText.value = `https://gossip-girl-xoxo.netlify.app/post?${id}`
+    parent.append(copyText)
+    copyText.select();
+    document.execCommand("copy");
+    copyText.remove()
+    alert('link copied')
+}
+
 function renderComment(comment) {
     const commentPara = document.createElement('p')
     commentPara.addClass = 'comment-item'
@@ -203,9 +222,17 @@ function renderComment(comment) {
     return commentPara
 }
 
+function renderError(error){
+    const errorCont = document.createElement('div')
+    errorCont.className = 'error'
+    errorCont.textContent = `${error}`
+    document.getElementById('root').prepend(errorCont)
+}
+
 
 
 module.exports = {
     renderList,
     renderItem,
+    renderError
 }
