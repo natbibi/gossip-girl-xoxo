@@ -66,7 +66,6 @@ function renderItem(data) {
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
-
     //show number of likes 
     const showTotalLikes = document.createElement('span') 
     showTotalLikes.className = 'reaction-badge'
@@ -133,9 +132,6 @@ function renderItem(data) {
         firstToComment.textContent = "Be the first to comment!"
         postContainer.append(firstToComment)
     }
-
-
-    console.log(numberOfComments)
 
 
     //append the comments 

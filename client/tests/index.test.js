@@ -76,6 +76,13 @@ describe('app', () => {
 
             })
         })
+        
+        describe('addReaction', () => {
+            test('if reaction calls patch data', () => {
+            app.patchData('https://gossip-girl-api.herokuapp.com/posts/1/reactions');
+            expect(fetch).toHaveBeenCalled()  
+            })
+        })
 
     })
 
