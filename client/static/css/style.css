@@ -239,8 +239,8 @@ form {
   font-family: "Times New Roman", Times, serif;
 }
 
-.primary-bttn {
-  /* hot, new, comment on post, share post */
+.primary-bttn { 
+  /* hot, new, comment on post*/
   background: var(--button-color);
   color: var(--text-color);
   border: none;
@@ -276,13 +276,21 @@ form {
 }
 
 .tertiary-bttn {
-  /* share button, be first to comment button */
-  background-color: var(--background-color);
+  /* share, be first to comment button */
   transition: var(--transition-delay);
-  border: var(--container-color) solid 2px;
+  border: none;
+  color: var(--accent-color);
+  border: solid 2px var(--accent-color-pink);
+  color: var(--button-color);
+  border-radius: 4px;
 }
 
 .share-button {
+  border: none;
+  transition: var(--transition-delay);
+  background-color: none;
+  color: var(--text-color);
+  background-color: var(--accent-color);
   position: absolute;
   top: 0.2rem;
   right: 0.2rem;
@@ -315,13 +323,16 @@ form {
   justify-content: flex-start;
   font-size: 0;
 }
+
 #giphy-search {
+  font-family: "Dosis", sans-serif;
   border-radius: 50px 0 0 50px;
   width: 100%;
   height: 45px;
   padding: 0 1rem;
 }
-#search-giphy {
+
+#search-giphy{
   border-radius: 0 50px 50px 0;
   height: 45px;
   padding: 0;
@@ -377,10 +388,9 @@ form {
 .first-to-comment {
   /* be first to comment */
   padding: 3px;
-  color: var(--text-color);
-  font-family: "Dosis", sans-serif;
-  float: right;
-}
+  font-family: "Dosis", sans-serif; 
+  float: right
+} 
 
 .reaction-badge {
   position: relative;

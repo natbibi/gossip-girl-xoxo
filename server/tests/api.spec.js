@@ -46,6 +46,18 @@ describe("API server", () => {
     request(api).get("/posts").expect(200).expect(postsData, done);
   });
 
+  it("responds to get get /posts/hot with 200 and all posts data ordered by engagement", (done) => {
+    request(api).get("/posts/hot").expect(200).expect(postsData, done);
+  });
+
+  it("responds to get get /posts/a/b with 200 and all posts data between index a and b", (done) => {
+    request(api).get("/posts/0/1").expect(200).expect(postsData, done);
+  });
+
+  it("responds to get get /posts/hot/a/b with 200 and all posts data ordered by engagmenet between index a and b", (done) => {
+    request(api).get("/posts/hot/0/1").expect(200).expect(postsData, done);
+  });
+
   it("responds to get get /posts/:id with 200 and a specific post data", (done) => {
     request(api).get("/posts/1").expect(200).expect(postsData[0], done);
   });

@@ -45,18 +45,21 @@ function renderItem(data) {
 
     //make like button
     const likeButton = document.createElement('button')
+    likeButton.setAttribute("aria-label", "love-emoji-button");
     likeButton.className = 'reaction-bttn'
     likeButton.textContent = '😍'
     postContainer.appendChild(likeButton)
 
     //make shocked/unhappy button 
     const shockedButton = document.createElement('button')
+    shockedButton.setAttribute("aria-label", "shock-emoji-button");
     shockedButton.className = 'reaction-bttn'
     shockedButton.textContent = '😱'
     postContainer.appendChild(shockedButton)
 
     //make laugh button 
     const laughButton = document.createElement('button')
+    laughButton.setAttribute("aria-label", "laugh-emoji-button");
     laughButton.className = 'reaction-bttn'
     laughButton.textContent = '😂'
     postContainer.appendChild(laughButton)
@@ -87,14 +90,15 @@ function renderItem(data) {
     showTotallaughs.textContent = data.reactions.funny
     laughButton.after(showTotallaughs)
 
-    
+
     likeButton.addEventListener('click', (event) => addReaction(event, 'happy', data.id))
     shockedButton.addEventListener('click', (event) => addReaction(event, 'unhappy', data.id))
     laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
 
     //append share button 
     const shareButton = document.createElement('button')
-    shareButton.className = 'tertiary-bttn share-button'
+    shareButton.setAttribute("aria-label", "share");
+    shareButton.className = 'share-button'
 
     // add fontawesome icon 
     const iElement = document.createElement('i')
@@ -112,19 +116,19 @@ function renderItem(data) {
     postContainer.append(commentPostCont)
     commentButton.addEventListener('click', () => addComment(commentPostCont, postContainer, data.id))
 
-       //append the comments 
-       const commentCont = document.createElement('div')
-       commentCont.className = 'comment-cont'
-       for (comment of data.comments) {
-           //append each comment
-           commentCont.appendChild(renderComment(comment))
-       }
-   
+    //append the comments 
+    const commentCont = document.createElement('div')
+    commentCont.className = 'comment-cont'
+    for (comment of data.comments) {
+        //append each comment
+        commentCont.appendChild(renderComment(comment))
+    }
+
     //get the number of comments on a button
     const showCommentsBttn = document.createElement('button')
     showCommentsBttn.className = 'read-comment-bttn'
     showCommentsBttn.dataset.comments = commentCont.querySelectorAll('.comment-item').length
-    
+
     if (showCommentsBttn.dataset.comments > 0) {
         showCommentsBttn.textContent = `show ${showCommentsBttn.dataset.comments} ${showCommentsBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
         postContainer.append(showCommentsBttn)
@@ -136,53 +140,15 @@ function renderItem(data) {
         })
     }
     else {
-            showCommentsBttn.textContent = `be first comment!`
-            postContainer.append(showCommentsBttn)
-            showCommentsBttn.addEventListener("click", () => {
-                commentCont.classList.toggle('display-comments')
-                if (showCommentsBttn.dataset.comments == 0) addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
-            })
+        showCommentsBttn.textContent = `be first comment!`
+        postContainer.append(showCommentsBttn)
+        showCommentsBttn.addEventListener("click", () => {
+            commentCont.classList.toggle('display-comments')
+            if (showCommentsBttn.dataset.comments == 0) addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
+        })
     }
-    
+
     postContainer.append(commentCont)
-
-    // firstToComment.textContent = firstToComment.dataset.comments
-    // else if (numberOfComments > 1) {
-
-    //     //button to display comments
-    //     const readCommentsBttn = document.createElement('button')
-    //     readCommentsBttn.classList.add("read-comment-bttn")
-    //     readCommentsBttn.textContent = `read comments: ${numberOfComments}`
-    //     readCommentsBttn.addEventListener('click', () => {
-    //         commentCont.classList.toggle('display-comments')
-    //         const numberOfComments = commentPostCont.querySelectorAll('.comment-item')
-    //         console.log(numberOfComments)
-    //     })
-
-    //     postContainer.append(readCommentsBttn)
-    // }
-
-    // } else if (numberOfComments === 1) {
-    //     const readCommentsBttn = document.createElement('button')
-    //     readCommentsBttn.classList.add("read-comment-bttn")
-    //     readCommentsBttn.textContent = `read comment`
-    //     readCommentsBttn.addEventListener('click', () => {
-    //         commentCont.classList.toggle('display-comments')
-    //     });
-    //     postContainer.append(readCommentsBttn)
-    // }
-    // else {
-    //     const firstToComment = document.createElement('button')
-    //     firstToComment.classList.add('read-comment-bttn')
-    //     firstToComment.textContent = "Be the first to comment!"
-    //     postContainer.append(firstToComment)
-    //     firstToComment.addEventListener("click", () => {
-    //         commentCont.classList.toggle('display-comments')
-    //         addComment(commentPostCont, postContainer, data.id)
-    //     })
-    // }
-
-
 
     return postContainer
 
@@ -260,7 +226,7 @@ function renderComment(comment) {
     const commentPara = document.createElement('p')
     commentPara.classList.add('comment-item')
     commentPara.textContent = comment.text
-    if (comment.new) {commentPara.style.fontWeight = 'bold'}
+    if (comment.new) { commentPara.style.fontWeight = 'bold' }
     return commentPara
 }
 
