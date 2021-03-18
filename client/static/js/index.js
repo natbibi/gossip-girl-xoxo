@@ -56,23 +56,29 @@ async function runPage() {
 
 
 
-    function giphySearch() {
-      const cancelGiphy = document.getElementById('cancel-giphy-bttn')
-      const root = document.querySelector('#giphy-root')
-      const query = document.querySelector('#giphy-search')
-      const grid = makeCarousel(root, query.value)
-      document.querySelector('#search-giphy').addEventListener("click", () => {
-        cancelGiphy.classList.add('display')
+function giphySearch() {
+  const cancelGiphy = document.getElementById('cancel-giphy-bttn')
+  const root = document.querySelector('#giphy-root')
+  const query = document.querySelector('#giphy-search')
+  const grid = makeCarousel(root, query.value)
+  document.querySelector('#search-giphy').addEventListener("click", () => {
+  try {
+      if (query.value.length < 1) throw new Error('no query entered')
+      cancelGiphy.classList.add('display')
+      grid.remove()
+      giphySearch()
+      cancelGiphy.addEventListener("click", () => {
+        query.value = ''
+        cancelGiphy.classList.remove('display')
         grid.remove()
-        giphySearch()
-        cancelGiphy.addEventListener("click", () => {
-          query.value = ''
-          cancelGiphy.classList.remove('display')
-          grid.remove()
-        })
       })
-    }
-    giphySearch()
+  } catch(err) {
+    alert('enter a query')
+    throw err
+  }
+})
+}
+giphySearch()
 
 
     document.querySelector('#hot-sort').addEventListener("click", () => updateUrlQuery('hot'))

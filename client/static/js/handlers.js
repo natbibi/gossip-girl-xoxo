@@ -63,8 +63,8 @@ function renderItem(data) {
 
     // make comment button 
     const commentButton = document.createElement('button')
-    commentButton.className = 'first-to-comment tertary-bttn'
-    commentButton.textContent = 'Be the first to comment!'
+    commentButton.className = 'first-to-comment tertiary-bttn'
+    commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
     //show number of likes 
@@ -87,6 +87,11 @@ function renderItem(data) {
     showTotallaughs.textContent = data.reactions.funny
     laughButton.after(showTotallaughs)
 
+    
+    likeButton.addEventListener('click', (event) => addReaction(event, 'happy', data.id))
+    shockedButton.addEventListener('click', (event) => addReaction(event, 'unhappy', data.id))
+    laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
+
     //append share button 
     const shareButton = document.createElement('button')
     shareButton.className = 'tertary-bttn share-button'
@@ -107,52 +112,76 @@ function renderItem(data) {
     postContainer.append(commentPostCont)
     commentButton.addEventListener('click', () => addComment(commentPostCont, postContainer, data.id))
 
-
-    likeButton.addEventListener('click', (event) => addReaction(event, 'happy', data.id))
-    shockedButton.addEventListener('click', (event) => addReaction(event, 'unhappy', data.id))
-    laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
-
-
-    //number of comments on button
-    const numberOfComments = data.comments.length
-    if (numberOfComments > 1) {
-
-        //button to display comments
-        const readCommentsBttn = document.createElement('button')
-        readCommentsBttn.classList.add("read-comment-bttn")
-        readCommentsBttn.textContent = `read comments: ${numberOfComments}`
-        readCommentsBttn.addEventListener('click', () => {
+       //append the comments 
+       const commentCont = document.createElement('div')
+       commentCont.className = 'comment-cont'
+       for (comment of data.comments) {
+           //append each comment
+           commentCont.appendChild(renderComment(comment))
+       }
+   
+    //get the number of comments on a button
+    const showCommentsBttn = document.createElement('button')
+    showCommentsBttn.className = 'read-comment-bttn'
+    showCommentsBttn.dataset.comments = commentCont.querySelectorAll('.comment-item').length
+    
+    if (showCommentsBttn.dataset.comments > 0) {
+        showCommentsBttn.textContent = `show ${showCommentsBttn.dataset.comments} ${showCommentsBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
+        postContainer.append(showCommentsBttn)
+        showCommentsBttn.addEventListener("click", () => {
             commentCont.classList.toggle('display-comments')
+            const display = commentCont.classList.contains('display-comments')
+            showCommentsBttn.textContent = `${display ? 'hide' : 'show'} ${showCommentsBttn.dataset.comments} ${showCommentsBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
+            // addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
         })
-
-        postContainer.append(readCommentsBttn)
-
-    } else {
-        const readCommentsBttn = document.createElement('button')
-        readCommentsBttn.classList.add("read-comment-bttn")
-        readCommentsBttn.textContent = `read comment`
-        readCommentsBttn.addEventListener('click', () => {
-            commentCont.classList.toggle('display-comments')
-        });
-        postContainer.append(readCommentsBttn)
     }
-    // } else {
-    //     const firstToComment = document.createElement('div')
-    //     firstToComment.classList.add('first-to-comment')
+    else {
+            showCommentsBttn.textContent = `be first comment!`
+            postContainer.append(showCommentsBttn)
+            showCommentsBttn.addEventListener("click", () => {
+                commentCont.classList.toggle('display-comments')
+                addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
+            })
+    }
+    
+    postContainer.append(commentCont)
+
+    // firstToComment.textContent = firstToComment.dataset.comments
+    // else if (numberOfComments > 1) {
+
+    //     //button to display comments
+    //     const readCommentsBttn = document.createElement('button')
+    //     readCommentsBttn.classList.add("read-comment-bttn")
+    //     readCommentsBttn.textContent = `read comments: ${numberOfComments}`
+    //     readCommentsBttn.addEventListener('click', () => {
+    //         commentCont.classList.toggle('display-comments')
+    //         const numberOfComments = commentPostCont.querySelectorAll('.comment-item')
+    //         console.log(numberOfComments)
+    //     })
+
+    //     postContainer.append(readCommentsBttn)
+    // }
+
+    // } else if (numberOfComments === 1) {
+    //     const readCommentsBttn = document.createElement('button')
+    //     readCommentsBttn.classList.add("read-comment-bttn")
+    //     readCommentsBttn.textContent = `read comment`
+    //     readCommentsBttn.addEventListener('click', () => {
+    //         commentCont.classList.toggle('display-comments')
+    //     });
+    //     postContainer.append(readCommentsBttn)
+    // }
+    // else {
+    //     const firstToComment = document.createElement('button')
+    //     firstToComment.classList.add('read-comment-bttn')
     //     firstToComment.textContent = "Be the first to comment!"
     //     postContainer.append(firstToComment)
+    //     firstToComment.addEventListener("click", () => {
+    //         commentCont.classList.toggle('display-comments')
+    //         addComment(commentPostCont, postContainer, data.id)
+    //     })
+    // }
 
-
-
-    //append the comments 
-    const commentCont = document.createElement('div')
-    commentCont.className = 'comment-cont'
-    for (comment of data.comments) {
-        //append each comment
-        commentCont.appendChild(renderComment(comment))
-    }
-
-    postContainer.append(commentCont)
 
 
     return postContainer
@@ -194,10 +223,15 @@ async function addComment(parent, topParent, id) {
                 const data = { text: commentValue, date: date }
                 apiFuncs.patchData(url, data)
                 //apend comment for client too
-                topParent.getElementsByClassName('comment-cont')[0].append(renderComment({ text: commentValue }))
+                topParent.getElementsByClassName('comment-cont')[0].append(renderComment({ text: commentValue, new: true }))
                 parent.getElementsByClassName('post-comment-cont')[0].remove()
+                const showCommentBttn = topParent.getElementsByClassName('read-comment-bttn')[0]
+                showCommentBttn.dataset.comments++
+                topParent.getElementsByClassName('comment-cont')[0].classList.add('display-comments')
+                showCommentBttn.textContent = `hide ${showCommentBttn.dataset.comments} ${showCommentBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
+
             } catch (err) {
-                alert("add some text")
+                alert(err)
                 throw err
             }
         })
@@ -226,6 +260,7 @@ function renderComment(comment) {
     const commentPara = document.createElement('p')
     commentPara.classList.add('comment-item')
     commentPara.textContent = comment.text
+    if (comment.new) {commentPara.style.fontWeight = 'bold'}
     return commentPara
 }
 

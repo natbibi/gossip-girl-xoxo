@@ -407,6 +407,12 @@ footer {
 .giphy-carousel {
   margin-top: 1rem;
 }
+#cancel-giphy-bttn {
+  display: none;
+}
+#cancel-giphy-bttn.display {
+  display: block;
+}
 
 footer textarea {
   resize: none;
