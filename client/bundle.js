@@ -2659,38 +2659,35 @@ exports.onGifHover = firePingback('HOVER');
 
 },{"@giphy/js-analytics":11,"@giphy/js-util":54}],33:[function(require,module,exports){
 module.exports={
-  "_args": [
-    [
-      "@giphy/js-components@4.3.1",
-      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
-    ]
-  ],
-  "_from": "@giphy/js-components@4.3.1",
+  "_from": "@giphy/js-components@^4.3.1",
   "_id": "@giphy/js-components@4.3.1",
   "_inBundle": false,
   "_integrity": "sha512-DByKMgivmuJFrt5zUNnn5r4dtfqhjAj9H76/r15rEXJdtSXz+mdbp89yt0DTQnPQJMP93X1owaFu2PBA9UX/Cg==",
   "_location": "/@giphy/js-components",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "@giphy/js-components@4.3.1",
+    "raw": "@giphy/js-components@^4.3.1",
     "name": "@giphy/js-components",
     "escapedName": "@giphy%2fjs-components",
     "scope": "@giphy",
-    "rawSpec": "4.3.1",
+    "rawSpec": "^4.3.1",
     "saveSpec": null,
-    "fetchSpec": "4.3.1"
+    "fetchSpec": "^4.3.1"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
-  "_spec": "4.3.1",
-  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
+  "_shasum": "93aaf3aa2d85c2cfc21f6a6d1d06df6a026f2040",
+  "_spec": "@giphy/js-components@^4.3.1",
+  "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
   "author": {
     "name": "giannif"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "@giphy/js-analytics": "^3.0.0",
     "@giphy/js-brand": "^2.0.2",
@@ -2703,6 +2700,7 @@ module.exports={
     "preact": "10.4.8",
     "throttle-debounce": "^2.3.0"
   },
+  "deprecated": false,
   "description": "A lightweight set of components, focused on easy-of-use and performance.",
   "devDependencies": {
     "@types/bricks.js": "^1.8.1",
@@ -4051,41 +4049,39 @@ module.exports = {
 
 },{"./formats":42}],47:[function(require,module,exports){
 module.exports={
-  "_args": [
-    [
-      "@giphy/js-fetch-api@2.4.0",
-      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
-    ]
-  ],
-  "_from": "@giphy/js-fetch-api@2.4.0",
+  "_from": "@giphy/js-fetch-api@^2.4.0",
   "_id": "@giphy/js-fetch-api@2.4.0",
   "_inBundle": false,
   "_integrity": "sha512-xiMHnv81XZjgut4yrkHB5QHDWGNhVHoyMDb3kQBy5H0NruwtQ+aM5BE9xbP+XQlxt3eRnPRJcLy5ORk9+K0fIQ==",
   "_location": "/@giphy/js-fetch-api",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "@giphy/js-fetch-api@2.4.0",
+    "raw": "@giphy/js-fetch-api@^2.4.0",
     "name": "@giphy/js-fetch-api",
     "escapedName": "@giphy%2fjs-fetch-api",
     "scope": "@giphy",
-    "rawSpec": "2.4.0",
+    "rawSpec": "^2.4.0",
     "saveSpec": null,
-    "fetchSpec": "2.4.0"
+    "fetchSpec": "^2.4.0"
   },
   "_requiredBy": [
+    "#USER",
     "/",
     "/@giphy/js-components"
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
-  "_spec": "2.4.0",
-  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
+  "_shasum": "e96c7a2599b720d3e40ea409d8e4c4a692aa4611",
+  "_spec": "@giphy/js-fetch-api@^2.4.0",
+  "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
+  "bundleDependencies": false,
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
     "qs": "^6.9.4"
   },
+  "deprecated": false,
   "description": "Javascript API to fetch gifs and stickers from the GIPHY API.",
   "devDependencies": {
     "@types/qs": "^6.9.4",
@@ -8845,8 +8841,8 @@ function renderItem(data) {
 
     // make comment button 
     const commentButton = document.createElement('button')
-    commentButton.className = 'first-to-comment tertary-bttn'
-    commentButton.textContent = 'Be the first to comment!'
+    commentButton.className = 'first-to-comment tertiary-bttn'
+    commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
     //show number of likes 
@@ -8869,6 +8865,11 @@ function renderItem(data) {
     showTotallaughs.textContent = data.reactions.funny
     laughButton.after(showTotallaughs)
 
+    
+    likeButton.addEventListener('click', (event) => addReaction(event, 'happy', data.id))
+    shockedButton.addEventListener('click', (event) => addReaction(event, 'unhappy', data.id))
+    laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
+
     //append share button 
     const shareButton = document.createElement('button')
     shareButton.className = 'tertary-bttn share-button'
@@ -8889,52 +8890,76 @@ function renderItem(data) {
     postContainer.append(commentPostCont)
     commentButton.addEventListener('click', () => addComment(commentPostCont, postContainer, data.id))
 
-
-    likeButton.addEventListener('click', (event) => addReaction(event, 'happy', data.id))
-    shockedButton.addEventListener('click', (event) => addReaction(event, 'unhappy', data.id))
-    laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
-
-
-    //number of comments on button
-    const numberOfComments = data.comments.length
-    if (numberOfComments > 1) {
-
-        //button to display comments
-        const readCommentsBttn = document.createElement('button')
-        readCommentsBttn.classList.add("read-comment-bttn")
-        readCommentsBttn.textContent = `read comments: ${numberOfComments}`
-        readCommentsBttn.addEventListener('click', () => {
+       //append the comments 
+       const commentCont = document.createElement('div')
+       commentCont.className = 'comment-cont'
+       for (comment of data.comments) {
+           //append each comment
+           commentCont.appendChild(renderComment(comment))
+       }
+   
+    //get the number of comments on a button
+    const showCommentsBttn = document.createElement('button')
+    showCommentsBttn.className = 'read-comment-bttn'
+    showCommentsBttn.dataset.comments = commentCont.querySelectorAll('.comment-item').length
+    
+    if (showCommentsBttn.dataset.comments > 0) {
+        showCommentsBttn.textContent = `show ${showCommentsBttn.dataset.comments} ${showCommentsBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
+        postContainer.append(showCommentsBttn)
+        showCommentsBttn.addEventListener("click", () => {
             commentCont.classList.toggle('display-comments')
+            const display = commentCont.classList.contains('display-comments')
+            showCommentsBttn.textContent = `${display ? 'hide' : 'show'} ${showCommentsBttn.dataset.comments} ${showCommentsBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
+            // addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
         })
-
-        postContainer.append(readCommentsBttn)
-
-    } else {
-        const readCommentsBttn = document.createElement('button')
-        readCommentsBttn.classList.add("read-comment-bttn")
-        readCommentsBttn.textContent = `read comment`
-        readCommentsBttn.addEventListener('click', () => {
-            commentCont.classList.toggle('display-comments')
-        });
-        postContainer.append(readCommentsBttn)
     }
-    // } else {
-    //     const firstToComment = document.createElement('div')
-    //     firstToComment.classList.add('first-to-comment')
+    else {
+            showCommentsBttn.textContent = `be first comment!`
+            postContainer.append(showCommentsBttn)
+            showCommentsBttn.addEventListener("click", () => {
+                commentCont.classList.toggle('display-comments')
+                addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
+            })
+    }
+    
+    postContainer.append(commentCont)
+
+    // firstToComment.textContent = firstToComment.dataset.comments
+    // else if (numberOfComments > 1) {
+
+    //     //button to display comments
+    //     const readCommentsBttn = document.createElement('button')
+    //     readCommentsBttn.classList.add("read-comment-bttn")
+    //     readCommentsBttn.textContent = `read comments: ${numberOfComments}`
+    //     readCommentsBttn.addEventListener('click', () => {
+    //         commentCont.classList.toggle('display-comments')
+    //         const numberOfComments = commentPostCont.querySelectorAll('.comment-item')
+    //         console.log(numberOfComments)
+    //     })
+
+    //     postContainer.append(readCommentsBttn)
+    // }
+
+    // } else if (numberOfComments === 1) {
+    //     const readCommentsBttn = document.createElement('button')
+    //     readCommentsBttn.classList.add("read-comment-bttn")
+    //     readCommentsBttn.textContent = `read comment`
+    //     readCommentsBttn.addEventListener('click', () => {
+    //         commentCont.classList.toggle('display-comments')
+    //     });
+    //     postContainer.append(readCommentsBttn)
+    // }
+    // else {
+    //     const firstToComment = document.createElement('button')
+    //     firstToComment.classList.add('read-comment-bttn')
     //     firstToComment.textContent = "Be the first to comment!"
     //     postContainer.append(firstToComment)
+    //     firstToComment.addEventListener("click", () => {
+    //         commentCont.classList.toggle('display-comments')
+    //         addComment(commentPostCont, postContainer, data.id)
+    //     })
+    // }
 
-
-
-    //append the comments 
-    const commentCont = document.createElement('div')
-    commentCont.className = 'comment-cont'
-    for (comment of data.comments) {
-        //append each comment
-        commentCont.appendChild(renderComment(comment))
-    }
-
-    postContainer.append(commentCont)
 
 
     return postContainer
@@ -8976,10 +9001,15 @@ async function addComment(parent, topParent, id) {
                 const data = { text: commentValue, date: date }
                 apiFuncs.patchData(url, data)
                 //apend comment for client too
-                topParent.getElementsByClassName('comment-cont')[0].append(renderComment({ text: commentValue }))
+                topParent.getElementsByClassName('comment-cont')[0].append(renderComment({ text: commentValue, new: true }))
                 parent.getElementsByClassName('post-comment-cont')[0].remove()
+                const showCommentBttn = topParent.getElementsByClassName('read-comment-bttn')[0]
+                showCommentBttn.dataset.comments++
+                topParent.getElementsByClassName('comment-cont')[0].classList.add('display-comments')
+                showCommentBttn.textContent = `hide ${showCommentBttn.dataset.comments} ${showCommentBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
+
             } catch (err) {
-                alert("add some text")
+                alert(err)
                 throw err
             }
         })
@@ -9008,6 +9038,7 @@ function renderComment(comment) {
     const commentPara = document.createElement('p')
     commentPara.classList.add('comment-item')
     commentPara.textContent = comment.text
+    if (comment.new) {commentPara.style.fontWeight = 'bold'}
     return commentPara
 }
 
@@ -9084,23 +9115,29 @@ async function runPage() {
 
 
 
-    function giphySearch() {
-      const cancelGiphy = document.getElementById('cancel-giphy-bttn')
-      const root = document.querySelector('#giphy-root')
-      const query = document.querySelector('#giphy-search')
-      const grid = makeCarousel(root, query.value)
-      document.querySelector('#search-giphy').addEventListener("click", () => {
-        cancelGiphy.classList.add('display')
+function giphySearch() {
+  const cancelGiphy = document.getElementById('cancel-giphy-bttn')
+  const root = document.querySelector('#giphy-root')
+  const query = document.querySelector('#giphy-search')
+  const grid = makeCarousel(root, query.value)
+  document.querySelector('#search-giphy').addEventListener("click", () => {
+  try {
+      if (query.value.length < 1) throw new Error('no query entered')
+      cancelGiphy.classList.add('display')
+      grid.remove()
+      giphySearch()
+      cancelGiphy.addEventListener("click", () => {
+        query.value = ''
+        cancelGiphy.classList.remove('display')
         grid.remove()
-        giphySearch()
-        cancelGiphy.addEventListener("click", () => {
-          query.value = ''
-          cancelGiphy.classList.remove('display')
-          grid.remove()
-        })
       })
-    }
-    giphySearch()
+  } catch(err) {
+    alert('enter a query')
+    throw err
+  }
+})
+}
+giphySearch()
 
 
     document.querySelector('#hot-sort').addEventListener("click", () => updateUrlQuery('hot'))
