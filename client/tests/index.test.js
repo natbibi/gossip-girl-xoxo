@@ -4,7 +4,6 @@ const html = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf8');
 
 global.fetch = require('jest-fetch-mock');
 const app = require('../static/js/api.js');
-const giphy = require('../static/js/giphy')
 
 describe('app', () => {
     beforeEach(() => {
@@ -100,26 +99,7 @@ describe('app', () => {
      
             })
         })
-        describe('giphy search', () => {
-            test('if giphy search returns giphy carousel', () =>{
-                
-            })
-
-        })
-
-        describe('giphy borders', () => {
-            let giphyGifs = document.querySelector('.giphy-gif')
-            test('if giphy removes all borders', () =>{
-            expect(giphyGifs).
-                
-            })
-
-            test('if giphy toggles border', () => {
-            expect(giphy.toggleBorder()).toBeInstanceOf()
-            })
-
-        })
-     
-            })
-        })
+        
+     })
+})
 
