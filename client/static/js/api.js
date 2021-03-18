@@ -62,5 +62,4 @@ module.exports = {
     getData,
     patchData
 }
-//post
 
