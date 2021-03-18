@@ -8689,6 +8689,8 @@ function prepPost(gifId){
     let data = {}
     submitNewPost.onclick = () => {
         try {
+            console.log(!document.getElementsByClassName('giphy-carousel')[0])
+            if (!document.getElementsByClassName('giphy-carousel')[0]) gifId = null
             if (popupTextArea.value.length < 1) throw new Error('add some text!')
             data.text = popupTextArea.value
             data.date = new Date().toString()
@@ -8702,6 +8704,7 @@ function prepPost(gifId){
     }
 }
 submitNewPost.addEventListener("click", () => { 
+    
     if (!giphSelected) {
         try {
             if (popupTextArea.value.length < 1) throw new Error('add some text!')
@@ -8724,6 +8727,7 @@ const gf = new GiphyFetch(key)
 
 // Creating a carousel with window resizing and remove-ability
 const makeCarousel = (targetEl, query) => {
+    
     let selectedGif
     const fetchGifs = (offset) => {
         return gf.search(query, {offset, sort: 'relevant', lang: 'en', limit: 3})
@@ -9071,12 +9075,19 @@ function updateUrlQuery(query) {
 
 
 function giphySearch() {
+  const cancelGiphy = document.getElementById('cancel-giphy-bttn')
   const root = document.querySelector('#giphy-root')
-  const query = document.querySelector('#giphy-search').value
-  const grid = makeCarousel(root, query)
+  const query = document.querySelector('#giphy-search')
+  const grid = makeCarousel(root, query.value)
   document.querySelector('#search-giphy').addEventListener("click", () => {
+    cancelGiphy.classList.add('display')
     grid.remove()
     giphySearch()
+    cancelGiphy.addEventListener("click", () => {
+      query.value = ''
+      cancelGiphy.classList.remove('display')
+      grid.remove()
+    })
   })
 }
 giphySearch()
