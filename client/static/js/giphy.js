@@ -47,7 +47,7 @@ submitNewPost.addEventListener("click", () => {
             data.date = new Date().toString()
             submit(data)
         } catch(err) {
-            alert('add some text!')
+            alert('You haven\'t written anything')
             throw err
         }
     }
