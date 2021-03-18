@@ -61,10 +61,10 @@ function renderItem(data) {
     laughButton.textContent = '😂'
     postContainer.appendChild(laughButton)
 
-    //make comment button 
+    // make comment button 
     const commentButton = document.createElement('button')
-    commentButton.className = 'primary-bttn'
-    commentButton.textContent = 'comment'
+    commentButton.className = 'first-to-comment tertary-bttn'
+    commentButton.textContent = 'Be the first to comment!'
     postContainer.appendChild(commentButton)
 
     //show number of likes 
@@ -89,8 +89,13 @@ function renderItem(data) {
 
     //append share button 
     const shareButton = document.createElement('button')
-    shareButton.className = 'primary-bttn'
-    shareButton.textContent = 'share'
+    shareButton.className = 'tertary-bttn share-button'
+
+    // add fontawesome icon 
+    const iElement = document.createElement('i')
+    iElement.className = "fas fa-share-square"
+    shareButton.append(iElement)
+
     postContainer.append(shareButton)
     //share click event
     shareButton.addEventListener("click", () => {
@@ -122,7 +127,7 @@ function renderItem(data) {
 
         postContainer.append(readCommentsBttn)
 
-    } else if (numberOfComments == 1) {
+    } else {
         const readCommentsBttn = document.createElement('button')
         readCommentsBttn.classList.add("read-comment-bttn")
         readCommentsBttn.textContent = `read comment`
@@ -130,12 +135,13 @@ function renderItem(data) {
             commentCont.classList.toggle('display-comments')
         });
         postContainer.append(readCommentsBttn)
-    } else {
-        const firstToComment = document.createElement('div')
-        firstToComment.classList.add('first-to-comment')
-        firstToComment.textContent = "Be the first to comment!"
-        postContainer.append(firstToComment)
     }
+    // } else {
+    //     const firstToComment = document.createElement('div')
+    //     firstToComment.classList.add('first-to-comment')
+    //     firstToComment.textContent = "Be the first to comment!"
+    //     postContainer.append(firstToComment)
+
 
 
     //append the comments 
