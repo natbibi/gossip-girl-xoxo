@@ -9147,7 +9147,9 @@ document.querySelector('.dark-mode-button').addEventListener('click', () => {
   document.body.classList.toggle('dark')
 })
 
+
 },{"./api":85,"./giphy":86,"./handlers":88}],90:[function(require,module,exports){
+
 const key = '2PxgLQIb1X5Gr2LaM9bmZXXcUAFsb0m2'
 
  module.exports = key
