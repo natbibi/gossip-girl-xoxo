@@ -2662,7 +2662,9 @@ module.exports={
   "_args": [
     [
       "@giphy/js-components@4.3.1",
-      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
+
+      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
+
     ]
   ],
   "_from": "@giphy/js-components@4.3.1",
@@ -2687,7 +2689,8 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
   "_spec": "4.3.1",
-  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
+  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
+
   "author": {
     "name": "giannif"
   },
@@ -4054,7 +4057,9 @@ module.exports={
   "_args": [
     [
       "@giphy/js-fetch-api@2.4.0",
-      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
+
+      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
+
     ]
   ],
   "_from": "@giphy/js-fetch-api@2.4.0",
@@ -4080,7 +4085,9 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
   "_spec": "2.4.0",
-  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
+
+  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
+
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
@@ -8826,18 +8833,21 @@ function renderItem(data) {
 
     //make like button
     const likeButton = document.createElement('button')
+    likeButton.setAttribute("aria-label", "love-emoji-button");
     likeButton.className = 'reaction-bttn'
     likeButton.textContent = '😍'
     postContainer.appendChild(likeButton)
 
     //make shocked/unhappy button 
     const shockedButton = document.createElement('button')
+    shockedButton.setAttribute("aria-label", "shock-emoji-button");
     shockedButton.className = 'reaction-bttn'
     shockedButton.textContent = '😱'
     postContainer.appendChild(shockedButton)
 
     //make laugh button 
     const laughButton = document.createElement('button')
+    laughButton.setAttribute("aria-label", "laugh-emoji-button");
     laughButton.className = 'reaction-bttn'
     laughButton.textContent = '😂'
     postContainer.appendChild(laughButton)
@@ -8868,14 +8878,15 @@ function renderItem(data) {
     showTotallaughs.textContent = data.reactions.funny
     laughButton.after(showTotallaughs)
 
-    
+
     likeButton.addEventListener('click', (event) => addReaction(event, 'happy', data.id))
     shockedButton.addEventListener('click', (event) => addReaction(event, 'unhappy', data.id))
     laughButton.addEventListener('click', (event) => addReaction(event, 'funny', data.id))
 
     //append share button 
     const shareButton = document.createElement('button')
-    shareButton.className = 'tertiary-bttn share-button'
+    shareButton.setAttribute("aria-label", "share");
+    shareButton.className = 'share-button'
 
     // add fontawesome icon 
     const iElement = document.createElement('i')
@@ -8893,19 +8904,19 @@ function renderItem(data) {
     postContainer.append(commentPostCont)
     commentButton.addEventListener('click', () => addComment(commentPostCont, postContainer, data.id))
 
-       //append the comments 
-       const commentCont = document.createElement('div')
-       commentCont.className = 'comment-cont'
-       for (comment of data.comments) {
-           //append each comment
-           commentCont.appendChild(renderComment(comment))
-       }
-   
+    //append the comments 
+    const commentCont = document.createElement('div')
+    commentCont.className = 'comment-cont'
+    for (comment of data.comments) {
+        //append each comment
+        commentCont.appendChild(renderComment(comment))
+    }
+
     //get the number of comments on a button
     const showCommentsBttn = document.createElement('button')
     showCommentsBttn.className = 'read-comment-bttn'
     showCommentsBttn.dataset.comments = commentCont.querySelectorAll('.comment-item').length
-    
+
     if (showCommentsBttn.dataset.comments > 0) {
         showCommentsBttn.textContent = `show ${showCommentsBttn.dataset.comments} ${showCommentsBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
         postContainer.append(showCommentsBttn)
@@ -8917,14 +8928,14 @@ function renderItem(data) {
         })
     }
     else {
-            showCommentsBttn.textContent = `be first comment!`
-            postContainer.append(showCommentsBttn)
-            showCommentsBttn.addEventListener("click", () => {
-                commentCont.classList.toggle('display-comments')
-                if (showCommentsBttn.dataset.comments == 0) addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
-            })
+        showCommentsBttn.textContent = `be first comment!`
+        postContainer.append(showCommentsBttn)
+        showCommentsBttn.addEventListener("click", () => {
+            commentCont.classList.toggle('display-comments')
+            if (showCommentsBttn.dataset.comments == 0) addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
+        })
     }
-    
+
     postContainer.append(commentCont)
 
     // firstToComment.textContent = firstToComment.dataset.comments
@@ -9041,7 +9052,7 @@ function renderComment(comment) {
     const commentPara = document.createElement('p')
     commentPara.classList.add('comment-item')
     commentPara.textContent = comment.text
-    if (comment.new) {commentPara.style.fontWeight = 'bold'}
+    if (comment.new) { commentPara.style.fontWeight = 'bold' }
     return commentPara
 }
 
