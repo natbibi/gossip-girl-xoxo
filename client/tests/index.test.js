@@ -84,6 +84,14 @@ describe('app', () => {
             })
         })
 
+        describe('hot feature', () => {
+            test('if hot button fetches the most engaging post', () => {
+            app.getData('https://gossip-girl-api.herokuapp.com/')
+            expect(fetch).toHaveBeenCalled()
+     
+            })
+        })
+
     })
 
 
