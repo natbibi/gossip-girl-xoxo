@@ -12,7 +12,7 @@ describe('index.html', () => {
         test('it has a title', () => {
             const head = document.querySelector('head')
             expect(head).toBeTruthy();
-            expect(head.textContent).toContain('Gossip Girls');
+            expect(head.textContent).toContain('Gossip Girl');
         });
 
         test('it is linked to a CSS stylesheet', () => {
@@ -43,13 +43,28 @@ describe('index.html', () => {
         })
 
         test('it has a dark/light mode switch button', () => {
-            let switchBtn = document.querySelector('.dark-mode-button');
-            expect(switchBtn).toBeTruthy();
+            let switchBttn = document.querySelector('.dark-mode-button');
+            expect(switchBttn).toBeTruthy();
         })
 
-        // test('it has a nav bar', () => {
-        //     let navbar = document.querySelector('.sidenav');
-        //     expect(navbar).toBe
-        // })
+        test('it has a hot button', () => {
+            let hotBttn = document.querySelector('#hot-sort');
+            expect(hotBttn).toBeTruthy();
+        })
+
+        test('it has a new button', () => {
+            let newBttn = document.querySelector('#new-sort');
+            expect(newBttn).toBeTruthy();
+        })
+
+        test('it has a header', () => {
+            let header = document.querySelector('h1')
+            expect(header).toBeTruthy()
+        })
+
+        test('it has a nav bar', () => {
+            let navbar = document.querySelector('.topnav');
+            expect(navbar).toBeTruthy()
+        })
     })
 })

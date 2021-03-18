@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "jest",
-    "dev": "concurrently \"watchify ./static/js/index.js -o bundle.js\" \"python -m http.server\""
+    "coverage": "jest --coverage --silent",
+    "dev": "concurrently \"watchify ./static/js/index.js -o bundle.js\" \"python3 -m http.server\""
   },
   "repository": {
     "type": "git",
