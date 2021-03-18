@@ -1,4 +1,4 @@
-const key = require('./key')
+const key = process.env.API_KEY
 const GiphyJsFetchApi = require('@giphy/js-fetch-api')
 const giphyComponents =  require('@giphy/js-components')
 const renderCarousel = giphyComponents.renderCarousel
