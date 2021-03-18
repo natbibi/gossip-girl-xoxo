@@ -6,19 +6,8 @@ const GiphyFetch = GiphyJsFetchApi.GiphyFetch
 const renderGif = giphyComponents.renderGif
 const apiFuncs = require('./api')
 
+const giphyHelpers = require('./giphyHelpers.js')
 
-//helper funcs for select styles
-function toggleBorder(element){
-    element.style.border = 'solid limegreen 4px'
-}
-function removeAllBorders(){
-    const giphyGifs = document.getElementsByClassName('giphy-gif')
-    for(let i=0; i<giphyGifs.length; i++) {
-        giphyGifs[i].style.border = 'solid 4px transparent'
-        giphyGifs[i].style.borderRadius = '12px'
-
-    }
-}
 //async submit function in order to post then refresh on mobile browsers
 async function submit(data) {
     await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
@@ -89,8 +78,8 @@ const makeCarousel = (targetEl, query) => {
               gutter: 0,
               onGifClick: (gif, event) => {
                   event.preventDefault();
-                  removeAllBorders()
-                  toggleBorder(event.currentTarget)
+                  giphyHelpers.removeAllBorders()
+                  giphyHelpers.toggleBorder(event.currentTarget)
                   prepPost(gif.id)
                 }
             },

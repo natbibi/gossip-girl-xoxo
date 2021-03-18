@@ -150,44 +150,6 @@ function renderItem(data) {
 
     postContainer.append(commentCont)
 
-    // firstToComment.textContent = firstToComment.dataset.comments
-    // else if (numberOfComments > 1) {
-
-    //     //button to display comments
-    //     const readCommentsBttn = document.createElement('button')
-    //     readCommentsBttn.classList.add("read-comment-bttn")
-    //     readCommentsBttn.textContent = `read comments: ${numberOfComments}`
-    //     readCommentsBttn.addEventListener('click', () => {
-    //         commentCont.classList.toggle('display-comments')
-    //         const numberOfComments = commentPostCont.querySelectorAll('.comment-item')
-    //         console.log(numberOfComments)
-    //     })
-
-    //     postContainer.append(readCommentsBttn)
-    // }
-
-    // } else if (numberOfComments === 1) {
-    //     const readCommentsBttn = document.createElement('button')
-    //     readCommentsBttn.classList.add("read-comment-bttn")
-    //     readCommentsBttn.textContent = `read comment`
-    //     readCommentsBttn.addEventListener('click', () => {
-    //         commentCont.classList.toggle('display-comments')
-    //     });
-    //     postContainer.append(readCommentsBttn)
-    // }
-    // else {
-    //     const firstToComment = document.createElement('button')
-    //     firstToComment.classList.add('read-comment-bttn')
-    //     firstToComment.textContent = "Be the first to comment!"
-    //     postContainer.append(firstToComment)
-    //     firstToComment.addEventListener("click", () => {
-    //         commentCont.classList.toggle('display-comments')
-    //         addComment(commentPostCont, postContainer, data.id)
-    //     })
-    // }
-
-
-
     return postContainer
 
 }
