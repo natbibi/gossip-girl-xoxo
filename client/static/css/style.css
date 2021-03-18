@@ -249,7 +249,7 @@ form {
 }
 
 #popup-post:hover {
-  transform: rotate(45deg);
+  transform: rotate(deg);
 }
 
 .primary-bttn {

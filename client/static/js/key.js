@@ -1,3 +1,3 @@
-const key = 'HPtiYWEeMXDaI1bJuNQ9L9ypMfbpwnKh'
+const key = '2PxgLQIb1X5Gr2LaM9bmZXXcUAFsb0m2'
 
-module.exports = key
+ module.exports = key

@@ -9148,7 +9148,7 @@ document.querySelector('.dark-mode-button').addEventListener('click', () => {
 })
 
 },{"./api":85,"./giphy":86,"./handlers":88}],90:[function(require,module,exports){
-const key = 'HPtiYWEeMXDaI1bJuNQ9L9ypMfbpwnKh'
+const key = '2PxgLQIb1X5Gr2LaM9bmZXXcUAFsb0m2'
 
-module.exports = key
+ module.exports = key
 },{}]},{},[89]);
