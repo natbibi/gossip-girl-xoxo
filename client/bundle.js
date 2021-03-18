@@ -2662,9 +2662,7 @@ module.exports={
   "_args": [
     [
       "@giphy/js-components@4.3.1",
-
       "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
-
     ]
   ],
   "_from": "@giphy/js-components@4.3.1",
@@ -2690,7 +2688,6 @@ module.exports={
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
   "_spec": "4.3.1",
   "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
-
   "author": {
     "name": "giannif"
   },
@@ -4057,9 +4054,7 @@ module.exports={
   "_args": [
     [
       "@giphy/js-fetch-api@2.4.0",
-
       "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
-
     ]
   ],
   "_from": "@giphy/js-fetch-api@2.4.0",
@@ -4085,9 +4080,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
   "_spec": "2.4.0",
-
   "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
-
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
@@ -8671,19 +8664,8 @@ const GiphyFetch = GiphyJsFetchApi.GiphyFetch
 const renderGif = giphyComponents.renderGif
 const apiFuncs = require('./api')
 
+const giphyHelpers = require('./giphyHelpers.js')
 
-//helper funcs for select styles
-function toggleBorder(element){
-    element.style.border = 'solid limegreen 4px'
-}
-function removeAllBorders(){
-    const giphyGifs = document.getElementsByClassName('giphy-gif')
-    for(let i=0; i<giphyGifs.length; i++) {
-        giphyGifs[i].style.border = 'solid 4px transparent'
-        giphyGifs[i].style.borderRadius = '12px'
-
-    }
-}
 //async submit function in order to post then refresh on mobile browsers
 async function submit(data) {
     await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
@@ -8754,8 +8736,8 @@ const makeCarousel = (targetEl, query) => {
               gutter: 0,
               onGifClick: (gif, event) => {
                   event.preventDefault();
-                  removeAllBorders()
-                  toggleBorder(event.currentTarget)
+                  giphyHelpers.removeAllBorders()
+                  giphyHelpers.toggleBorder(event.currentTarget)
                   prepPost(gif.id)
                 }
             },
@@ -8785,7 +8767,24 @@ module.exports = {
     makeCarousel,
     vanillaJSGif,
 } 
-},{"./api":85,"./key":89,"@giphy/js-components":30,"@giphy/js-fetch-api":36}],87:[function(require,module,exports){
+},{"./api":85,"./giphyHelpers.js":87,"./key":90,"@giphy/js-components":30,"@giphy/js-fetch-api":36}],87:[function(require,module,exports){
+function toggleBorder(element){
+    element.style.border = 'solid limegreen 4px'
+}
+function removeAllBorders(){
+    const giphyGifs = document.getElementsByClassName('giphy-gif')
+    for(let i=0; i<giphyGifs.length; i++) {
+        giphyGifs[i].style.border = 'solid 4px transparent'
+        giphyGifs[i].style.borderRadius = '12px'
+
+    }
+}
+
+module.exports = {
+    toggleBorder,
+    removeAllBorders
+}
+},{}],88:[function(require,module,exports){
 const giphy = require('./giphy')
 const renderGif = giphy.vanillaJSGif
 
@@ -8938,44 +8937,6 @@ function renderItem(data) {
 
     postContainer.append(commentCont)
 
-    // firstToComment.textContent = firstToComment.dataset.comments
-    // else if (numberOfComments > 1) {
-
-    //     //button to display comments
-    //     const readCommentsBttn = document.createElement('button')
-    //     readCommentsBttn.classList.add("read-comment-bttn")
-    //     readCommentsBttn.textContent = `read comments: ${numberOfComments}`
-    //     readCommentsBttn.addEventListener('click', () => {
-    //         commentCont.classList.toggle('display-comments')
-    //         const numberOfComments = commentPostCont.querySelectorAll('.comment-item')
-    //         console.log(numberOfComments)
-    //     })
-
-    //     postContainer.append(readCommentsBttn)
-    // }
-
-    // } else if (numberOfComments === 1) {
-    //     const readCommentsBttn = document.createElement('button')
-    //     readCommentsBttn.classList.add("read-comment-bttn")
-    //     readCommentsBttn.textContent = `read comment`
-    //     readCommentsBttn.addEventListener('click', () => {
-    //         commentCont.classList.toggle('display-comments')
-    //     });
-    //     postContainer.append(readCommentsBttn)
-    // }
-    // else {
-    //     const firstToComment = document.createElement('button')
-    //     firstToComment.classList.add('read-comment-bttn')
-    //     firstToComment.textContent = "Be the first to comment!"
-    //     postContainer.append(firstToComment)
-    //     firstToComment.addEventListener("click", () => {
-    //         commentCont.classList.toggle('display-comments')
-    //         addComment(commentPostCont, postContainer, data.id)
-    //     })
-    // }
-
-
-
     return postContainer
 
 }
@@ -9070,7 +9031,7 @@ module.exports = {
     renderItem,
     renderError
 }
-},{"./api":85,"./giphy":86}],88:[function(require,module,exports){
+},{"./api":85,"./giphy":86}],89:[function(require,module,exports){
 const giphy = require('./giphy')
 const makeCarousel = giphy.makeCarousel
 const renderGif = giphy.vanillaJSGif
@@ -9186,8 +9147,10 @@ document.querySelector('.dark-mode-button').addEventListener('click', () => {
   document.body.classList.toggle('dark')
 })
 
-},{"./api":85,"./giphy":86,"./handlers":87}],89:[function(require,module,exports){
+
+},{"./api":85,"./giphy":86,"./handlers":88}],90:[function(require,module,exports){
+
 const key = '2PxgLQIb1X5Gr2LaM9bmZXXcUAFsb0m2'
 
-module.exports = key
-},{}]},{},[88]);
+ module.exports = key
+},{}]},{},[89]);
