@@ -4,6 +4,7 @@ const html = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf8');
 
 global.fetch = require('jest-fetch-mock');
 const app = require('../static/js/api.js');
+const giphy = require('../static/js/giphy')
 
 describe('app', () => {
     beforeEach(() => {
@@ -99,7 +100,7 @@ describe('app', () => {
      
             })
         })
-    
-     
+        
             })
         })
+

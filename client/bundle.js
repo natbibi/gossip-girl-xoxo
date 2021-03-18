@@ -8587,6 +8587,7 @@ exports.default = _default;
 },{"./validate.js":83}],85:[function(require,module,exports){
 // get data
 async function getData(url = '') {
+  try {
     // Default options are marked with *
     const response = await fetch(url, {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -8601,10 +8602,14 @@ async function getData(url = '') {
       referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     });
     return response.json(); // parses JSON response into native JavaScript objects
+  } catch(err) {
+    console.log(err)
+  }
   }
 
 // post data
 async function postData(url = '', data = {}) {
+  try {
     // Default options are marked with *
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -8620,10 +8625,14 @@ async function postData(url = '', data = {}) {
       body: JSON.stringify(data) // body data type must match "Content-Type" header
     });
     return response.json(); // parses JSON response into native JavaScript objects
+  } catch(err) {
+    console.log(err)
+  }
   }
 
   //patch
 async function patchData(url = '', data = {}) {
+  try {
     // Default options are marked with *
     const response = await fetch(url, {
       method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
@@ -8640,6 +8649,9 @@ async function patchData(url = '', data = {}) {
     });
     // we don't need patch to return data
     // return response.json(); // parses JSON response into native JavaScript objects
+  } catch(err) {
+    console.log(err)
+  }
   }
 
 
@@ -8664,11 +8676,16 @@ const giphyHelpers = require('./giphyHelpers.js')
 
 //async submit function in order to post then refresh on mobile browsers
 async function submit(data) {
-    await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
-    window.location.search = ''
-    window.location.reload()
+    try {
+        await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
+        window.location.search = ''
+        window.location.reload()
+    } catch(err) {
+        console.log(err)
+    }
   }
 
+document.addEventListener('DOMContentLoaded', function () {
 const popupTextArea = document.querySelector('#popup-textarea')
 const submitNewPost = document.querySelector('#submit-post')
 let giphSelected = false
@@ -8706,15 +8723,17 @@ submitNewPost.addEventListener("click", () => {
         }
     }
 })
+})
 
 
 
 // create a GiphyFetch with your api key
 // apply for a new Web SDK key. Use a separate key for every platform (Android, iOS, Web)
-const gf = new GiphyFetch(key)
 
 // Creating a carousel with window resizing and remove-ability
 const makeCarousel = (targetEl, query) => {
+    const gf = new GiphyFetch(key)
+
     
     let selectedGif
     const fetchGifs = (offset) => {
@@ -8751,9 +8770,15 @@ const makeCarousel = (targetEl, query) => {
 // create a GiphyFetch with your api key
 // apply for a new Web SDK key. Use a separate key for every platform (Android, iOS, Web)
 const vanillaJSGif = async (mountNode, id) => {
+    const gf = new GiphyFetch(key)
+
+    try {
     // render a single gif
     const { data: gif1 } = await gf.gif(id)
     renderGif({ gif: gif1, width:  300, noLink: true }, mountNode)
+    } catch(err){
+        console.log(err)
+    }
 }
 
 // To remove
@@ -8762,6 +8787,7 @@ const vanillaJSGif = async (mountNode, id) => {
 module.exports = { 
     makeCarousel,
     vanillaJSGif,
+    submit
 } 
 },{"./api":85,"./giphyHelpers.js":87,"./key":90,"@giphy/js-components":30,"@giphy/js-fetch-api":36}],87:[function(require,module,exports){
 function toggleBorder(element){
@@ -8808,11 +8834,6 @@ function renderItem(data) {
     const postText = document.createElement('p')
     postText.textContent = data.text
 
-    function randomclass() {
-        const differentFontClass = ["blog-entry-font-1", "blog-entry-font-2", "blog-entry-font-3", "blog-entry-font-4", "blog-entry-font-5"]
-        const randNum = Math.floor(Math.random() * differentFontClass.length)
-        return differentFontClass[randNum]
-    }
     postText.className = `${randomclass()} blog-entry-main`
 
     postContainer.appendChild(postText)
@@ -8849,7 +8870,7 @@ function renderItem(data) {
 
     // make comment button 
     const commentButton = document.createElement('button')
-    commentButton.className = 'first-to-comment primary-bttn'
+    commentButton.className = 'first-to-comment tertiary-bttn'
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
@@ -8961,7 +8982,7 @@ async function addComment(parent, topParent, id) {
 
         //comment button to post value from text area
         const commentSubmitBttn = document.createElement('button')
-        commentSubmitBttn.classList.add('reply-comment-bttn')
+        commentSubmitBttn.classList.add('primary-bttn')
         commentSubmitBttn.textContent = 'reply'
 
         commentSubmitBttn.addEventListener('click', () => {
@@ -8981,7 +9002,7 @@ async function addComment(parent, topParent, id) {
                 showCommentBttn.textContent = `nice!`
 
             } catch (err) {
-                alert('You haven\'t written anything')
+                alert(err)
                 throw err
             }
         })
@@ -9003,7 +9024,14 @@ function copyUrl(id, parent) {
     copyText.select();
     document.execCommand("copy");
     copyText.remove()
-    alert('You\'ve now copied the link, time to share')
+    alert('link copied')
+}
+
+function renderError(error) {
+    const errorCont = document.createElement('div')
+    errorCont.className = 'error'
+    errorCont.textContent = `${error}`
+    document.getElementById('root').prepend(errorCont)
 }
 
 function renderComment(comment) {
@@ -9014,11 +9042,10 @@ function renderComment(comment) {
     return commentPara
 }
 
-function renderError(error) {
-    const errorCont = document.createElement('div')
-    errorCont.className = 'error'
-    errorCont.textContent = `${error}`
-    document.getElementById('root').prepend(errorCont)
+function randomclass() {
+    const differentFontClass = ["blog-entry-font-1", "blog-entry-font-2", "blog-entry-font-3", "blog-entry-font-4", "blog-entry-font-5"]
+    const randNum = Math.floor(Math.random() * differentFontClass.length)
+    return differentFontClass[randNum]
 }
 
 
@@ -9026,7 +9053,9 @@ function renderError(error) {
 module.exports = {
     renderList,
     renderItem,
-    renderError
+    renderComment,
+    renderError,
+    randomclass
 }
 },{"./api":85,"./giphy":86}],89:[function(require,module,exports){
 const giphy = require('./giphy')
