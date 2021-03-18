@@ -17,6 +17,7 @@ html {
 body {
   --container-color: #f9f3f3;
   --background-color: white;
+  --input-color: white;
   --accent-color: #dddddd;
   --text-color: rgb(27, 26, 26);
   --transition-delay: 1.5s;
@@ -33,9 +34,10 @@ body {
 body.dark {
   --container-color: rgb(20, 19, 20);
   --background-color: rgb(28, 26, 29);
+  --input-color: rgb(28, 28, 29);
   --accent-color: rgb(53, 53, 53);
   --text-color: rgb(230, 230, 230);
-  --button-color: rgb(252, 84, 173);
+  --button-color: #f25287;
   --button-shadow: 1px 1.5px rgb(68, 66, 66);
 
   background-color: var(--background-color);
@@ -47,17 +49,23 @@ button {
   min-width: 45px;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+  font-family: "Dosis", sans-serif;
 }
 input,
 textarea {
   min-height: 45px;
   border-radius: 5px;
   border: solid 2px var(--accent-color);
-  box-shadow: inset 0 0 1.5px #000000;
+  box-shadow: inset 0 0 1.5px var(--text-color);
   transition: 0s;
   background: var(--background-color);
   padding: 0.5rem;
   font-size: 16px;
+  font-family: "Dosis", sans-serif;
+  background-color: var(--input-color);
+  color: var(--text-color);
+  resize: none
 }
 input:focus,
 textarea:focus {
@@ -91,6 +99,8 @@ textarea:focus {
   background-color: var(--container-color);
   transition: var(--transition-delay);
   border-radius: 5px;
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
 }
 
 .topnav {
@@ -99,6 +109,9 @@ textarea:focus {
   justify-content: space-between;
   position: relative;
   top: 0;
+}
+.topnav:hover {
+  cursor: pointer;
 }
 
 .post-section {
@@ -139,6 +152,10 @@ textarea:focus {
   padding-left: 50px;
   color: black;
 }
+.dark-mode-button:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
 
 .moon-icon {
   color: black;
@@ -163,7 +180,7 @@ textarea:focus {
 }
 
 .icon:hover {
-  transform: scale(1.1);
+  transform: scale(1.03);
 }
 
 /* blog sections */
@@ -192,7 +209,7 @@ p {
   font-size: 0.8rem;
   opacity: 0.8;
   position: absolute;
-  right: calc(3rem + 12px);
+  right: 3rem;
   top: 0;
 }
 
@@ -239,7 +256,11 @@ form {
   font-family: "Times New Roman", Times, serif;
 }
 
-.primary-bttn { 
+#popup-post:hover {
+  transform: rotate(deg);
+}
+
+.primary-bttn {
   /* hot, new, comment on post*/
   background: var(--button-color);
   color: var(--text-color);
@@ -269,52 +290,76 @@ form {
   padding-top: 1px;
   padding-bottom: 2px;
   cursor: pointer;
-  transform: scale(1.03);
   transition: var(--transition-delay);
   font-family: "Dosis", sans-serif;
   box-shadow: var(--button-shadow);
+}
+
+.secondary-bttn:hover {
+  transform: scale(1.03);
 }
 
 .tertiary-bttn {
   /* share, be first to comment button */
   transition: var(--transition-delay);
   border: none;
-  color: var(--accent-color);
   border: solid 2px var(--accent-color-pink);
   color: var(--button-color);
   border-radius: 4px;
+  font-family: "Dosis", sans-serif;
+}
+
+.tertiary-bttn:hover {
+  transform: scale(1.03);
+}
+
+.reply-comment-bttn {
+  transition: var(--transition-delay);
+  /* border: solid 2px var(--accent-color-pink); */
+  border: solid var(--text-color) 1px;
+  color: var(--button-color);
+  border-radius: 4px;
+  background-color: var(--background-color);
+  transition: 0s;
+}
+.reply-comment-bttn:hover{
+ transform: scale(1.03)
 }
 
 .share-button {
   border: none;
-  transition: var(--transition-delay);
+  transition: none;
   background-color: none;
   color: var(--text-color);
   background-color: var(--accent-color);
   position: absolute;
-  top: 0.2rem;
-  right: 0.2rem;
+  top: 0;
+  right: 0;
   min-height: 42px;
   min-width: 42px;
 }
 
-#submit-post,
+
 #search-giphy,
 #cancel-giphy-bttn.display {
   color: var(--text-color);
   font-family: "Dosis", sans-serif;
   background: var(--button-color);
   border: none;
-  background: var(--container-color);
+  background: var(--background-color);
+  border-radius: 4px;
 }
 
 #submit-post {
-  background: var(--button-color);
+  color: var(--button-color);
+  background-color: var(--background-color);
+  border: solid 1px var(--text-color)
 }
 
 #submit-post:hover,
 #search-giphy:hover {
   transform: scale(1.03);
+  transition: 0s
 }
 .giphy-search-cont {
   width: max-content;
@@ -332,7 +377,7 @@ form {
   padding: 0 1rem;
 }
 
-#search-giphy{
+#search-giphy {
   border-radius: 0 50px 50px 0;
   height: 45px;
   padding: 0;
@@ -348,7 +393,7 @@ form {
   transition: var(--transition-delay);
   font-family: "Dosis", sans-serif;
   font-size: 14px;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   margin-left: 50%;
   transform: translateX(-50%);
   font-size: 0.8rem;
@@ -387,10 +432,9 @@ form {
 
 .first-to-comment {
   /* be first to comment */
-  padding: 3px;
-  font-family: "Dosis", sans-serif; 
-  float: right
-} 
+  font-family: "Dosis", sans-serif;
+  float: right;
+}
 
 .reaction-badge {
   position: relative;
@@ -405,6 +449,7 @@ form {
   right: 12px;
   bottom: 24px;
   font-family: "Dosis", sans-serif;
+  margin-right: -6px;
 }
 
 footer {
@@ -418,6 +463,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 5px 5px 2px 2px;
 }
 
 .popup-buttons-cont {
@@ -442,17 +488,7 @@ footer {
 }
 
 footer textarea {
-  resize: none;
   width: 90%;
-  font-size: 16px;
-  background-color: var(--container-color);
-  color: var(--text-color);
-  font-family: "Dosis", sans-serif;
-}
-
-input {
-  background-color: var(--container-color);
-  color: var(--text-color);
 }
 
 .popup-postarea {
@@ -460,13 +496,14 @@ input {
   width: 100%;
   height: 0;
   text-align: center;
-  background: #d44675;
+  background: #f25287;
 }
 
 .display {
   visibility: visible;
   height: auto;
   padding-top: 1rem;
+  border-radius: 5px 5px 2px 2px;
 }
 
 .rotate div {
@@ -482,6 +519,7 @@ input {
   margin-top: 1rem;
   width: max-content;
   align-self: center;
+  transition: 0s;
 }
 
 /* css for comment box + comments should move */
@@ -498,11 +536,11 @@ input {
 }
 
 .post-comment-textarea {
-  font-family: "Dosis", sans-serif;
   resize: none;
   width: 100%;
-  height: 76px;
+  height: 72px;
   margin-right: 1rem;
+  color: var(--text-color);
 }
 
 .post-comment-cont {
@@ -521,4 +559,5 @@ input {
 
 .profiles a {
   text-decoration: none;
+  color: var(--button-color);
 }
