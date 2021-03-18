@@ -129,9 +129,9 @@ function renderItem(data) {
         showCommentsBttn.textContent = `show ${showCommentsBttn.dataset.comments} ${showCommentsBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
         postContainer.append(showCommentsBttn)
         showCommentsBttn.addEventListener("click", () => {
-            const display = commentCont.classList.contains('display-comments')
-            showCommentsBttn.textContent = `${display ? 'show' : 'hide'} ${showCommentsBttn.dataset.comments} ${showCommentsBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
             commentCont.classList.toggle('display-comments')
+            const display = commentCont.classList.contains('display-comments')
+            showCommentsBttn.textContent = `${display ? 'hide' : 'show'} ${showCommentsBttn.dataset.comments} ${showCommentsBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
             // addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
         })
     }
@@ -223,12 +223,12 @@ async function addComment(parent, topParent, id) {
                 const data = { text: commentValue, date: date }
                 apiFuncs.patchData(url, data)
                 //apend comment for client too
-                topParent.getElementsByClassName('comment-cont')[0].append(renderComment({ text: commentValue }))
+                topParent.getElementsByClassName('comment-cont')[0].append(renderComment({ text: commentValue, new: true }))
                 parent.getElementsByClassName('post-comment-cont')[0].remove()
                 const showCommentBttn = topParent.getElementsByClassName('read-comment-bttn')[0]
                 showCommentBttn.dataset.comments++
-                const display = parent.classList.contains('display-comments')
-                showCommentBttn.textContent = `${display ? 'show' : 'hide'} ${showCommentBttn.dataset.comments} ${showCommentBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
+                topParent.getElementsByClassName('comment-cont')[0].classList.add('display-comments')
+                showCommentBttn.textContent = `hide ${showCommentBttn.dataset.comments} ${showCommentBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
 
             } catch (err) {
                 alert(err)
@@ -260,6 +260,7 @@ function renderComment(comment) {
     const commentPara = document.createElement('p')
     commentPara.classList.add('comment-item')
     commentPara.textContent = comment.text
+    if (comment.new) {commentPara.style.fontWeight = 'bold'}
     return commentPara
 }
 
