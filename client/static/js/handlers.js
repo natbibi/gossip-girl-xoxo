@@ -94,7 +94,7 @@ function renderItem(data) {
 
     //append share button 
     const shareButton = document.createElement('button')
-    shareButton.className = 'tertary-bttn share-button'
+    shareButton.className = 'tertiary-bttn share-button'
 
     // add fontawesome icon 
     const iElement = document.createElement('i')
@@ -140,7 +140,7 @@ function renderItem(data) {
             postContainer.append(showCommentsBttn)
             showCommentsBttn.addEventListener("click", () => {
                 commentCont.classList.toggle('display-comments')
-                addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
+                if (showCommentsBttn.dataset.comments == 0) addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
             })
     }
     
