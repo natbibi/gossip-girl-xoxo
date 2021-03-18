@@ -66,7 +66,7 @@ function renderItem(data) {
 
     // make comment button 
     const commentButton = document.createElement('button')
-    commentButton.className = 'first-to-comment tertiary-bttn'
+    commentButton.className = 'first-to-comment primary-bttn'
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
@@ -177,7 +177,7 @@ async function addComment(parent, topParent, id) {
 
         //comment button to post value from text area
         const commentSubmitBttn = document.createElement('button')
-        commentSubmitBttn.classList.add('primary-bttn')
+        commentSubmitBttn.classList.add('reply-comment-bttn')
         commentSubmitBttn.textContent = 'reply'
 
         commentSubmitBttn.addEventListener('click', () => {
@@ -197,7 +197,7 @@ async function addComment(parent, topParent, id) {
                 showCommentBttn.textContent = `hide ${showCommentBttn.dataset.comments} ${showCommentBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
 
             } catch (err) {
-                alert(err)
+                alert('You haven\'t written anything')
                 throw err
             }
         })
@@ -219,7 +219,7 @@ function copyUrl(id, parent) {
     copyText.select();
     document.execCommand("copy");
     copyText.remove()
-    alert('link copied')
+    alert('You\'ve now copied the link, time to share')
 }
 
 function renderComment(comment) {

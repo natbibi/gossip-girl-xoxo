@@ -35,7 +35,7 @@ body.dark {
   --background-color: rgb(28, 26, 29);
   --accent-color: rgb(53, 53, 53);
   --text-color: rgb(230, 230, 230);
-  --button-color: rgb(252, 84, 173);
+  --button-color: #f25287;
   --button-shadow: 1px 1.5px rgb(68, 66, 66);
 
   background-color: var(--background-color);
@@ -91,6 +91,8 @@ textarea:focus {
   background-color: var(--container-color);
   transition: var(--transition-delay);
   border-radius: 5px;
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
 }
 
 .topnav {
@@ -99,6 +101,9 @@ textarea:focus {
   justify-content: space-between;
   position: relative;
   top: 0;
+}
+.topnav:hover {
+  cursor: pointer;
 }
 
 .post-section {
@@ -138,6 +143,10 @@ textarea:focus {
   bottom: 0;
   padding-left: 50px;
   color: black;
+}
+.dark-mode-button:hover {
+  cursor: pointer;
+  transform: scale(1.03);
 }
 
 .moon-icon {
@@ -239,7 +248,11 @@ form {
   font-family: "Times New Roman", Times, serif;
 }
 
-.primary-bttn { 
+#popup-post:hover {
+  transform: rotate(45deg);
+}
+
+.primary-bttn {
   /* hot, new, comment on post*/
   background: var(--button-color);
   color: var(--text-color);
@@ -269,20 +282,39 @@ form {
   padding-top: 1px;
   padding-bottom: 2px;
   cursor: pointer;
-  transform: scale(1.03);
   transition: var(--transition-delay);
   font-family: "Dosis", sans-serif;
   box-shadow: var(--button-shadow);
+}
+
+.secondary-bttn:hover {
+  transform: scale(1.03);
 }
 
 .tertiary-bttn {
   /* share, be first to comment button */
   transition: var(--transition-delay);
   border: none;
-  color: var(--accent-color);
   border: solid 2px var(--accent-color-pink);
   color: var(--button-color);
   border-radius: 4px;
+  font-family: "Dosis", sans-serif;
+}
+
+.tertiary-bttn:hover {
+  transform: scale(1.03);
+}
+
+.reply-comment-bttn {
+  transition: var(--transition-delay);
+  /* border: solid 2px var(--accent-color-pink); */
+  border: none;
+  color: var(--button-color);
+  border-radius: 4px;
+  font-family: "Dosis", sans-serif;
+  border-radius: 0 15px 15px 0;
+  height: 70px;
+  background-color: var(--background-color);
 }
 
 .share-button {
@@ -297,19 +329,18 @@ form {
   min-height: 42px;
   min-width: 42px;
 }
+.share-button:hover {
+  transform: scale(1.1);
+}
 
-#submit-post,
 #search-giphy,
 #cancel-giphy-bttn.display {
   color: var(--text-color);
   font-family: "Dosis", sans-serif;
   background: var(--button-color);
   border: none;
-  background: var(--container-color);
-}
-
-#submit-post {
-  background: var(--button-color);
+  background: var(--background-color);
+  border-radius: 4px;
 }
 
 #submit-post:hover,
@@ -332,7 +363,7 @@ form {
   padding: 0 1rem;
 }
 
-#search-giphy{
+#search-giphy {
   border-radius: 0 50px 50px 0;
   height: 45px;
   padding: 0;
@@ -348,7 +379,7 @@ form {
   transition: var(--transition-delay);
   font-family: "Dosis", sans-serif;
   font-size: 14px;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   margin-left: 50%;
   transform: translateX(-50%);
   font-size: 0.8rem;
@@ -387,10 +418,10 @@ form {
 
 .first-to-comment {
   /* be first to comment */
-  padding: 3px;
-  font-family: "Dosis", sans-serif; 
-  float: right
-} 
+  padding: 1px 19px;
+  font-family: "Dosis", sans-serif;
+  float: right;
+}
 
 .reaction-badge {
   position: relative;
@@ -418,6 +449,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 5px 5px 2px 2px;
 }
 
 .popup-buttons-cont {
@@ -445,13 +477,13 @@ footer textarea {
   resize: none;
   width: 90%;
   font-size: 16px;
-  background-color: var(--container-color);
+  background-color: var(--background-color);
   color: var(--text-color);
   font-family: "Dosis", sans-serif;
 }
 
 input {
-  background-color: var(--container-color);
+  background-color: var(--background-color);
   color: var(--text-color);
 }
 
@@ -460,13 +492,14 @@ input {
   width: 100%;
   height: 0;
   text-align: center;
-  background: #d44675;
+  background: #f25287;
 }
 
 .display {
   visibility: visible;
   height: auto;
   padding-top: 1rem;
+  border-radius: 5px 5px 2px 2px;
 }
 
 .rotate div {
@@ -502,7 +535,10 @@ input {
   resize: none;
   width: 100%;
   height: 76px;
-  margin-right: 1rem;
+  margin-right: 0;
+  color: var(--text-color);
+  border-radius: 5px 0 0 5px;
+  border: solid 2px var(--accent-color);
 }
 
 .post-comment-cont {
@@ -521,4 +557,5 @@ input {
 
 .profiles a {
   text-decoration: none;
+  color: var(--button-color);
 }
