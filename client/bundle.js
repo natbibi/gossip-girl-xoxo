@@ -9037,86 +9037,86 @@ async function runPage() {
   if (window.location.href.includes('post')) {
     try {
       const index = window.location.search.substring(1)
-      const singleData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${index}`)  
+      const singleData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${index}`)
       handlerFuncs.renderList([singleData])
-    } catch(err) {
+    } catch (err) {
       handlerFuncs.renderError('404: post not found 😞')
       throw err
     }
   }
   else {
-let currentIndex = 0
-window.addEventListener("load", async () => {
+    let currentIndex = 0
+    window.addEventListener("load", async () => {
 
-  const sortOrder = window.location.search
-  if (sortOrder === '?hot') {
-    const data = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/hot/${currentIndex}/${currentIndex + 5}`)
-    handlerFuncs.renderList(data)
-  }
-  else {
-    const data = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${currentIndex}/${currentIndex + 5}`)
-    handlerFuncs.renderList(data)
-  }
-  currentIndex += 5
-  document.getElementById('get-more-posts').addEventListener("click", async () => {
-    try {
+      const sortOrder = window.location.search
       if (sortOrder === '?hot') {
-        const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/hot/${currentIndex}/${currentIndex + 5}`)
-        if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
-        handlerFuncs.renderList(newData)
+        const data = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/hot/${currentIndex}/${currentIndex + 5}`)
+        handlerFuncs.renderList(data)
       }
       else {
-        const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${currentIndex}/${currentIndex + 5}`)
-        if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
-        handlerFuncs.renderList(newData)
+        const data = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${currentIndex}/${currentIndex + 5}`)
+        handlerFuncs.renderList(data)
       }
       currentIndex += 5
-  } catch(err) {
-    alert('You\'re up to date 🎉 ')
-    throw err
-  }
-  })
-})
-
-function updateUrlQuery(query) {
-  window.location.search = query
-}
-
-
-
-function giphySearch() {
-  const cancelGiphy = document.getElementById('cancel-giphy-bttn')
-  const root = document.querySelector('#giphy-root')
-  const query = document.querySelector('#giphy-search')
-  const grid = makeCarousel(root, query.value)
-  document.querySelector('#search-giphy').addEventListener("click", () => {
-    cancelGiphy.classList.add('display')
-    grid.remove()
-    giphySearch()
-    cancelGiphy.addEventListener("click", () => {
-      query.value = ''
-      cancelGiphy.classList.remove('display')
-      grid.remove()
+      document.getElementById('get-more-posts').addEventListener("click", async () => {
+        try {
+          if (sortOrder === '?hot') {
+            const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/hot/${currentIndex}/${currentIndex + 5}`)
+            if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
+            handlerFuncs.renderList(newData)
+          }
+          else {
+            const newData = await apiFuncs.getData(`https://gossip-girl-api.herokuapp.com/posts/${currentIndex}/${currentIndex + 5}`)
+            if (newData.length === 0) throw new Error('You\'re up to date 🎉 ')
+            handlerFuncs.renderList(newData)
+          }
+          currentIndex += 5
+        } catch (err) {
+          alert('You\'re up to date 🎉 ')
+          throw err
+        }
+      })
     })
-  })
-}
-giphySearch()
 
-
-document.querySelector('#hot-sort').addEventListener("click", () => updateUrlQuery('hot'))
-document.querySelector('#new-sort').addEventListener("click", () => updateUrlQuery('new'))
+    function updateUrlQuery(query) {
+      window.location.search = query
+    }
 
 
 
-document.querySelector('#popup-post').addEventListener("click", (event) => {
-  event.currentTarget.classList.toggle('rotate')
-  const popupPostArea = document.querySelector('#popup-postarea')
-  const popupTextArea = document.querySelector('#popup-textarea')
-  popupPostArea.classList.toggle('display')
-  popupTextArea.focus()
-})
+    function giphySearch() {
+      const cancelGiphy = document.getElementById('cancel-giphy-bttn')
+      const root = document.querySelector('#giphy-root')
+      const query = document.querySelector('#giphy-search')
+      const grid = makeCarousel(root, query.value)
+      document.querySelector('#search-giphy').addEventListener("click", () => {
+        cancelGiphy.classList.add('display')
+        grid.remove()
+        giphySearch()
+        cancelGiphy.addEventListener("click", () => {
+          query.value = ''
+          cancelGiphy.classList.remove('display')
+          grid.remove()
+        })
+      })
+    }
+    giphySearch()
 
-}
+
+    document.querySelector('#hot-sort').addEventListener("click", () => updateUrlQuery('hot'))
+    document.querySelector('#new-sort').addEventListener("click", () => updateUrlQuery('new'))
+
+
+
+    document.querySelector('#popup-post').addEventListener("click", (event) => {
+      event.currentTarget.classList.toggle('rotate')
+      const popupPostArea = document.querySelector('#popup-postarea')
+      const popupTextArea = document.querySelector('#popup-textarea')
+      popupPostArea.classList.toggle('display')
+      popupTextArea.focus()
+    })
+
+  }
 }
 runPage()
 
