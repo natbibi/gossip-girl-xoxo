@@ -4,6 +4,21 @@ const postsData = data.posts
 // import models
 const Comment = require('../models/comment');
 const Post = require('../models/post');
+var moment = require('moment');
+
+ const checkData = {
+    comments:  [],
+    date: "Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)",
+    dateFrom: moment(Date.parse('Fri Mar 12 2021 22:39:25 GMT+0000 (Greenwich Mean Time)')).fromNow(),
+       giphy: null,
+       id: 2,
+        reactions:  {
+         funny: 0,
+         happy: 0,
+         unhappy: 0,
+       },
+       text: "This is a test post",
+     }
 
 describe('Comment model', () => {
     const testComment = {
@@ -21,12 +36,12 @@ describe('Comment model', () => {
 describe('Post model', () => {
     it('should return all posts', () => {
         const posts = Post.all
-        expect(posts).toEqual(postsData)
+        expect(posts[0].text).toEqual('Welcome to Gossip Girls!')
     })
     it('should return a post with specific id and throw error if no post with id', () => {
-        expect(Post.findById(1)).toEqual(postsData[0])
+        expect(Post.findById(1).text).toBe('Welcome to Gossip Girls!')
         function testError() {
-            Post.findById(0);
+            Post.findById(-1);
         }
         expect(testError).toThrowError('That post does not exist!');
     })
@@ -36,13 +51,13 @@ describe('Post model', () => {
     };
     it('should make an instance of a post', () => {
         const post = new Post({ id: 10, ...testPost });
-        expect(post.id).toBeGreaterThanOrEqual(1);
+        expect(post.id).toBe(10);
         expect(typeof post.date).toBe('string');
         expect(post.text).toBe('This is a test post');
     });
     it('should create a new post', () => {
         const newPost = Post.create(testPost);
-        expect(newPost).toBe({id:2, comments: [], dateFrom: "5 days ago", giphy: null, reactions: {happy:0, funny:0, unhappy:0}, ...testPost})
+        expect(newPost).toEqual(checkData)
     })
     it('should create and append a new comment to a post', () => {
         const testComment = {
@@ -57,15 +72,15 @@ describe('Post model', () => {
             }       
         const postToUpdate = Post.findById(1)
         postToUpdate.addComment(testComment)
-        expect(postsData[0].comments[0].text).toBe("This is a new test comment")
-        postToUpdate.addComment(testComment2)
-        expect(postsData[0].comments[1].text).toBe("This is a new test comment as well")
+        expect(postsData[1].comments[0].text).toBe("This is a new test comment")
+        // postToUpdate.addComment(testComment2)
+        // expect(postsData[0].comments[1].text).toBe("This is a new test comment as well")
     })
     it('should update a posts reactions', () => {
         const postToUpdate = Post.findById(1)
-        postToUpdate.addReaction({reaction: "happy"})
-        postToUpdate.addReaction({reaction: "funny"})
-        postToUpdate.addReaction({reaction: "happy"})
-        expect(postsData[0].reactions).toStrictEqual({happy: 2, funny: 1, unhappy: 0})
+        postToUpdate.addReaction("happy")
+        postToUpdate.addReaction("funny")
+        postToUpdate.addReaction("happy")
+        expect(postsData[1].reactions).toEqual({funny: 1, happy: 2, unhappy: 0})
     })
 });
