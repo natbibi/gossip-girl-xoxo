@@ -2659,7 +2659,6 @@ exports.onGifHover = firePingback('HOVER');
 
 },{"@giphy/js-analytics":11,"@giphy/js-util":54}],33:[function(require,module,exports){
 module.exports={
-<<<<<<< HEAD
   "_args": [
     [
       "@giphy/js-components@4.3.1",
@@ -2667,42 +2666,31 @@ module.exports={
     ]
   ],
   "_from": "@giphy/js-components@4.3.1",
-=======
-  "_from": "@giphy/js-components@^4.3.1",
->>>>>>> af73fada121dfab8db380f72f02f2edf972bc49b
   "_id": "@giphy/js-components@4.3.1",
   "_inBundle": false,
   "_integrity": "sha512-DByKMgivmuJFrt5zUNnn5r4dtfqhjAj9H76/r15rEXJdtSXz+mdbp89yt0DTQnPQJMP93X1owaFu2PBA9UX/Cg==",
   "_location": "/@giphy/js-components",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "@giphy/js-components@^4.3.1",
+    "raw": "@giphy/js-components@4.3.1",
     "name": "@giphy/js-components",
     "escapedName": "@giphy%2fjs-components",
     "scope": "@giphy",
-    "rawSpec": "^4.3.1",
+    "rawSpec": "4.3.1",
     "saveSpec": null,
-    "fetchSpec": "^4.3.1"
+    "fetchSpec": "4.3.1"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
-<<<<<<< HEAD
   "_spec": "4.3.1",
   "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
-=======
-  "_shasum": "93aaf3aa2d85c2cfc21f6a6d1d06df6a026f2040",
-  "_spec": "@giphy/js-components@^4.3.1",
-  "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
->>>>>>> af73fada121dfab8db380f72f02f2edf972bc49b
   "author": {
     "name": "giannif"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "@giphy/js-analytics": "^3.0.0",
     "@giphy/js-brand": "^2.0.2",
@@ -2715,7 +2703,6 @@ module.exports={
     "preact": "10.4.8",
     "throttle-debounce": "^2.3.0"
   },
-  "deprecated": false,
   "description": "A lightweight set of components, focused on easy-of-use and performance.",
   "devDependencies": {
     "@types/bricks.js": "^1.8.1",
@@ -4064,7 +4051,6 @@ module.exports = {
 
 },{"./formats":42}],47:[function(require,module,exports){
 module.exports={
-<<<<<<< HEAD
   "_args": [
     [
       "@giphy/js-fetch-api@2.4.0",
@@ -4072,46 +4058,34 @@ module.exports={
     ]
   ],
   "_from": "@giphy/js-fetch-api@2.4.0",
-=======
-  "_from": "@giphy/js-fetch-api@^2.4.0",
->>>>>>> af73fada121dfab8db380f72f02f2edf972bc49b
   "_id": "@giphy/js-fetch-api@2.4.0",
   "_inBundle": false,
   "_integrity": "sha512-xiMHnv81XZjgut4yrkHB5QHDWGNhVHoyMDb3kQBy5H0NruwtQ+aM5BE9xbP+XQlxt3eRnPRJcLy5ORk9+K0fIQ==",
   "_location": "/@giphy/js-fetch-api",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "version",
     "registry": true,
-    "raw": "@giphy/js-fetch-api@^2.4.0",
+    "raw": "@giphy/js-fetch-api@2.4.0",
     "name": "@giphy/js-fetch-api",
     "escapedName": "@giphy%2fjs-fetch-api",
     "scope": "@giphy",
-    "rawSpec": "^2.4.0",
+    "rawSpec": "2.4.0",
     "saveSpec": null,
-    "fetchSpec": "^2.4.0"
+    "fetchSpec": "2.4.0"
   },
   "_requiredBy": [
-    "#USER",
     "/",
     "/@giphy/js-components"
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
-<<<<<<< HEAD
   "_spec": "2.4.0",
   "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
-=======
-  "_shasum": "e96c7a2599b720d3e40ea409d8e4c4a692aa4611",
-  "_spec": "@giphy/js-fetch-api@^2.4.0",
-  "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
-  "bundleDependencies": false,
->>>>>>> af73fada121dfab8db380f72f02f2edf972bc49b
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
     "qs": "^6.9.4"
   },
-  "deprecated": false,
   "description": "Javascript API to fetch gifs and stickers from the GIPHY API.",
   "devDependencies": {
     "@types/qs": "^6.9.4",
