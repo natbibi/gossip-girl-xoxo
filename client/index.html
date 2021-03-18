@@ -23,7 +23,7 @@
             <!-- Top Navigation Menu -->
 
             <div class="sidenav" id="mySidenav">
-                <i class="fas fa-times close-icon"></i>
+                <i class="fas fa-times close-icon" aria-label="close-sidebar"></i>
                 <p class="nav-info"> <a href="./about.html">About</a>
                 <p class="dark-mode-button">Theme <i class="fas fa-moon moon-icon"></i></p>
 
@@ -31,22 +31,25 @@
 
             <div class="topnav">
 
-                <i class="fa fa-bars icon"></i>
+                <div aria-label="open-navigation-menu"><i class="fa fa-bars icon"></i></div>
 
                 <a href="https://gossip-girl-xoxo.netlify.app/">
                     <img src="static/images/xoxo-transparent.png" id="logo" alt="xoxo logo" width="100" height="100">
                 </a>
             </div>
+            <h1 aria-label="Gossip Girl Heading"></h1>
             <div class="top-button-section">
                 <button id="hot-sort" class="primary-bttn">hot 🔥</button>
                 <button id="new-sort" class="primary-bttn">new 👀</button>
             </div>
+
         </header>
 
         <section>
             <div class="row post-section">
                 <div id="root"></div>
-                <button id="get-more-posts" class="secondary-bttn">brew more tea... ☕️</button>
+                <button id="get-more-posts" aria-label="fetch-more-posts" class="secondary-bttn">brew more tea...
+                    ☕️</button>
             </div>
         </section>
 
@@ -57,14 +60,16 @@
                 <div class="popup-buttons-cont">
                     <div class="giphy-search-cont">
                         <input autocomplete="off" id="giphy-search" type="text" placeholder="search for a gif" />
-                        <button id="cancel-giphy-bttn">❌</button>
-                        <button id="search-giphy">🔎</button>
+                        <button aria-label="cancel-giphy" id="cancel-giphy-bttn">❌</button>
+                        <button aria-label="search-giphy" id="search-giphy">🔎</button>
                     </div>
                     <button id="submit-post">post</button>
                 </div>
                 <div id="giphy-root"></div>
             </div>
-            <button id="popup-post"><div>+</div></button>
+            <button aria-label="add-new-post" id="popup-post">
+                <div>+</div>
+            </button>
         </footer>
 
     </div>
