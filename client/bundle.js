@@ -9080,15 +9080,21 @@ function giphySearch() {
   const query = document.querySelector('#giphy-search')
   const grid = makeCarousel(root, query.value)
   document.querySelector('#search-giphy').addEventListener("click", () => {
-    cancelGiphy.classList.add('display')
-    grid.remove()
-    giphySearch()
-    cancelGiphy.addEventListener("click", () => {
-      query.value = ''
-      cancelGiphy.classList.remove('display')
+  try {
+      if (query.value.length < 1) throw new Error('no query entered')
+      cancelGiphy.classList.add('display')
       grid.remove()
-    })
-  })
+      giphySearch()
+      cancelGiphy.addEventListener("click", () => {
+        query.value = ''
+        cancelGiphy.classList.remove('display')
+        grid.remove()
+      })
+  } catch(err) {
+    alert('enter a query')
+    throw err
+  }
+})
 }
 giphySearch()
 
