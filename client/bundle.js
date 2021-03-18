@@ -2659,41 +2659,35 @@ exports.onGifHover = firePingback('HOVER');
 
 },{"@giphy/js-analytics":11,"@giphy/js-util":54}],33:[function(require,module,exports){
 module.exports={
-  "_args": [
-    [
-      "@giphy/js-components@4.3.1",
-
-      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
-
-    ]
-  ],
-  "_from": "@giphy/js-components@4.3.1",
+  "_from": "@giphy/js-components@^4.3.1",
   "_id": "@giphy/js-components@4.3.1",
   "_inBundle": false,
   "_integrity": "sha512-DByKMgivmuJFrt5zUNnn5r4dtfqhjAj9H76/r15rEXJdtSXz+mdbp89yt0DTQnPQJMP93X1owaFu2PBA9UX/Cg==",
   "_location": "/@giphy/js-components",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "@giphy/js-components@4.3.1",
+    "raw": "@giphy/js-components@^4.3.1",
     "name": "@giphy/js-components",
     "escapedName": "@giphy%2fjs-components",
     "scope": "@giphy",
-    "rawSpec": "4.3.1",
+    "rawSpec": "^4.3.1",
     "saveSpec": null,
-    "fetchSpec": "4.3.1"
+    "fetchSpec": "^4.3.1"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
-  "_spec": "4.3.1",
-  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
-
+  "_shasum": "93aaf3aa2d85c2cfc21f6a6d1d06df6a026f2040",
+  "_spec": "@giphy/js-components@^4.3.1",
+  "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
   "author": {
     "name": "giannif"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "@giphy/js-analytics": "^3.0.0",
     "@giphy/js-brand": "^2.0.2",
@@ -2706,6 +2700,7 @@ module.exports={
     "preact": "10.4.8",
     "throttle-debounce": "^2.3.0"
   },
+  "deprecated": false,
   "description": "A lightweight set of components, focused on easy-of-use and performance.",
   "devDependencies": {
     "@types/bricks.js": "^1.8.1",
@@ -4054,45 +4049,39 @@ module.exports = {
 
 },{"./formats":42}],47:[function(require,module,exports){
 module.exports={
-  "_args": [
-    [
-      "@giphy/js-fetch-api@2.4.0",
-
-      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
-
-    ]
-  ],
-  "_from": "@giphy/js-fetch-api@2.4.0",
+  "_from": "@giphy/js-fetch-api@^2.4.0",
   "_id": "@giphy/js-fetch-api@2.4.0",
   "_inBundle": false,
   "_integrity": "sha512-xiMHnv81XZjgut4yrkHB5QHDWGNhVHoyMDb3kQBy5H0NruwtQ+aM5BE9xbP+XQlxt3eRnPRJcLy5ORk9+K0fIQ==",
   "_location": "/@giphy/js-fetch-api",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "@giphy/js-fetch-api@2.4.0",
+    "raw": "@giphy/js-fetch-api@^2.4.0",
     "name": "@giphy/js-fetch-api",
     "escapedName": "@giphy%2fjs-fetch-api",
     "scope": "@giphy",
-    "rawSpec": "2.4.0",
+    "rawSpec": "^2.4.0",
     "saveSpec": null,
-    "fetchSpec": "2.4.0"
+    "fetchSpec": "^2.4.0"
   },
   "_requiredBy": [
+    "#USER",
     "/",
     "/@giphy/js-components"
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
-  "_spec": "2.4.0",
-
-  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
-
+  "_shasum": "e96c7a2599b720d3e40ea409d8e4c4a692aa4611",
+  "_spec": "@giphy/js-fetch-api@^2.4.0",
+  "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
+  "bundleDependencies": false,
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
     "qs": "^6.9.4"
   },
+  "deprecated": false,
   "description": "Javascript API to fetch gifs and stickers from the GIPHY API.",
   "devDependencies": {
     "@types/qs": "^6.9.4",
@@ -8671,19 +8660,8 @@ const GiphyFetch = GiphyJsFetchApi.GiphyFetch
 const renderGif = giphyComponents.renderGif
 const apiFuncs = require('./api')
 
+const giphyHelpers = require('./giphyHelpers.js')
 
-//helper funcs for select styles
-function toggleBorder(element){
-    element.style.border = 'solid limegreen 4px'
-}
-function removeAllBorders(){
-    const giphyGifs = document.getElementsByClassName('giphy-gif')
-    for(let i=0; i<giphyGifs.length; i++) {
-        giphyGifs[i].style.border = 'solid 4px transparent'
-        giphyGifs[i].style.borderRadius = '12px'
-
-    }
-}
 //async submit function in order to post then refresh on mobile browsers
 async function submit(data) {
     await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
@@ -8754,8 +8732,8 @@ const makeCarousel = (targetEl, query) => {
               gutter: 0,
               onGifClick: (gif, event) => {
                   event.preventDefault();
-                  removeAllBorders()
-                  toggleBorder(event.currentTarget)
+                  giphyHelpers.removeAllBorders()
+                  giphyHelpers.toggleBorder(event.currentTarget)
                   prepPost(gif.id)
                 }
             },
@@ -8785,7 +8763,24 @@ module.exports = {
     makeCarousel,
     vanillaJSGif,
 } 
-},{"./api":85,"./key":89,"@giphy/js-components":30,"@giphy/js-fetch-api":36}],87:[function(require,module,exports){
+},{"./api":85,"./giphyHelpers.js":87,"./key":90,"@giphy/js-components":30,"@giphy/js-fetch-api":36}],87:[function(require,module,exports){
+function toggleBorder(element){
+    element.style.border = 'solid limegreen 4px'
+}
+function removeAllBorders(){
+    const giphyGifs = document.getElementsByClassName('giphy-gif')
+    for(let i=0; i<giphyGifs.length; i++) {
+        giphyGifs[i].style.border = 'solid 4px transparent'
+        giphyGifs[i].style.borderRadius = '12px'
+
+    }
+}
+
+module.exports = {
+    toggleBorder,
+    removeAllBorders
+}
+},{}],88:[function(require,module,exports){
 const giphy = require('./giphy')
 const renderGif = giphy.vanillaJSGif
 
@@ -8932,49 +8927,12 @@ function renderItem(data) {
         postContainer.append(showCommentsBttn)
         showCommentsBttn.addEventListener("click", () => {
             commentCont.classList.toggle('display-comments')
+            const display = commentCont.classList.contains('display-comments')
             if (showCommentsBttn.dataset.comments == 0) addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
         })
     }
 
     postContainer.append(commentCont)
-
-    // firstToComment.textContent = firstToComment.dataset.comments
-    // else if (numberOfComments > 1) {
-
-    //     //button to display comments
-    //     const readCommentsBttn = document.createElement('button')
-    //     readCommentsBttn.classList.add("read-comment-bttn")
-    //     readCommentsBttn.textContent = `read comments: ${numberOfComments}`
-    //     readCommentsBttn.addEventListener('click', () => {
-    //         commentCont.classList.toggle('display-comments')
-    //         const numberOfComments = commentPostCont.querySelectorAll('.comment-item')
-    //         console.log(numberOfComments)
-    //     })
-
-    //     postContainer.append(readCommentsBttn)
-    // }
-
-    // } else if (numberOfComments === 1) {
-    //     const readCommentsBttn = document.createElement('button')
-    //     readCommentsBttn.classList.add("read-comment-bttn")
-    //     readCommentsBttn.textContent = `read comment`
-    //     readCommentsBttn.addEventListener('click', () => {
-    //         commentCont.classList.toggle('display-comments')
-    //     });
-    //     postContainer.append(readCommentsBttn)
-    // }
-    // else {
-    //     const firstToComment = document.createElement('button')
-    //     firstToComment.classList.add('read-comment-bttn')
-    //     firstToComment.textContent = "Be the first to comment!"
-    //     postContainer.append(firstToComment)
-    //     firstToComment.addEventListener("click", () => {
-    //         commentCont.classList.toggle('display-comments')
-    //         addComment(commentPostCont, postContainer, data.id)
-    //     })
-    // }
-
-
 
     return postContainer
 
@@ -9020,7 +8978,7 @@ async function addComment(parent, topParent, id) {
                 const showCommentBttn = topParent.getElementsByClassName('read-comment-bttn')[0]
                 showCommentBttn.dataset.comments++
                 topParent.getElementsByClassName('comment-cont')[0].classList.add('display-comments')
-                showCommentBttn.textContent = `hide ${showCommentBttn.dataset.comments} ${showCommentBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
+                showCommentBttn.textContent = `nice!`
 
             } catch (err) {
                 alert(err)
@@ -9070,7 +9028,7 @@ module.exports = {
     renderItem,
     renderError
 }
-},{"./api":85,"./giphy":86}],88:[function(require,module,exports){
+},{"./api":85,"./giphy":86}],89:[function(require,module,exports){
 const giphy = require('./giphy')
 const makeCarousel = giphy.makeCarousel
 const renderGif = giphy.vanillaJSGif
@@ -9186,8 +9144,8 @@ document.querySelector('.dark-mode-button').addEventListener('click', () => {
   document.body.classList.toggle('dark')
 })
 
-},{"./api":85,"./giphy":86,"./handlers":87}],89:[function(require,module,exports){
-const key = 'HPtiYWEeMXDaI1bJuNQ9L9ypMfbpwnKh'
+},{"./api":85,"./giphy":86,"./handlers":88}],90:[function(require,module,exports){
+const key = '2PxgLQIb1X5Gr2LaM9bmZXXcUAFsb0m2'
 
-module.exports = key
-},{}]},{},[88]);
+ module.exports = key
+},{}]},{},[89]);

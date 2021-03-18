@@ -144,6 +144,7 @@ function renderItem(data) {
         postContainer.append(showCommentsBttn)
         showCommentsBttn.addEventListener("click", () => {
             commentCont.classList.toggle('display-comments')
+            const display = commentCont.classList.contains('display-comments')
             if (showCommentsBttn.dataset.comments == 0) addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
         })
     }
@@ -194,7 +195,7 @@ async function addComment(parent, topParent, id) {
                 const showCommentBttn = topParent.getElementsByClassName('read-comment-bttn')[0]
                 showCommentBttn.dataset.comments++
                 topParent.getElementsByClassName('comment-cont')[0].classList.add('display-comments')
-                showCommentBttn.textContent = `hide ${showCommentBttn.dataset.comments} ${showCommentBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
+                showCommentBttn.textContent = `nice!`
 
             } catch (err) {
                 alert(err)
