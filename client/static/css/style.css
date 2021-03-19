@@ -382,14 +382,16 @@ form {
   display: flex;
   justify-content: flex-start;
   font-size: 0;
+  position: relative;
 }
 
 #giphy-search {
   font-family: "Dosis", sans-serif;
   border-radius: 50px 0 0 50px;
   width: 100%;
+  max-width: 200px;
   height: 45px;
-  padding: 0 1rem;
+  padding: 0 calc(1rem + 45px) 0 1rem;
 }
 
 #search-giphy {
@@ -497,8 +499,12 @@ footer {
   display: none;
 }
 #cancel-giphy-bttn.display {
+  background: none;
   display: flex;
   justify-content: center;
+  position: absolute;
+  right: 45px;
+  line-height: 1;
   border-radius: 0;
 }
 
