@@ -1,7 +1,8 @@
-# XOXO
-A Gossip Girl inspired app with client and server integration where users can post entries of up to 300 characters and a gif. Users can engage with the content using reactions and comments. 
+# XOXO 
 
 📝 [![Netlify Status](https://api.netlify.com/api/v1/badges/d63b47cc-fca6-4c50-ade9-a5ace8eb2ece/deploy-status)](https://app.netlify.com/sites/gossip-girl-xoxo/deploys)  🚀  ![Heroku](https://pyheroku-badge.herokuapp.com/?app=gossip-girl-api&style=flat)  ⚖️  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+A Gossip Girl inspired app with client and server integration where users can post entries of up to 300 characters and a gif. Users can engage with the content using reactions and comments.
  
 # Description
 XOXO is an anonymous community journaling website aimed at teenagers and high school students based on hit tv series Gossip Girls. With growing privacy concerns on current social media platforms and messaging apps, XOXO aims to provide a safe space for individuals to freely share their thoughts without having to worry about having their identity exposed.
