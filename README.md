@@ -1,13 +1,14 @@
-# LAP-1-Portfolio-Week-Project
+# LAP 1 Project: Gossip-Girl-xoxo 
 
 📝 [![Netlify Status](https://api.netlify.com/api/v1/badges/d63b47cc-fca6-4c50-ade9-a5ace8eb2ece/deploy-status)](https://app.netlify.com/sites/gossip-girl-xoxo/deploys)  🚀  ![Heroku](https://pyheroku-badge.herokuapp.com/?app=gossip-girl-api&style=flat)  ⚖️  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+A Gossip Girl inspired app with client and server integration where users can post entries of up to 300 characters and a gif. Users can engage with the content using reactions and comments.
  
 # Description
 XOXO is an anonymous community journaling website aimed at teenagers and high school students based on hit tv series Gossip Girls. With growing privacy concerns on current social media platforms and messaging apps, XOXO aims to provide a safe space for individuals to freely share their thoughts without having to worry about having their identity exposed.
 
 [![IMG-1509.png](https://i.postimg.cc/2yS2h1Yt/IMG-1509.png)](https://postimg.cc/7Gj3yYf1)
 [![IMG-1511.png](https://i.postimg.cc/rmFSY7H0/IMG-1511.png)](https://postimg.cc/jWmwD3tt)
-
 
 # Installation & usage
 
@@ -53,7 +54,7 @@ In a seperate terminal:
 - [x] Posts not showing when sent from mobile devices.
 - [x] Submit button not closing text area
 - [x] Styling
-- [x] Comment Submit button not functioning 
+- [x] Comment submit button not functioning 
 - [x] Comment submit button can be pressed multiple times and each click will bring up new comment textarea
 - [x] Date and time 
 
@@ -93,6 +94,9 @@ In a seperate terminal:
 - Connected API to front end!
 - Having a functioning and visually appealing page that looks amazing on most popular smart phones.
 - Meeting our own deadlines
+- Hot or New sorting! (See code snippet below)
+
+[![Screen-Shot-2021-03-19-at-12-54-00.png](https://i.postimg.cc/fLWp47qk/Screen-Shot-2021-03-19-at-12-54-00.png)](https://postimg.cc/rdbQx4kL)
 
 ## Challenges
 - Finding the best strategy to deploy on Heroku and Netlify from the same repository on Github.
@@ -103,13 +107,11 @@ In a seperate terminal:
 - Organisation of functions not set out well for testing
 
 # Future Features 
+- Reply with a Giphy in comments
+- Save favourite posts
+- Order by user's favourite posts
+- Choose from more selection of emojis as a reaction
+- Ability to search through posts  
+- Report other posts (e.g if not appropriate)
 
-
-
-
-Could have:
-
-Badges
-Contribution guide
-Code snippets
-Future features
+[![Screen-Shot-2021-03-19-at-16-28-40.png](https://i.postimg.cc/tC71qLnN/Screen-Shot-2021-03-19-at-16-28-40.png)](https://postimg.cc/4mk4w25Y)
