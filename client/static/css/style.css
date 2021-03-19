@@ -128,13 +128,19 @@ textarea:focus {
   position: absolute;
   z-index: 1;
   top: 0;
-  background-color: rgb(255, 234, 237, 0.95);
+  background-color: var(--container-color);
+  opacity: 0.9;
+  transition: var(--transition-delay);
+  border: solid 2px var(--button-color);
+  border-left: none;
+  border-right: none;
   overflow-x: hidden;
   transition: 0.5s;
   border-radius: 13px;
   margin-left: 8px;
   margin-top: 8px;
   max-width: 370px;
+  transition: var(--transition-delay);
 }
 
 .close-icon {
@@ -144,13 +150,14 @@ textarea:focus {
   margin-left: 50px;
   padding: 10px;
   cursor: pointer;
+  color: var(--text-color);
 }
 
 .dark-mode-button {
   position: absolute;
   bottom: 0;
   padding-left: 50px;
-  color: black;
+  color: var(--text-color);
 }
 .dark-mode-button:hover {
   cursor: pointer;
@@ -167,7 +174,7 @@ textarea:focus {
 }
 
 .nav-info a {
-  color: black;
+  color: var(--text-color);
   padding-left: 50px;
   text-decoration: none;
   font-size: larger;
@@ -182,6 +189,10 @@ textarea:focus {
 .icon:hover {
   transform: scale(1.03);
 }
+
+h1 {
+margin: 0px;
+} 
 
 /* blog sections */
 
@@ -205,11 +216,15 @@ p {
   position: relative;
 }
 
+.blog-entry:first-of-type {
+  margin: 0px;
+}
+
 .blog-entry-timestamp {
   font-size: 0.8rem;
   opacity: 0.8;
   position: absolute;
-  right: 3rem;
+  right: 4.2rem;
   top: 0;
 }
 
@@ -300,7 +315,7 @@ form {
 }
 
 .tertiary-bttn {
-  /* share, be first to comment button */
+  /* be first to comment button */
   transition: var(--transition-delay);
   border: solid 1px var(--text-color);
   color: var(--button-color);
@@ -315,7 +330,6 @@ form {
 
 .reply-comment-bttn {
   transition: var(--transition-delay);
-  /* border: solid 2px var(--accent-color-pink); */
   border: solid var(--text-color) 1px;
   color: var(--button-color);
   border-radius: 4px;
@@ -332,6 +346,7 @@ form {
   background-color: none;
   color: var(--text-color);
   background-color: var(--accent-color);
+  transition: var(--transition-delay);
   position: absolute;
   top: 0;
   right: 0;
@@ -566,4 +581,5 @@ footer textarea {
 .profiles a {
   text-decoration: none;
   color: var(--button-color);
+  transition: var(--transition-delay);
 }
