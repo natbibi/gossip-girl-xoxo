@@ -140,7 +140,7 @@ function renderItem(data) {
         showCommentsBttn.addEventListener("click", () => {
             commentCont.classList.toggle('display-comments')
             const display = commentCont.classList.contains('display-comments')
-            if (showCommentsBttn.dataset.comments == 0) addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
+            if (showCommentsBttn.dataset.comments == 0) addComment(commentPostCont, postContainer, data.id)
         })
     }
 
@@ -246,5 +246,6 @@ module.exports = {
     renderItem,
     renderComment,
     renderError,
-    randomclass
+    randomclass,
+    addComment
 }

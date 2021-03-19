@@ -4,7 +4,6 @@ const html = fs.readFileSync(path.resolve(__dirname, '../index.html'), 'utf8');
 
 global.fetch = require('jest-fetch-mock');
 const app = require('../static/js/api.js');
-const giphy = require('../static/js/giphy')
 
 describe('app', () => {
     beforeEach(() => {
@@ -71,12 +70,7 @@ describe('app', () => {
 
             })
         })
-
-        describe('appendBlogEntry', () => {
-            test('it renders a new div on the page with the entry data', () => {
-
-            })
-        })
+S
         
         describe('addReaction', () => {
             test('if reaction calls patch data', () => {
