@@ -73,7 +73,7 @@ function giphySearch() {
         grid.remove()
       })
   } catch(err) {
-    alert('ummm ... you haven\'t typed anything')
+    alert('You haven\'t typed anything')
     throw err
   }
 })
