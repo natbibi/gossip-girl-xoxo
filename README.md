@@ -3,7 +3,11 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/d63b47cc-fca6-4c50-ade9-a5ace8eb2ece/deploy-status)](https://app.netlify.com/sites/gossip-girl-xoxo/deploys)
  
 # Project description
-An anonymous community journaling website aimed at teenagers and high school students. 
+An anonymous community journaling website aimed at teenagers and high school students based on 90's hit tv series Gossip Girls. 
+
+[![IMG-1509.png](https://i.postimg.cc/2yS2h1Yt/IMG-1509.png)](https://postimg.cc/7Gj3yYf1)
+[![IMG-1511.png](https://i.postimg.cc/rmFSY7H0/IMG-1511.png)](https://postimg.cc/jWmwD3tt)
+
 
 # Installation & usage
 
