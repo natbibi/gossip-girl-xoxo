@@ -302,11 +302,11 @@ form {
 .tertiary-bttn {
   /* share, be first to comment button */
   transition: var(--transition-delay);
-  border: none;
-  border: solid 2px var(--accent-color-pink);
+  border: solid 1px var(--text-color);
   color: var(--button-color);
   border-radius: 4px;
   font-family: "Dosis", sans-serif;
+  transition: 0s;
 }
 
 .tertiary-bttn:hover {
