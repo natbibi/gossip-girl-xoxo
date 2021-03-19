@@ -70,7 +70,7 @@ describe('app', () => {
 
             })
         })
-S
+
         
         describe('addReaction', () => {
             test('if reaction calls patch data', () => {
