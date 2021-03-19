@@ -2659,38 +2659,35 @@ exports.onGifHover = firePingback('HOVER');
 
 },{"@giphy/js-analytics":11,"@giphy/js-util":54}],33:[function(require,module,exports){
 module.exports={
-  "_args": [
-    [
-      "@giphy/js-components@4.3.1",
-      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
-    ]
-  ],
-  "_from": "@giphy/js-components@4.3.1",
+  "_from": "@giphy/js-components@^4.3.1",
   "_id": "@giphy/js-components@4.3.1",
   "_inBundle": false,
   "_integrity": "sha512-DByKMgivmuJFrt5zUNnn5r4dtfqhjAj9H76/r15rEXJdtSXz+mdbp89yt0DTQnPQJMP93X1owaFu2PBA9UX/Cg==",
   "_location": "/@giphy/js-components",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "@giphy/js-components@4.3.1",
+    "raw": "@giphy/js-components@^4.3.1",
     "name": "@giphy/js-components",
     "escapedName": "@giphy%2fjs-components",
     "scope": "@giphy",
-    "rawSpec": "4.3.1",
+    "rawSpec": "^4.3.1",
     "saveSpec": null,
-    "fetchSpec": "4.3.1"
+    "fetchSpec": "^4.3.1"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
-  "_spec": "4.3.1",
-  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
+  "_shasum": "93aaf3aa2d85c2cfc21f6a6d1d06df6a026f2040",
+  "_spec": "@giphy/js-components@^4.3.1",
+  "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
   "author": {
     "name": "giannif"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "@giphy/js-analytics": "^3.0.0",
     "@giphy/js-brand": "^2.0.2",
@@ -2703,6 +2700,7 @@ module.exports={
     "preact": "10.4.8",
     "throttle-debounce": "^2.3.0"
   },
+  "deprecated": false,
   "description": "A lightweight set of components, focused on easy-of-use and performance.",
   "devDependencies": {
     "@types/bricks.js": "^1.8.1",
@@ -4051,41 +4049,39 @@ module.exports = {
 
 },{"./formats":42}],47:[function(require,module,exports){
 module.exports={
-  "_args": [
-    [
-      "@giphy/js-fetch-api@2.4.0",
-      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
-    ]
-  ],
-  "_from": "@giphy/js-fetch-api@2.4.0",
+  "_from": "@giphy/js-fetch-api@^2.4.0",
   "_id": "@giphy/js-fetch-api@2.4.0",
   "_inBundle": false,
   "_integrity": "sha512-xiMHnv81XZjgut4yrkHB5QHDWGNhVHoyMDb3kQBy5H0NruwtQ+aM5BE9xbP+XQlxt3eRnPRJcLy5ORk9+K0fIQ==",
   "_location": "/@giphy/js-fetch-api",
   "_phantomChildren": {},
   "_requested": {
-    "type": "version",
+    "type": "range",
     "registry": true,
-    "raw": "@giphy/js-fetch-api@2.4.0",
+    "raw": "@giphy/js-fetch-api@^2.4.0",
     "name": "@giphy/js-fetch-api",
     "escapedName": "@giphy%2fjs-fetch-api",
     "scope": "@giphy",
-    "rawSpec": "2.4.0",
+    "rawSpec": "^2.4.0",
     "saveSpec": null,
-    "fetchSpec": "2.4.0"
+    "fetchSpec": "^2.4.0"
   },
   "_requiredBy": [
+    "#USER",
     "/",
     "/@giphy/js-components"
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
-  "_spec": "2.4.0",
-  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
+  "_shasum": "e96c7a2599b720d3e40ea409d8e4c4a692aa4611",
+  "_spec": "@giphy/js-fetch-api@^2.4.0",
+  "_where": "C:\\Users\\Chris\\1_welcome\\LAP-1-Portfolio-Week-Project\\client",
+  "bundleDependencies": false,
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
     "qs": "^6.9.4"
   },
+  "deprecated": false,
   "description": "Javascript API to fetch gifs and stickers from the GIPHY API.",
   "devDependencies": {
     "@types/qs": "^6.9.4",
@@ -8591,6 +8587,7 @@ exports.default = _default;
 },{"./validate.js":83}],85:[function(require,module,exports){
 // get data
 async function getData(url = '') {
+  try {
     // Default options are marked with *
     const response = await fetch(url, {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -8605,10 +8602,14 @@ async function getData(url = '') {
       referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     });
     return response.json(); // parses JSON response into native JavaScript objects
+  } catch(err) {
+    console.log(err)
+  }
   }
 
 // post data
 async function postData(url = '', data = {}) {
+  try {
     // Default options are marked with *
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -8624,10 +8625,14 @@ async function postData(url = '', data = {}) {
       body: JSON.stringify(data) // body data type must match "Content-Type" header
     });
     return response.json(); // parses JSON response into native JavaScript objects
+  } catch(err) {
+    console.log(err)
+  }
   }
 
   //patch
 async function patchData(url = '', data = {}) {
+  try {
     // Default options are marked with *
     const response = await fetch(url, {
       method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
@@ -8644,6 +8649,9 @@ async function patchData(url = '', data = {}) {
     });
     // we don't need patch to return data
     // return response.json(); // parses JSON response into native JavaScript objects
+  } catch(err) {
+    console.log(err)
+  }
   }
 
 
@@ -8668,11 +8676,16 @@ const giphyHelpers = require('./giphyHelpers.js')
 
 //async submit function in order to post then refresh on mobile browsers
 async function submit(data) {
-    await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
-    window.location.search = ''
-    window.location.reload()
+    try {
+        await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
+        window.location.search = ''
+        window.location.reload()
+    } catch(err) {
+        console.log(err)
+    }
   }
 
+document.addEventListener('DOMContentLoaded', function () {
 const popupTextArea = document.querySelector('#popup-textarea')
 const submitNewPost = document.querySelector('#submit-post')
 let giphSelected = false
@@ -8710,15 +8723,17 @@ submitNewPost.addEventListener("click", () => {
         }
     }
 })
+})
 
 
 
 // create a GiphyFetch with your api key
 // apply for a new Web SDK key. Use a separate key for every platform (Android, iOS, Web)
-const gf = new GiphyFetch(key)
 
 // Creating a carousel with window resizing and remove-ability
 const makeCarousel = (targetEl, query) => {
+    const gf = new GiphyFetch(key)
+
     
     let selectedGif
     const fetchGifs = (offset) => {
@@ -8755,9 +8770,15 @@ const makeCarousel = (targetEl, query) => {
 // create a GiphyFetch with your api key
 // apply for a new Web SDK key. Use a separate key for every platform (Android, iOS, Web)
 const vanillaJSGif = async (mountNode, id) => {
+    const gf = new GiphyFetch(key)
+
+    try {
     // render a single gif
     const { data: gif1 } = await gf.gif(id)
     renderGif({ gif: gif1, width:  300, noLink: true }, mountNode)
+    } catch(err){
+        console.log(err)
+    }
 }
 
 // To remove
@@ -8766,6 +8787,7 @@ const vanillaJSGif = async (mountNode, id) => {
 module.exports = { 
     makeCarousel,
     vanillaJSGif,
+    submit
 } 
 },{"./api":85,"./giphyHelpers.js":87,"./key":90,"@giphy/js-components":30,"@giphy/js-fetch-api":36}],87:[function(require,module,exports){
 function toggleBorder(element){
@@ -8812,11 +8834,6 @@ function renderItem(data) {
     const postText = document.createElement('p')
     postText.textContent = data.text
 
-    function randomclass() {
-        const differentFontClass = ["blog-entry-font-1", "blog-entry-font-2", "blog-entry-font-3", "blog-entry-font-4", "blog-entry-font-5"]
-        const randNum = Math.floor(Math.random() * differentFontClass.length)
-        return differentFontClass[randNum]
-    }
     postText.className = `${randomclass()} blog-entry-main`
 
     postContainer.appendChild(postText)
@@ -8853,7 +8870,7 @@ function renderItem(data) {
 
     // make comment button 
     const commentButton = document.createElement('button')
-    commentButton.className = 'first-to-comment primary-bttn'
+    commentButton.className = 'first-to-comment tertiary-bttn'
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
@@ -8931,7 +8948,8 @@ function renderItem(data) {
         postContainer.append(showCommentsBttn)
         showCommentsBttn.addEventListener("click", () => {
             commentCont.classList.toggle('display-comments')
-            if (showCommentsBttn.dataset.comments == 0) addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
+            const display = commentCont.classList.contains('display-comments')
+            if (showCommentsBttn.dataset.comments == 0) addComment(commentPostCont, postContainer, data.id)
         })
     }
 
@@ -8964,7 +8982,7 @@ async function addComment(parent, topParent, id) {
 
         //comment button to post value from text area
         const commentSubmitBttn = document.createElement('button')
-        commentSubmitBttn.classList.add('reply-comment-bttn')
+        commentSubmitBttn.classList.add('primary-bttn')
         commentSubmitBttn.textContent = 'reply'
 
         commentSubmitBttn.addEventListener('click', () => {
@@ -8981,10 +8999,10 @@ async function addComment(parent, topParent, id) {
                 const showCommentBttn = topParent.getElementsByClassName('read-comment-bttn')[0]
                 showCommentBttn.dataset.comments++
                 topParent.getElementsByClassName('comment-cont')[0].classList.add('display-comments')
-                showCommentBttn.textContent = `hide ${showCommentBttn.dataset.comments} ${showCommentBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
+                showCommentBttn.textContent = `nice!`
 
             } catch (err) {
-                alert('You haven\'t written anything')
+                alert(err)
                 throw err
             }
         })
@@ -9006,7 +9024,14 @@ function copyUrl(id, parent) {
     copyText.select();
     document.execCommand("copy");
     copyText.remove()
-    alert('You\'ve now copied the link, time to share')
+    alert('link copied')
+}
+
+function renderError(error) {
+    const errorCont = document.createElement('div')
+    errorCont.className = 'error'
+    errorCont.textContent = `${error}`
+    document.getElementById('root').prepend(errorCont)
 }
 
 function renderComment(comment) {
@@ -9017,11 +9042,10 @@ function renderComment(comment) {
     return commentPara
 }
 
-function renderError(error) {
-    const errorCont = document.createElement('div')
-    errorCont.className = 'error'
-    errorCont.textContent = `${error}`
-    document.getElementById('root').prepend(errorCont)
+function randomclass() {
+    const differentFontClass = ["blog-entry-font-1", "blog-entry-font-2", "blog-entry-font-3", "blog-entry-font-4", "blog-entry-font-5"]
+    const randNum = Math.floor(Math.random() * differentFontClass.length)
+    return differentFontClass[randNum]
 }
 
 
@@ -9029,7 +9053,10 @@ function renderError(error) {
 module.exports = {
     renderList,
     renderItem,
-    renderError
+    renderComment,
+    renderError,
+    randomclass,
+    addComment
 }
 },{"./api":85,"./giphy":86}],89:[function(require,module,exports){
 const giphy = require('./giphy')

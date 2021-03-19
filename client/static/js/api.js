@@ -1,5 +1,6 @@
 // get data
 async function getData(url = '') {
+  try {
     // Default options are marked with *
     const response = await fetch(url, {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -14,10 +15,14 @@ async function getData(url = '') {
       referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     });
     return response.json(); // parses JSON response into native JavaScript objects
+  } catch(err) {
+    console.log(err)
+  }
   }
 
 // post data
 async function postData(url = '', data = {}) {
+  try {
     // Default options are marked with *
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -33,10 +38,14 @@ async function postData(url = '', data = {}) {
       body: JSON.stringify(data) // body data type must match "Content-Type" header
     });
     return response.json(); // parses JSON response into native JavaScript objects
+  } catch(err) {
+    console.log(err)
+  }
   }
 
   //patch
 async function patchData(url = '', data = {}) {
+  try {
     // Default options are marked with *
     const response = await fetch(url, {
       method: 'PATCH', // *GET, POST, PUT, DELETE, etc.
@@ -53,6 +62,9 @@ async function patchData(url = '', data = {}) {
     });
     // we don't need patch to return data
     // return response.json(); // parses JSON response into native JavaScript objects
+  } catch(err) {
+    console.log(err)
+  }
   }
 
 

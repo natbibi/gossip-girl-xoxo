@@ -10,11 +10,16 @@ const giphyHelpers = require('./giphyHelpers.js')
 
 //async submit function in order to post then refresh on mobile browsers
 async function submit(data) {
-    await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
-    window.location.search = ''
-    window.location.reload()
+    try {
+        await apiFuncs.postData('https://gossip-girl-api.herokuapp.com/posts', data)
+        window.location.search = ''
+        window.location.reload()
+    } catch(err) {
+        console.log(err)
+    }
   }
 
+document.addEventListener('DOMContentLoaded', function () {
 const popupTextArea = document.querySelector('#popup-textarea')
 const submitNewPost = document.querySelector('#submit-post')
 let giphSelected = false
@@ -52,15 +57,17 @@ submitNewPost.addEventListener("click", () => {
         }
     }
 })
+})
 
 
 
 // create a GiphyFetch with your api key
 // apply for a new Web SDK key. Use a separate key for every platform (Android, iOS, Web)
-const gf = new GiphyFetch(key)
 
 // Creating a carousel with window resizing and remove-ability
 const makeCarousel = (targetEl, query) => {
+    const gf = new GiphyFetch(key)
+
     
     let selectedGif
     const fetchGifs = (offset) => {
@@ -97,9 +104,15 @@ const makeCarousel = (targetEl, query) => {
 // create a GiphyFetch with your api key
 // apply for a new Web SDK key. Use a separate key for every platform (Android, iOS, Web)
 const vanillaJSGif = async (mountNode, id) => {
+    const gf = new GiphyFetch(key)
+
+    try {
     // render a single gif
     const { data: gif1 } = await gf.gif(id)
     renderGif({ gif: gif1, width:  300, noLink: true }, mountNode)
+    } catch(err){
+        console.log(err)
+    }
 }
 
 // To remove
@@ -108,4 +121,5 @@ const vanillaJSGif = async (mountNode, id) => {
 module.exports = { 
     makeCarousel,
     vanillaJSGif,
+    submit
 } 
