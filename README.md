@@ -113,6 +113,5 @@ In a seperate terminal:
 - Choose from more selection of emojis as a reaction
 - Ability to search through posts  
 - Report other posts (e.g if not appropriate)
-
-Could have:
-Code snippets
+- 
+[![Screen-Shot-2021-03-19-at-16-28-40.png](https://i.postimg.cc/tC71qLnN/Screen-Shot-2021-03-19-at-16-28-40.png)](https://postimg.cc/4mk4w25Y)
