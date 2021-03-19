@@ -70,12 +70,7 @@ describe('app', () => {
 
             })
         })
-
-        describe('appendBlogEntry', () => {
-            test('it renders a new div on the page with the entry data', () => {
-
-            })
-        })
+S
         
         describe('addReaction', () => {
             test('if reaction calls patch data', () => {
@@ -99,7 +94,7 @@ describe('app', () => {
      
             })
         })
-    
-     
+        
             })
         })
+

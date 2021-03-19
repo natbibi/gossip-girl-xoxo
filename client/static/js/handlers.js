@@ -25,11 +25,6 @@ function renderItem(data) {
     const postText = document.createElement('p')
     postText.textContent = data.text
 
-    function randomclass() {
-        const differentFontClass = ["blog-entry-font-1", "blog-entry-font-2", "blog-entry-font-3", "blog-entry-font-4", "blog-entry-font-5"]
-        const randNum = Math.floor(Math.random() * differentFontClass.length)
-        return differentFontClass[randNum]
-    }
     postText.className = `${randomclass()} blog-entry-main`
 
     postContainer.appendChild(postText)
@@ -66,7 +61,7 @@ function renderItem(data) {
 
     // make comment button 
     const commentButton = document.createElement('button')
-    commentButton.className = 'first-to-comment primary-bttn'
+    commentButton.className = 'first-to-comment tertiary-bttn'
     commentButton.textContent = 'comment'
     postContainer.appendChild(commentButton)
 
@@ -144,7 +139,8 @@ function renderItem(data) {
         postContainer.append(showCommentsBttn)
         showCommentsBttn.addEventListener("click", () => {
             commentCont.classList.toggle('display-comments')
-            if (showCommentsBttn.dataset.comments == 0) addComment(commentPostCont, postContainer, data.id, showCommentsBttn)
+            const display = commentCont.classList.contains('display-comments')
+            if (showCommentsBttn.dataset.comments == 0) addComment(commentPostCont, postContainer, data.id)
         })
     }
 
@@ -177,7 +173,7 @@ async function addComment(parent, topParent, id) {
 
         //comment button to post value from text area
         const commentSubmitBttn = document.createElement('button')
-        commentSubmitBttn.classList.add('reply-comment-bttn')
+        commentSubmitBttn.classList.add('primary-bttn')
         commentSubmitBttn.textContent = 'reply'
 
         commentSubmitBttn.addEventListener('click', () => {
@@ -194,10 +190,10 @@ async function addComment(parent, topParent, id) {
                 const showCommentBttn = topParent.getElementsByClassName('read-comment-bttn')[0]
                 showCommentBttn.dataset.comments++
                 topParent.getElementsByClassName('comment-cont')[0].classList.add('display-comments')
-                showCommentBttn.textContent = `hide ${showCommentBttn.dataset.comments} ${showCommentBttn.dataset.comments == 1 ? 'comment' : 'comments'}`
+                showCommentBttn.textContent = `nice!`
 
             } catch (err) {
-                alert('You haven\'t written anything')
+                alert(err)
                 throw err
             }
         })
@@ -219,7 +215,14 @@ function copyUrl(id, parent) {
     copyText.select();
     document.execCommand("copy");
     copyText.remove()
-    alert('You\'ve now copied the link, time to share')
+    alert('link copied')
+}
+
+function renderError(error) {
+    const errorCont = document.createElement('div')
+    errorCont.className = 'error'
+    errorCont.textContent = `${error}`
+    document.getElementById('root').prepend(errorCont)
 }
 
 function renderComment(comment) {
@@ -230,11 +233,10 @@ function renderComment(comment) {
     return commentPara
 }
 
-function renderError(error) {
-    const errorCont = document.createElement('div')
-    errorCont.className = 'error'
-    errorCont.textContent = `${error}`
-    document.getElementById('root').prepend(errorCont)
+function randomclass() {
+    const differentFontClass = ["blog-entry-font-1", "blog-entry-font-2", "blog-entry-font-3", "blog-entry-font-4", "blog-entry-font-5"]
+    const randNum = Math.floor(Math.random() * differentFontClass.length)
+    return differentFontClass[randNum]
 }
 
 
@@ -242,5 +244,8 @@ function renderError(error) {
 module.exports = {
     renderList,
     renderItem,
-    renderError
+    renderComment,
+    renderError,
+    randomclass,
+    addComment
 }
