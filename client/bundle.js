@@ -8690,20 +8690,18 @@ async function submit(data) {
   }
 
 const popupTextArea = document.querySelector('#popup-textarea')
-const submitNewPost = document.querySelector('#submit-post')
+const submitNewPost = document.querySelector('#submit-post') 
 let giphSelected = false
 function prepPost(gifId){
     giphSelected = true
     let data = {}
     submitNewPost.onclick = () => {
         try {
-            console.log(!document.getElementsByClassName('giphy-carousel')[0])
             if (!document.getElementsByClassName('giphy-carousel')[0]) gifId = null
             if (popupTextArea.value.length < 1) throw new Error('add some text!')
             data.text = popupTextArea.value
             data.date = new Date().toString()
             data.giphy = gifId
-            console.log(data)
             submit(data)
         } catch(err) {
             alert('add some text!')
@@ -9165,12 +9163,11 @@ runPage()
 
 function updateCharacterValue(popupTextArea, popupPostArea){
   const logCharacterInput = popupTextArea.value.length
-  console.log(logCharacterInput)
   const displayCharacterLength = document.querySelector('#the-count')
   
   displayCharacterLength.textContent = `${logCharacterInput}/300 characters`
   if (logCharacterInput > 0 && logCharacterInput < 200){
-  displayCharacterLength.style.color = "rgb(27, 26, 26)"
+  displayCharacterLength.style.color = "var(--text-color)"
  } else {
    displayCharacterLength.style.color = "limegreen"
  }
