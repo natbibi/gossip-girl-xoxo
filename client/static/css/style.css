@@ -65,7 +65,7 @@ textarea {
   font-family: "Dosis", sans-serif;
   background-color: var(--input-color);
   color: var(--text-color);
-  resize: none
+  resize: none;
 }
 input:focus,
 textarea:focus {
@@ -191,8 +191,8 @@ textarea:focus {
 }
 
 h1 {
-margin: 0px;
-} 
+  margin: 0px;
+}
 
 /* blog sections */
 
@@ -336,8 +336,8 @@ form {
   background-color: var(--background-color);
   transition: 0s;
 }
-.reply-comment-bttn:hover{
- transform: scale(1.03)
+.reply-comment-bttn:hover {
+  transform: scale(1.03);
 }
 
 .share-button {
@@ -354,7 +354,6 @@ form {
   min-width: 42px;
 }
 
-
 #search-giphy,
 #cancel-giphy-bttn.display {
   color: var(--text-color);
@@ -368,13 +367,13 @@ form {
 #submit-post {
   color: var(--button-color);
   background-color: var(--background-color);
-  border: solid 1px var(--text-color)
+  border: solid 1px var(--text-color);
 }
 
 #submit-post:hover,
 #search-giphy:hover {
   transform: scale(1.03);
-  transition: 0s
+  transition: 0s;
 }
 .giphy-search-cont {
   width: max-content;
@@ -541,6 +540,13 @@ footer textarea {
   width: max-content;
   align-self: center;
   transition: 0s;
+}
+
+#the-count {
+  text-align: right;
+  margin-top: 0;
+  justify-content: right;
+  margin-right: 1.5rem;
 }
 
 /* css for comment box + comments should move */

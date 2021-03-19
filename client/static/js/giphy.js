@@ -27,13 +27,11 @@ function prepPost(gifId){
     let data = {}
     submitNewPost.onclick = () => {
         try {
-            console.log(!document.getElementsByClassName('giphy-carousel')[0])
             if (!document.getElementsByClassName('giphy-carousel')[0]) gifId = null
             if (popupTextArea.value.length < 1) throw new Error('add some text!')
             data.text = popupTextArea.value
             data.date = new Date().toString()
             data.giphy = gifId
-            console.log(data)
             submit(data)
         } catch(err) {
             alert('add some text!')

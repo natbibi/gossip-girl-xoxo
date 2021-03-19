@@ -102,12 +102,11 @@ runPage()
 
 function updateCharacterValue(popupTextArea, popupPostArea){
   const logCharacterInput = popupTextArea.value.length
-  console.log(logCharacterInput)
   const displayCharacterLength = document.querySelector('#the-count')
   
   displayCharacterLength.textContent = `${logCharacterInput}/300 characters`
   if (logCharacterInput > 0 && logCharacterInput < 200){
-  displayCharacterLength.style.color = "rgb(27, 26, 26)"
+  displayCharacterLength.style.color = "var(--text-color)"
  } else {
    displayCharacterLength.style.color = "limegreen"
  }
