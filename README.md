@@ -1,4 +1,4 @@
-# LAP 1 Project: Gossip-Girl-xoxo 
+# Project: Gossip-Girl-xoxo 
 
 📝 [![Netlify Status](https://api.netlify.com/api/v1/badges/d63b47cc-fca6-4c50-ade9-a5ace8eb2ece/deploy-status)](https://app.netlify.com/sites/gossip-girl-xoxo/deploys)  🚀  ![Heroku](https://pyheroku-badge.herokuapp.com/?app=gossip-girl-api&style=flat)  ⚖️  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
