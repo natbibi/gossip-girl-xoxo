@@ -54,7 +54,7 @@ In a seperate terminal:
 - [x] Posts not showing when sent from mobile devices.
 - [x] Submit button not closing text area
 - [x] Styling
-- [x] Comment Submit button not functioning 
+- [x] Comment submit button not functioning 
 - [x] Comment submit button can be pressed multiple times and each click will bring up new comment textarea
 - [x] Date and time 
 
