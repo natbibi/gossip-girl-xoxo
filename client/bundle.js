@@ -2662,7 +2662,7 @@ module.exports={
   "_args": [
     [
       "@giphy/js-components@4.3.1",
-      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
+      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
     ]
   ],
   "_from": "@giphy/js-components@4.3.1",
@@ -2687,7 +2687,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
   "_spec": "4.3.1",
-  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
+  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
   "author": {
     "name": "giannif"
   },
@@ -4054,7 +4054,7 @@ module.exports={
   "_args": [
     [
       "@giphy/js-fetch-api@2.4.0",
-      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
+      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
     ]
   ],
   "_from": "@giphy/js-fetch-api@2.4.0",
@@ -4080,7 +4080,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
   "_spec": "2.4.0",
-  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
+  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
@@ -8697,13 +8697,11 @@ function prepPost(gifId){
     let data = {}
     submitNewPost.onclick = () => {
         try {
-            console.log(!document.getElementsByClassName('giphy-carousel')[0])
             if (!document.getElementsByClassName('giphy-carousel')[0]) gifId = null
             if (popupTextArea.value.length < 1) throw new Error('add some text!')
             data.text = popupTextArea.value
             data.date = new Date().toString()
             data.giphy = gifId
-            console.log(data)
             submit(data)
         } catch(err) {
             alert('add some text!')
@@ -9165,12 +9163,11 @@ runPage()
 
 function updateCharacterValue(popupTextArea, popupPostArea){
   const logCharacterInput = popupTextArea.value.length
-  console.log(logCharacterInput)
   const displayCharacterLength = document.querySelector('#the-count')
   
   displayCharacterLength.textContent = `${logCharacterInput}/300 characters`
   if (logCharacterInput > 0 && logCharacterInput < 200){
-  displayCharacterLength.style.color = "rgb(27, 26, 26)"
+  displayCharacterLength.style.color = "var(--text-color)"
  } else {
    displayCharacterLength.style.color = "limegreen"
  }
