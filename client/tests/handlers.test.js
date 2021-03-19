@@ -33,7 +33,7 @@ describe('simple handlers', () => {
             expect(typeof giphy.vanillaJSGif).toBe('function')
         })
 
-        it('should have a function to render a coursel', () => {
+        it('should have a function to render a carousel', () => {
             expect(typeof giphy.makeCarousel).toBe('function')
         })
 

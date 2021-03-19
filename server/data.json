@@ -2,8 +2,8 @@
   "posts": [
     {
       "id": 1,
-      "date": "Mon Mar 15 2021 09:39:25 GMT+0000 (Greenwich Mean Time)", 
-      "dateFrom": "4 days ago",
+      "date": "Mon Mar 15 2020 09:39:25 GMT+0000 (Greenwich Mean Time)", 
+      "dateFrom": "a year ago",
       "text": "Welcome to Gossip Girls!",
       "giphy": "ASd0Ukj0y3qMM",
       "reactions": {
