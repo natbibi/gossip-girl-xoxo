@@ -36,10 +36,10 @@ describe('Comment model', () => {
 describe('Post model', () => {
     it('should return all posts', () => {
         const posts = Post.all
-        expect(posts[0].text).toEqual('Welcome to Gossip Girl!')
+        expect(posts[0].text).toEqual('Welcome to Gossip Girl! Use this space to post annonymous blog entries which you can like, comment and share. \n xoxo Gossip Girl')
     })
     it('should return a post with specific id and throw error if no post with id', () => {
-        expect(Post.findById(1).text).toBe('Welcome to Gossip Girl!')
+        expect(Post.findById(1).text).toBe('Welcome to Gossip Girl! Use this space to post annonymous blog entries which you can like, comment and share. \n xoxo Gossip Girl')
         function testError() {
             Post.findById(-1);
         }
