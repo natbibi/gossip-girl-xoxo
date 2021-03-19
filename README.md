@@ -29,12 +29,16 @@ In a seperate terminal:
 # Technologies
 - HTML, CSS, JavaScript
 ### Dependencies: 
-   Server: cors, moment, body-parser, express
-   Client: giphy/js-components, giphy/js-fetch-api 
+   #### Server: 
+   cors, moment, body-parser, express
+   #### Client: 
+   giphy/js-components, giphy/js-fetch-api 
 
 ### DevDependencies:
-   Server: jest, supertest, nodemon
-   Client: watchify, concurrently, jest, jest-fetch-mock, coverage
+   #### Server: 
+   jest, supertest, nodemon
+   #### Client: 
+   watchify, concurrently, jest, jest-fetch-mock, coverage
 
 # Process 
 1. Start by planning out a plan!!! Use of GitHub Projects to set up a Kanban board and a 'Source of Truth' shared document on Google Docs.
