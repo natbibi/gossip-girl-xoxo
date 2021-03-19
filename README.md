@@ -103,13 +103,12 @@ In a seperate terminal:
 - Organisation of functions not set out well for testing
 
 # Future Features 
-
-
-
+- Reply with a Giphy in comments
+- Save favourite posts
+- Order by user's favourite posts
+- Choose from more selection of emojis as a reaction
+- Ability to search through posts  
+- Report other posts (e.g if not appropriate)
 
 Could have:
-
-Badges
-Contribution guide
 Code snippets
-Future features
