@@ -1,4 +1,4 @@
-# XOXO 
+# LAP 1 Project: Gossip-Girl-xoxo 
 
 📝 [![Netlify Status](https://api.netlify.com/api/v1/badges/d63b47cc-fca6-4c50-ade9-a5ace8eb2ece/deploy-status)](https://app.netlify.com/sites/gossip-girl-xoxo/deploys)  🚀  ![Heroku](https://pyheroku-badge.herokuapp.com/?app=gossip-girl-api&style=flat)  ⚖️  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -9,7 +9,6 @@ XOXO is an anonymous community journaling website aimed at teenagers and high sc
 
 [![IMG-1509.png](https://i.postimg.cc/2yS2h1Yt/IMG-1509.png)](https://postimg.cc/7Gj3yYf1)
 [![IMG-1511.png](https://i.postimg.cc/rmFSY7H0/IMG-1511.png)](https://postimg.cc/jWmwD3tt)
-
 
 # Installation & usage
 
@@ -95,6 +94,9 @@ In a seperate terminal:
 - Connected API to front end!
 - Having a functioning and visually appealing page that looks amazing on most popular smart phones.
 - Meeting our own deadlines
+- Hot or New sorting! (See code snippet below)
+
+[![Screen-Shot-2021-03-19-at-12-54-00.png](https://i.postimg.cc/fLWp47qk/Screen-Shot-2021-03-19-at-12-54-00.png)](https://postimg.cc/rdbQx4kL)
 
 ## Challenges
 - Finding the best strategy to deploy on Heroku and Netlify from the same repository on Github.
