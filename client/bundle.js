@@ -2662,7 +2662,7 @@ module.exports={
   "_args": [
     [
       "@giphy/js-components@4.3.1",
-      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
+      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
     ]
   ],
   "_from": "@giphy/js-components@4.3.1",
@@ -2687,7 +2687,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-components/-/js-components-4.3.1.tgz",
   "_spec": "4.3.1",
-  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
+  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
   "author": {
     "name": "giannif"
   },
@@ -4054,7 +4054,7 @@ module.exports={
   "_args": [
     [
       "@giphy/js-fetch-api@2.4.0",
-      "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client"
+      "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client"
     ]
   ],
   "_from": "@giphy/js-fetch-api@2.4.0",
@@ -4080,7 +4080,7 @@ module.exports={
   ],
   "_resolved": "https://registry.npmjs.org/@giphy/js-fetch-api/-/js-fetch-api-2.4.0.tgz",
   "_spec": "2.4.0",
-  "_where": "/Users/semhartesfu/FutureProof/LAP1/LAP-1-Portfolio-Week-Project/client",
+  "_where": "/Users/Natalie/Documents/futureproof/LAP-1-Portfolio-Week-Project/client",
   "dependencies": {
     "@giphy/js-types": "^3.1.0",
     "@giphy/js-util": "^2.2.0",
@@ -8690,7 +8690,7 @@ async function submit(data) {
   }
 
 const popupTextArea = document.querySelector('#popup-textarea')
-const submitNewPost = document.querySelector('#submit-post')
+const submitNewPost = document.querySelector('#submit-post') 
 let giphSelected = false
 function prepPost(gifId){
     giphSelected = true

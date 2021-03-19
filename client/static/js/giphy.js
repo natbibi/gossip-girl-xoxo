@@ -20,7 +20,7 @@ async function submit(data) {
   }
 
 const popupTextArea = document.querySelector('#popup-textarea')
-const submitNewPost = document.querySelector('#submit-post')
+const submitNewPost = document.querySelector('#submit-post') 
 let giphSelected = false
 function prepPost(gifId){
     giphSelected = true
