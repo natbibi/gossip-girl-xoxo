@@ -29,15 +29,17 @@ In a seperate terminal:
 # Technologies
 - HTML, CSS, JavaScript
 ### Dependencies: 
-   #### Server: 
+   Server: 
    cors, moment, body-parser, express
-   #### Client: 
+   
+   Client: 
    giphy/js-components, giphy/js-fetch-api 
 
 ### DevDependencies:
-   #### Server: 
+   Server: 
    jest, supertest, nodemon
-   #### Client: 
+   
+   Client: 
    watchify, concurrently, jest, jest-fetch-mock, coverage
 
 # Process 
