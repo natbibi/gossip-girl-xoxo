@@ -9004,7 +9004,7 @@ async function addComment(parent, topParent, id) {
                 showCommentBttn.textContent = `nice!`
 
             } catch (err) {
-                alert(err)
+                alert("You haven't written anything")
                 throw err
             }
         })
@@ -9026,7 +9026,7 @@ function copyUrl(id, parent) {
     copyText.select();
     document.execCommand("copy");
     copyText.remove()
-    alert('link copied')
+    alert('You\'ve copied the link, now you can share it 📱')
 }
 
 function renderError(error) {
@@ -9136,7 +9136,7 @@ function giphySearch() {
         grid.remove()
       })
   } catch(err) {
-    alert('ummm ... you haven\'t typed anything')
+    alert('You haven\'t written anything')
     throw err
   }
 })
@@ -9147,19 +9147,35 @@ giphySearch()
     document.querySelector('#hot-sort').addEventListener("click", () => updateUrlQuery('hot'))
     document.querySelector('#new-sort').addEventListener("click", () => updateUrlQuery('new'))
 
-
+ const popupTextArea = document.querySelector('#popup-textarea')
+ const popupPostArea = document.querySelector('#popup-postarea')
 
     document.querySelector('#popup-post').addEventListener("click", (event) => {
       event.currentTarget.classList.toggle('rotate')
-      const popupPostArea = document.querySelector('#popup-postarea')
-      const popupTextArea = document.querySelector('#popup-textarea')
       popupPostArea.classList.toggle('display')
       popupTextArea.focus()
+
     })
+
+    popupTextArea.addEventListener('input', () => updateCharacterValue(popupTextArea, popupPostArea))
 
   }
 }
 runPage()
+
+function updateCharacterValue(popupTextArea, popupPostArea){
+  const logCharacterInput = popupTextArea.value.length
+  console.log(logCharacterInput)
+  const displayCharacterLength = document.querySelector('#the-count')
+  
+  displayCharacterLength.textContent = `${logCharacterInput}/300 characters`
+  if (logCharacterInput > 0 && logCharacterInput < 200){
+  displayCharacterLength.style.color = "rgb(27, 26, 26)"
+ } else {
+   displayCharacterLength.style.color = "limegreen"
+ }
+}
+
 
 // Nav button opens and closes on click
 document.querySelector('.icon').addEventListener('click', () => {

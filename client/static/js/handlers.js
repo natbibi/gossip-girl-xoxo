@@ -193,7 +193,7 @@ async function addComment(parent, topParent, id) {
                 showCommentBttn.textContent = `nice!`
 
             } catch (err) {
-                alert(err)
+                alert("You haven't written anything")
                 throw err
             }
         })
@@ -215,7 +215,7 @@ function copyUrl(id, parent) {
     copyText.select();
     document.execCommand("copy");
     copyText.remove()
-    alert('link copied')
+    alert('You\'ve copied the link, now you can share it 📱')
 }
 
 function renderError(error) {
