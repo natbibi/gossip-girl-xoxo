@@ -8685,7 +8685,6 @@ async function submit(data) {
     }
   }
 
-document.addEventListener('DOMContentLoaded', function () {
 const popupTextArea = document.querySelector('#popup-textarea')
 const submitNewPost = document.querySelector('#submit-post')
 let giphSelected = false
@@ -8722,7 +8721,6 @@ submitNewPost.addEventListener("click", () => {
             throw err
         }
     }
-})
 })
 
 
