@@ -7,8 +7,8 @@ A Gossip Girl inspired app with client and server integration where users can po
 # Description
 XOXO is an anonymous community journaling website aimed at teenagers and high school students based on hit tv series Gossip Girls. With growing privacy concerns on current social media platforms and messaging apps, XOXO aims to provide a safe space for individuals to freely share their thoughts without having to worry about having their identity exposed.
 
-[![IMG-1509.png](https://i.postimg.cc/2yS2h1Yt/IMG-1509.png)](https://postimg.cc/7Gj3yYf1)
-[![IMG-1511.png](https://i.postimg.cc/rmFSY7H0/IMG-1511.png)](https://postimg.cc/jWmwD3tt)
+<img alt="gossip-girl-lightmode" src="https://user-images.githubusercontent.com/58271566/114214712-958cb680-995c-11eb-9172-1100b83c5f74.PNG" height="650px"><img alt="gossip-girl-darkmode" src="https://user-images.githubusercontent.com/58271566/114214723-9887a700-995c-11eb-9267-1cb8c37a1f53.PNG" height="650px">
+
 
 # Installation & usage
 
@@ -96,7 +96,8 @@ In a seperate terminal:
 - Meeting our own deadlines
 - Hot or New sorting! (See code snippet below)
 
-[![Screen-Shot-2021-03-19-at-12-54-00.png](https://i.postimg.cc/fLWp47qk/Screen-Shot-2021-03-19-at-12-54-00.png)](https://postimg.cc/rdbQx4kL)
+![Screen Shot 2021-03-19 at 12 54 00](https://user-images.githubusercontent.com/58271566/114215205-3aa78f00-995d-11eb-9aca-d1b130378b0f.png)
+
 
 ## Challenges
 - Finding the best strategy to deploy on Heroku and Netlify from the same repository on Github.
