@@ -2,6 +2,8 @@
 
 📝 [![Netlify Status](https://api.netlify.com/api/v1/badges/d63b47cc-fca6-4c50-ade9-a5ace8eb2ece/deploy-status)](https://app.netlify.com/sites/gossip-girl-xoxo/deploys)  🚀  ![Heroku](https://pyheroku-badge.herokuapp.com/?app=gossip-girl-api&style=flat)  ⚖️  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+https://gossip-girl-xoxo.netlify.app/
+
 A Gossip Girl inspired app with client and server integration where users can post entries of up to 300 characters and a gif. Users can engage with the content using reactions and comments.
  
 # Description
