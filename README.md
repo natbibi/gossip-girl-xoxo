@@ -9,8 +9,8 @@ A Gossip Girl inspired app with client and server integration where users can po
 # Description
 XOXO is an anonymous community journaling website aimed at teenagers and high school students based on hit tv series Gossip Girls. With growing privacy concerns on current social media platforms and messaging apps, XOXO aims to provide a safe space for individuals to freely share their thoughts without having to worry about having their identity exposed.
 
-<img alt="gossip-girl-lightmode" src="https://user-images.githubusercontent.com/58271566/114214712-958cb680-995c-11eb-9172-1100b83c5f74.PNG" height="650px"><img alt="gossip-girl-darkmode" src="https://user-images.githubusercontent.com/58271566/114214723-9887a700-995c-11eb-9267-1cb8c37a1f53.PNG" height="650px">
-
+<img alt="gossip-girl-lightmode" src="https://user-images.githubusercontent.com/58271566/114214712-958cb680-995c-11eb-9172-1100b83c5f74.PNG" height="650px">
+<img alt="gossip-girl-gif" src="https://user-images.githubusercontent.com/58271566/115692587-08336400-a357-11eb-942b-3774b904e0c7.gif" height="650px">
 
 # Installation & usage
 
