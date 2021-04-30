@@ -11,7 +11,7 @@ XOXO is an anonymous community journaling website aimed at teenagers and high sc
 
 <img alt="gossip-girl-lightmode" src="https://user-images.githubusercontent.com/58271566/114214712-958cb680-995c-11eb-9172-1100b83c5f74.PNG" height="650px"><img alt="gossip-girl-gif" src="https://user-images.githubusercontent.com/58271566/115692587-08336400-a357-11eb-942b-3774b904e0c7.gif" height="650px">
 
-## Installation & usage
+# Installation & usage
 
 ### Installation
 Clone or download the repo.
@@ -28,7 +28,7 @@ In a seperate terminal:
 `npm install`  
 `open index.html`  
 
-## Technologies
+# Technologies
 - HTML, CSS, JavaScript
 ### Dependencies: 
    - Server: 
@@ -44,7 +44,7 @@ In a seperate terminal:
    - Client: 
    watchify, concurrently, jest, jest-fetch-mock, coverage
 
-## Process 
+# Process 
 1. Start by planning out a plan!!! Use of GitHub Projects to set up a Kanban board and a 'Source of Truth' shared document on Google Docs.
 2. Create Figma design plan.
 3. Create server side folder and client side folder with testing and relevant pages.
@@ -107,7 +107,7 @@ In a seperate terminal:
 - Testing Giphy functions 
 - Organisation of functions not set out well for testing
 
-## Future Features 
+# Future Features 
 - Reply with a Giphy in comments
 - Save favourite posts
 - Order by user's favourite posts
